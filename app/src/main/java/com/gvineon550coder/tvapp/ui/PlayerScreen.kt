@@ -12,13 +12,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.common.VideoSize
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 
 @Composable
-fun PlayerScreen(streamUrl: String?, modifier: Modifier = Modifier) {
+fun PlayerScreen(
+    streamUrl: String?,
+    onResolutionChanged: (String) -> Unit = {},
+    useController: Boolean = true,
+    modifier: Modifier = Modifier
+) {
     Box(modifier = modifier.fillMaxSize().background(Color.Black)) {
         if (streamUrl == null) {
             Text(
@@ -35,14 +42,25 @@ fun PlayerScreen(streamUrl: String?, modifier: Modifier = Modifier) {
                     playWhenReady = true
                 }
             }
-            DisposableEffect(streamUrl) {
-                onDispose { player.release() }
+            DisposableEffect(streamUrl, player) {
+                val listener = object : Player.Listener {
+                    override fun onVideoSizeChanged(videoSize: VideoSize) {
+                        if (videoSize.width > 0 && videoSize.height > 0) {
+                            onResolutionChanged("${videoSize.width}x${videoSize.height}")
+                        }
+                    }
+                }
+                player.addListener(listener)
+                onDispose {
+                    player.removeListener(listener)
+                    player.release()
+                }
             }
             AndroidView(
                 factory = { context ->
                     PlayerView(context).apply {
                         this.player = player
-                        useController = true
+                        this.useController = useController
                     }
                 },
                 modifier = Modifier.fillMaxSize()
