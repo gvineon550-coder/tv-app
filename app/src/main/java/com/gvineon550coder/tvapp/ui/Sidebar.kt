@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -26,6 +26,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -43,7 +45,8 @@ fun Sidebar(
     currentId: String?,
     onPick: (Channel) -> Unit,
     onToggleFavorite: (Channel) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    firstItemFocus: FocusRequester? = null
 ) {
     val favChannels = remember(channels, favorites) {
         channels.filter { it.id in favorites }
@@ -51,6 +54,8 @@ fun Sidebar(
     val grouped = remember(channels) {
         channels.groupBy { it.category ?: "Без группы" }
     }
+
+    var isFirstRendered by remember { mutableStateOf(false) }
 
     LazyColumn(
         modifier = modifier,
@@ -61,16 +66,34 @@ fun Sidebar(
             item(key = "cat_favorites") {
                 CategoryHeader("⭐ Избранное", Color(0xFFFFC107))
             }
-            items(favChannels, key = { "fav_${it.id}" }) { ch ->
-                ChannelRow(ch, true, ch.id == currentId, onPick, onToggleFavorite)
+            itemsIndexed(favChannels, key = { _, ch -> "fav_${ch.id}" }) { idx, ch ->
+                val shouldFocus = !isFirstRendered && idx == 0 && firstItemFocus != null
+                if (shouldFocus) isFirstRendered = true
+                ChannelRow(
+                    ch = ch,
+                    isFav = true,
+                    isCurrent = ch.id == currentId,
+                    onPick = onPick,
+                    onToggleFavorite = onToggleFavorite,
+                    focusRequester = if (shouldFocus) firstItemFocus else null
+                )
             }
         }
         grouped.forEach { (cat, list) ->
             item(key = "cat_$cat") {
                 CategoryHeader(cat, MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            items(list, key = { "all_${it.id}" }) { ch ->
-                ChannelRow(ch, ch.id in favorites, ch.id == currentId, onPick, onToggleFavorite)
+            itemsIndexed(list, key = { _, ch -> "all_${ch.id}" }) { idx, ch ->
+                val shouldFocus = !isFirstRendered && idx == 0 && firstItemFocus != null
+                if (shouldFocus) isFirstRendered = true
+                ChannelRow(
+                    ch = ch,
+                    isFav = ch.id in favorites,
+                    isCurrent = ch.id == currentId,
+                    onPick = onPick,
+                    onToggleFavorite = onToggleFavorite,
+                    focusRequester = if (shouldFocus) firstItemFocus else null
+                )
             }
         }
     }
@@ -92,7 +115,8 @@ private fun ChannelRow(
     isFav: Boolean,
     isCurrent: Boolean,
     onPick: (Channel) -> Unit,
-    onToggleFavorite: (Channel) -> Unit
+    onToggleFavorite: (Channel) -> Unit,
+    focusRequester: FocusRequester? = null
 ) {
     var isFocused by remember { mutableStateOf(false) }
 
@@ -112,6 +136,10 @@ private fun ChannelRow(
         colors = CardDefaults.cardColors(containerColor = bg),
         modifier = Modifier
             .fillMaxWidth()
+            .then(
+                if (focusRequester != null) Modifier.focusRequester(focusRequester)
+                else Modifier
+            )
             .onFocusChanged { isFocused = it.isFocused }
             .focusable()
             .clickable { onPick(ch) }
