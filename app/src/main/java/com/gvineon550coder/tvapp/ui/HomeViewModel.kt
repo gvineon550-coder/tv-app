@@ -28,7 +28,8 @@ data class HomeState(
     val programLoading: Boolean = false,
     val search: String = "",
     val showSettings: Boolean = false,
-    val maxHeight: Int = 0
+    val maxHeight: Int = 0,
+    val playerFullscreen: Boolean = false
 )
 
 @HiltViewModel
@@ -143,6 +144,14 @@ class HomeViewModel @Inject constructor(
 
     fun openSettings() { _state.value = _state.value.copy(showSettings = true) }
     fun closeSettings() { _state.value = _state.value.copy(showSettings = false) }
+
+    fun togglePlayerFullscreen() {
+        _state.value = _state.value.copy(playerFullscreen = !_state.value.playerFullscreen)
+    }
+
+    fun exitPlayerFullscreen() {
+        _state.value = _state.value.copy(playerFullscreen = false)
+    }
 
     fun saveSettings(apiProxy: String, apiProxyEnabled: Boolean,
                      streamProxy: String, streamProxyEnabled: Boolean,
