@@ -3,7 +3,9 @@ package com.gvineon550coder.tvapp.ui
 import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -34,9 +37,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,6 +56,7 @@ import kotlinx.coroutines.delay
 import java.time.LocalDate
 
 private const val AUTO_CLOSE_MS = 10 * 60 * 1000L
+private val FOCUS_BORDER = Color(0xFFFFD54F)
 
 @Composable
 fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
@@ -52,42 +65,58 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val config = LocalConfiguration.current
     val isPhone = config.screenWidthDp < 900
 
-    // Получаем Activity через контекст — работает на всех версиях activity-compose
     val context = LocalContext.current
     val activity = context as? Activity
 
     var showSleepDialog by remember { mutableStateOf(false) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
 
-    // Тик каждую секунду:
-    //  - Таймер сна срабатывает всегда
-    //  - Автозакрытие по неактивности — ТОЛЬКО если канал НЕ играет
+    val overlayFocus = remember { FocusRequester() }
+    val panelFirstBtn = remember { FocusRequester() }
+
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
             val s = vm.state.value
-
             if (s.sleepDeadline > 0 && now >= s.sleepDeadline) {
-                activity?.finishAffinity()
-                break
+                activity?.finishAffinity(); break
             }
             if (!s.isPlaying && (now - s.lastActivity) > AUTO_CLOSE_MS) {
-                activity?.finishAffinity()
-                break
+                activity?.finishAffinity(); break
             }
             delay(1000)
         }
     }
 
-    BackHandler(enabled = state.playerFullscreen) {
-        if (state.fullscreenControlsVisible) vm.hideFullscreenControls()
-        else vm.exitPlayerFullscreen()
+    LaunchedEffect(state.showChannelOverlay) {
+        if (state.showChannelOverlay) {
+            delay(100)
+            runCatching { overlayFocus.requestFocus() }
+        }
+    }
+
+    LaunchedEffect(state.fullscreenControlsVisible) {
+        if (state.fullscreenControlsVisible) {
+            delay(100)
+            runCatching { panelFirstBtn.requestFocus() }
+        }
+    }
+
+    BackHandler(enabled = state.playerFullscreen && state.showChannelOverlay) {
+        vm.closeChannelOverlay()
+    }
+    BackHandler(enabled = state.playerFullscreen && !state.showChannelOverlay
+            && state.fullscreenControlsVisible) {
+        vm.hideFullscreenControls()
+    }
+    BackHandler(enabled = state.playerFullscreen && !state.showChannelOverlay
+            && !state.fullscreenControlsVisible) {
+        vm.exitPlayerFullscreen()
     }
     BackHandler(enabled = state.showSettings && !state.playerFullscreen) {
         vm.closeSettings()
     }
 
-    // Диалог таймера сна
     if (showSleepDialog) {
         AlertDialog(
             onDismissRequest = { showSleepDialog = false },
@@ -110,10 +139,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     if (state.showSettings) {
         Surface(modifier = Modifier.fillMaxSize()) {
             SettingsScreen(
-                initialApiProxy = "",
-                initialApiProxyEnabled = false,
-                initialStreamProxy = "",
-                initialStreamProxyEnabled = false,
+                initialApiProxy = "", initialApiProxyEnabled = false,
+                initialStreamProxy = "", initialStreamProxyEnabled = false,
                 initialMaxHeight = state.maxHeight,
                 onSave = { a, ae, s, se, mh -> vm.saveSettings(a, ae, s, se, mh) },
                 onCancel = { vm.closeSettings() }
@@ -122,7 +149,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         return
     }
 
-    // ПОЛНОЭКРАННЫЙ ПЛЕЕР
+    // ---------- ПОЛНОЭКРАННЫЙ ПЛЕЕР ----------
     if (state.playerFullscreen) {
 
         LaunchedEffect(state.fullscreenControlsVisible) {
@@ -132,7 +159,28 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             }
         }
 
-        Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .onPreviewKeyEvent { e ->
+                    if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                    if (state.showChannelOverlay) return@onPreviewKeyEvent false
+                    if (state.fullscreenControlsVisible) return@onPreviewKeyEvent false
+
+                    when (e.key) {
+                        Key.DirectionLeft, Key.ChannelDown -> { vm.prevChannel(); true }
+                        Key.DirectionRight, Key.ChannelUp -> { vm.nextChannel(); true }
+                        Key.DirectionUp, Key.DirectionDown -> {
+                            vm.openChannelOverlay(); true
+                        }
+                        Key.Enter, Key.DirectionCenter -> {
+                            vm.toggleFullscreenControls(); true
+                        }
+                        else -> false
+                    }
+                }
+        ) {
             PlayerScreen(
                 streamUrl = state.streamUrl,
                 onResolutionChanged = { vm.setResolution(it) },
@@ -149,11 +197,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         interactionSource = remember { MutableInteractionSource() }
                     ) {
                         vm.registerActivity()
-                        vm.toggleFullscreenControls()
+                        if (!state.showChannelOverlay) vm.toggleFullscreenControls()
                     }
             )
 
-            if (state.fullscreenControlsVisible) {
+            if (state.fullscreenControlsVisible && !state.showChannelOverlay) {
                 val isFav = state.currentId?.let { it in state.favorites } == true
                 Column(
                     modifier = Modifier
@@ -161,7 +209,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         .fillMaxWidth()
                         .background(Color(0xE6000000))
                         .padding(horizontal = 24.dp, vertical = 14.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
                         state.currentTitle,
@@ -170,37 +218,79 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                    if (state.resolution.isNotEmpty()) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        if (state.resolution.isNotEmpty()) {
+                            Text(
+                                "🔸 ${state.resolution}",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = Color.LightGray
+                            )
+                        }
                         Text(
-                            "🔸 ${state.resolution}",
+                            "← → канал · ↑ ↓ список · OK панель",
                             style = MaterialTheme.typography.labelMedium,
-                            color = Color.LightGray
+                            color = Color.Gray
                         )
                     }
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Button(onClick = { vm.prevChannel() }) { Text("⏮ Назад") }
-                        Button(onClick = { vm.nextChannel() }) { Text("Вперёд ⏭") }
-                        Button(onClick = {
-                            state.currentId?.let { vm.toggleFavorite(it) }
-                        }) { Text(if (isFav) "★" else "☆") }
+                        TvButton("⏮", "Предыдущий канал", focusRequester = panelFirstBtn,
+                            onClick = { vm.prevChannel() })
+                        TvButton("⏭", "Следующий канал",
+                            onClick = { vm.nextChannel() })
+                        TvButton("☰", "Список каналов",
+                            onClick = { vm.openChannelOverlay() })
+                        TvButton(if (isFav) "★" else "☆", "Избранное",
+                            highlight = isFav,
+                            onClick = { state.currentId?.let { vm.toggleFavorite(it) } })
+                        TvButton("⛶", "Свернуть",
+                            onClick = { vm.exitPlayerFullscreen() })
                         Box(Modifier.weight(1f))
-                        Button(
-                            onClick = { vm.hideFullscreenControls() },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        TvButton("✕ Выйти", "Закрыть приложение",
+                            danger = true,
+                            onClick = { activity?.finishAffinity() })
+                    }
+                }
+            }
+
+            if (state.showChannelOverlay) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color(0xAA000000))
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        ) { vm.closeChannelOverlay() }
+                ) {
+                    Surface(
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .fillMaxHeight()
+                            .width(380.dp)
+                            .focusRequester(overlayFocus)
+                            .focusable(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+                            Text(
+                                "Выбор канала",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier.padding(8.dp)
                             )
-                        ) { Text("Скрыть") }
-                        Button(
-                            onClick = { vm.exitPlayerFullscreen() },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.error,
-                                contentColor = Color.White
+                            Sidebar(
+                                channels = state.channels,
+                                favorites = state.favorites,
+                                currentId = state.currentId,
+                                onPick = { ch -> vm.play(ch) },
+                                onToggleFavorite = { ch -> vm.toggleFavorite(ch.id) },
+                                modifier = Modifier.fillMaxSize()
                             )
-                        ) { Text("✕") }
+                        }
                     }
                 }
             }
@@ -208,7 +298,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         return
     }
 
-    // ОБЫЧНЫЙ ВИД
+    // ---------- ОБЫЧНЫЙ ВИД ----------
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
 
         Row(
@@ -226,17 +316,12 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 singleLine = true,
                 modifier = Modifier.weight(1f).height(52.dp)
             )
-            IconBtn("⟳", { vm.loadChannels() }, enabled = !state.loading)
-            IconBtn("⚙", { vm.openSettings() })
-            IconBtn("⏱", { showSleepDialog = true })
-            if (state.streamUrl != null) {
-                IconBtn("⛶", { vm.togglePlayerFullscreen() })
-            }
-            IconBtn(
-                "✕",
-                { activity?.finishAffinity() },
-                danger = true
-            )
+            TvButton("⟳", "Обновить",
+                onClick = { vm.loadChannels() }, enabled = !state.loading)
+            TvButton("⚙", "Настройки", onClick = { vm.openSettings() })
+            TvButton("⏱", "Таймер сна", onClick = { showSleepDialog = true })
+            TvButton("✕", "Выход", danger = true,
+                onClick = { activity?.finishAffinity() })
         }
 
         Row(modifier = Modifier.fillMaxSize()) {
@@ -275,6 +360,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         Text(
                             state.currentTitle,
                             style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                             modifier = Modifier.weight(1f)
@@ -286,18 +372,15 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                        Button(
-                            onClick = { vm.prevChannel() },
-                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
-                        ) { Text("◀") }
-                        Button(
-                            onClick = { vm.nextChannel() },
-                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
-                        ) { Text("▶") }
-                        Button(
-                            onClick = { state.currentId?.let { vm.toggleFavorite(it) } },
-                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
-                        ) { Text(if (isFav) "★" else "☆") }
+                        TvButton("⛶", "На весь экран",
+                            onClick = { vm.togglePlayerFullscreen() })
+                        TvButton("◀", "Предыдущий канал",
+                            onClick = { vm.prevChannel() })
+                        TvButton("▶", "Следующий канал",
+                            onClick = { vm.nextChannel() })
+                        TvButton(if (isFav) "★" else "☆", "Избранное",
+                            highlight = isFav,
+                            onClick = { state.currentId?.let { vm.toggleFavorite(it) } })
                     }
                 }
             }
@@ -318,9 +401,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     val id = state.currentId ?: return@ProgramPanel
                     vm.loadProgram(id, LocalDate.now())
                 },
-                modifier = Modifier
-                    .width(260.dp)
-                    .fillMaxHeight()
+                modifier = Modifier.width(260.dp).fillMaxHeight()
             )
         }
 
@@ -355,26 +436,49 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
 }
 
 @Composable
-private fun IconBtn(
-    text: String,
+private fun TvButton(
+    label: String,
+    tooltip: String,
     onClick: () -> Unit,
     enabled: Boolean = true,
-    danger: Boolean = false
+    danger: Boolean = false,
+    highlight: Boolean = false,
+    focusRequester: FocusRequester? = null
 ) {
-    val container = if (danger) MaterialTheme.colorScheme.error
-                    else MaterialTheme.colorScheme.surfaceVariant
-    val content = if (danger) Color.White
-                  else MaterialTheme.colorScheme.onSurfaceVariant
+    var isFocused by remember { mutableStateOf(false) }
+
+    val container = when {
+        danger -> MaterialTheme.colorScheme.error
+        isFocused -> MaterialTheme.colorScheme.primary
+        highlight -> Color(0xFF3A2F00)
+        else -> MaterialTheme.colorScheme.surfaceVariant
+    }
+    val content = when {
+        danger || isFocused -> Color.White
+        highlight -> Color(0xFFFFC107)
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+
+    val borderMod = if (isFocused)
+        Modifier.border(2.dp, FOCUS_BORDER, RoundedCornerShape(24.dp))
+    else Modifier
+
+    val baseMod = Modifier
+        .height(44.dp)
+        .then(if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier)
+        .onFocusChanged { isFocused = it.isFocused }
+        .then(borderMod)
+
     Button(
         onClick = onClick,
         enabled = enabled,
-        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+        contentPadding = PaddingValues(horizontal = 14.dp, vertical = 4.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = container,
             contentColor = content
         ),
-        modifier = Modifier.height(44.dp)
+        modifier = baseMod
     ) {
-        Text(text, style = MaterialTheme.typography.titleMedium)
+        Text(label, style = MaterialTheme.typography.titleMedium)
     }
 }
