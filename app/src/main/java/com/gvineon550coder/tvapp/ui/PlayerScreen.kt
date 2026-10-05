@@ -1,5 +1,7 @@
 package com.gvineon550coder.tvapp.ui
 
+import android.content.Context
+import android.os.PowerManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +25,6 @@ import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.gvineon550coder.tvapp.PlayerService
 
 private const val VIDEO_USER_AGENT =
     "Mozilla/5.0 (Linux; Android 13; Android TV) " +
@@ -68,8 +69,17 @@ fun PlayerScreen(
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
-                // Запускаем foreground service — система обязана уважать
-                runCatching { PlayerService.start(ctx) }
+                // WakeLock — не даёт CPU засыпать и системе выгружать процесс.
+                // Никаких уведомлений не требуется.
+                val powerManager = ctx
+                    .getSystemService(Context.POWER_SERVICE) as PowerManager
+                val wakeLock = powerManager.newWakeLock(
+                    PowerManager.PARTIAL_WAKE_LOCK,
+                    "tvapp:playback"
+                ).apply {
+                    setReferenceCounted(false)
+                    runCatching { acquire(6 * 60 * 60 * 1000L) } // максимум 6 часов
+                }
 
                 val observer = LifecycleEventObserver { _, event ->
                     when (event) {
@@ -106,7 +116,9 @@ fun PlayerScreen(
                         player.stop()
                         player.release()
                     }
-                    runCatching { PlayerService.stop(ctx) }
+                    runCatching {
+                        if (wakeLock.isHeld) wakeLock.release()
+                    }
                 }
             }
 
