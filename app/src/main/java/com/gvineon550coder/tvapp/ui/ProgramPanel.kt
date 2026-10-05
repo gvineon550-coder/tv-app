@@ -2,12 +2,14 @@ package com.gvineon550coder.tvapp.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,47 +33,80 @@ fun ProgramPanel(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.padding(8.dp)) {
+        Text(
+            "📅 Программа",
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 6.dp)
         ) {
-            Button(onClick = onPrevDay) { Text("◀") }
+            Button(
+                onClick = onPrevDay,
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            ) { Text("◀", style = MaterialTheme.typography.bodySmall) }
+
             Text(
-                text = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(horizontal = 8.dp)
+                text = date.format(DateTimeFormatter.ofPattern("dd.MM")),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(horizontal = 4.dp)
             )
-            Button(onClick = onNextDay) { Text("▶") }
-            Button(onClick = onToday, modifier = Modifier.padding(start = 8.dp)) {
-                Text("Сегодня")
-            }
+
+            Button(
+                onClick = onNextDay,
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            ) { Text("▶", style = MaterialTheme.typography.bodySmall) }
         }
 
         when {
-            loading -> Text("Загрузка программы…", modifier = Modifier.padding(top = 8.dp))
+            loading -> Text(
+                "Загрузка…",
+                modifier = Modifier.padding(top = 8.dp),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
             programs.isEmpty() -> Text(
-                "На эту программу нет данных",
-                modifier = Modifier.padding(top = 8.dp)
+                "Нет данных",
+                modifier = Modifier.padding(top = 8.dp),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
         val now = LocalDateTime.now()
         LazyColumn(
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             items(programs) { p ->
                 val current = p.start != null && p.end != null &&
                         !now.isBefore(p.start) && now.isBefore(p.end)
-                Column(modifier = Modifier.padding(4.dp)) {
+                Column(modifier = Modifier.padding(2.dp)) {
                     Text(
                         text = "${formatTime(p.start)}–${formatTime(p.end)}",
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (current) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = p.title,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = if (current) FontWeight.Bold else FontWeight.Normal
+                        style = MaterialTheme.typography.bodySmall,
+                        fontWeight = if (current) FontWeight.Bold else FontWeight.Normal,
+                        color = if (current) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.onSurface
                     )
                 }
             }
