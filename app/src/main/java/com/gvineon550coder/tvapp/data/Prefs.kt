@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +23,8 @@ class Prefs(private val context: Context) {
         val MAX_HEIGHT = intPreferencesKey("max_height")
         val SYNONYMS = stringPreferencesKey("synonyms")
         val CACHE = stringPreferencesKey("channels_cache")
+        val FAVORITES = stringPreferencesKey("favorites")
+        val LAST_PARSE = longPreferencesKey("last_parse")
     }
 
     val maxHeight: Flow<Int> = context.dataStore.data.map { it[MAX_HEIGHT] ?: 0 }
@@ -31,6 +34,8 @@ class Prefs(private val context: Context) {
     val streamProxyEnabled: Flow<Boolean> = context.dataStore.data.map { it[STREAM_PROXY_ENABLED] ?: false }
     val synonyms: Flow<String> = context.dataStore.data.map { it[SYNONYMS] ?: "{}" }
     val cache: Flow<String> = context.dataStore.data.map { it[CACHE] ?: "{}" }
+    val favorites: Flow<String> = context.dataStore.data.map { it[FAVORITES] ?: "" }
+    val lastParse: Flow<Long> = context.dataStore.data.map { it[LAST_PARSE] ?: 0L }
 
     suspend fun setMaxHeight(v: Int) = context.dataStore.edit { it[MAX_HEIGHT] = v }
     suspend fun setApiProxy(v: String) = context.dataStore.edit { it[API_PROXY] = v }
@@ -39,6 +44,8 @@ class Prefs(private val context: Context) {
     suspend fun setStreamProxyEnabled(v: Boolean) = context.dataStore.edit { it[STREAM_PROXY_ENABLED] = v }
     suspend fun setSynonyms(v: String) = context.dataStore.edit { it[SYNONYMS] = v }
     suspend fun setCache(v: String) = context.dataStore.edit { it[CACHE] = v }
+    suspend fun setFavorites(v: String) = context.dataStore.edit { it[FAVORITES] = v }
+    suspend fun setLastParse(v: Long) = context.dataStore.edit { it[LAST_PARSE] = v }
 
     suspend fun snapshot(): Snapshot = Snapshot(
         apiProxyEnabled = apiProxyEnabled.first(),
@@ -47,7 +54,9 @@ class Prefs(private val context: Context) {
         streamProxy = streamProxy.first(),
         maxHeight = maxHeight.first(),
         synonyms = synonyms.first(),
-        cache = cache.first()
+        cache = cache.first(),
+        favorites = favorites.first(),
+        lastParse = lastParse.first()
     )
 
     data class Snapshot(
@@ -57,6 +66,8 @@ class Prefs(private val context: Context) {
         val streamProxy: String,
         val maxHeight: Int,
         val synonyms: String,
-        val cache: String
+        val cache: String,
+        val favorites: String,
+        val lastParse: Long
     )
 }
