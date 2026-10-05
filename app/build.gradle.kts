@@ -6,6 +6,11 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
+// Версия берётся из параметров Gradle (передаём из GitHub Actions).
+// Локально — значения по умолчанию.
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 1
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "1.0"
+
 android {
     namespace = "com.gvineon550coder.tvapp"
     compileSdk = 35
@@ -14,8 +19,8 @@ android {
         applicationId = "com.gvineon550coder.tvapp"
         minSdk = 23
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersionCode
+        versionName = appVersionName
     }
 
     buildFeatures {
