@@ -65,7 +65,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         return
     }
 
-    // ПОЛНОЭКРАННЫЙ ПЛЕЕР: только видео + всплывающая панель
+    // ПОЛНОЭКРАННЫЙ ПЛЕЕР
     if (state.playerFullscreen) {
 
         LaunchedEffect(state.fullscreenControlsVisible) {
@@ -83,7 +83,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 modifier = Modifier.fillMaxSize()
             )
 
-            // Прозрачный слой — ловит тап/OK и показывает панель
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -93,8 +92,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     ) { vm.toggleFullscreenControls() }
             )
 
-            // Всплывающая панель снизу
             if (state.fullscreenControlsVisible) {
+                val isFav = state.currentId?.let { it in state.favorites } == true
                 Column(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
@@ -121,6 +120,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     ) {
                         Button(onClick = { vm.prevChannel() }) { Text("◀ Предыдущий") }
                         Button(onClick = { vm.nextChannel() }) { Text("Следующий ▶") }
+                        Button(onClick = {
+                            state.currentId?.let { vm.toggleFavorite(it) }
+                        }) {
+                            Text(if (isFav) "★ В избранном" else "☆ В избранное")
+                        }
                         Button(onClick = { vm.hideFullscreenControls() }) { Text("Скрыть") }
                         Button(onClick = { vm.exitPlayerFullscreen() }) { Text("Выйти") }
                     }
@@ -159,10 +163,12 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         Row(modifier = Modifier.fillMaxSize()) {
             Sidebar(
                 channels = state.channels,
+                favorites = state.favorites,
                 onPick = { ch ->
                     vm.play(ch)
                     if (isPhone) vm.togglePlayerFullscreen()
                 },
+                onToggleFavorite = { ch -> vm.toggleFavorite(ch.id) },
                 modifier = Modifier
                     .width(280.dp)
                     .fillMaxHeight()
@@ -177,6 +183,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     )
                 }
                 if (state.streamUrl != null) {
+                    val isFav = state.currentId?.let { it in state.favorites } == true
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -200,6 +207,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                             Button(onClick = { vm.prevChannel() }) { Text("◀") }
                             Button(onClick = { vm.nextChannel() }) { Text("▶") }
+                            Button(onClick = {
+                                state.currentId?.let { vm.toggleFavorite(it) }
+                            }) {
+                                Text(if (isFav) "★" else "☆")
+                            }
                         }
                     }
                 }
