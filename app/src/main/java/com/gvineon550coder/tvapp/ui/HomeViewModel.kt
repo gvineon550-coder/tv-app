@@ -56,7 +56,6 @@ class HomeViewModel @Inject constructor(
             )
             loadCache(snap.cache)
 
-            // Парсим только если кеша нет ИЛИ прошло больше 7 дней
             val now = System.currentTimeMillis()
             val weekMs = 7L * 24 * 60 * 60 * 1000
             val cacheEmpty = snap.cache.isBlank() || snap.cache == "{}"
@@ -66,7 +65,7 @@ class HomeViewModel @Inject constructor(
                 loadChannels()
             } else {
                 _state.value = _state.value.copy(
-                    status = "Каналы из кеша. Обновить можно кнопкой «Обновить»"
+                    status = "Каналов: ${_state.value.channels.size} (кеш)"
                 )
             }
         }
@@ -87,6 +86,7 @@ class HomeViewModel @Inject constructor(
                 val titleEl = if (arr.size() > 0) arr.get(0) else null
                 val groupEl = if (arr.size() > 1) arr.get(1) else null
                 val descEl = if (arr.size() > 2) arr.get(2) else null
+                val avaEl = if (arr.size() > 3) arr.get(3) else null
                 val title = if (titleEl != null && !titleEl.isJsonNull)
                     titleEl.asString else null
                 if (title.isNullOrBlank()) continue
@@ -94,7 +94,9 @@ class HomeViewModel @Inject constructor(
                     groupEl.asString else null
                 val desc = if (descEl != null && !descEl.isJsonNull)
                     descEl.asString else ""
-                list += Channel(id, title, desc, group)
+                val ava = if (avaEl != null && !avaEl.isJsonNull)
+                    avaEl.asString else ""
+                list += Channel(id, title, desc, group, ava)
             }
             if (list.isNotEmpty()) {
                 _state.value = _state.value.copy(
@@ -113,6 +115,7 @@ class HomeViewModel @Inject constructor(
                 arr.add(ch.title)
                 arr.add(ch.category ?: "")
                 arr.add(ch.description)
+                arr.add(ch.avatar)
                 obj.add(ch.id, arr)
             }
             prefs.setCache(obj.toString())
@@ -147,13 +150,15 @@ class HomeViewModel @Inject constructor(
                     continue
                 }
                 infoLoaded += ch.id
-                if (info.description.isNotBlank() || info.category.isNotBlank()) {
+                if (info.description.isNotBlank() || info.category.isNotBlank()
+                    || info.avatar.isNotBlank()) {
                     _state.value = _state.value.copy(
                         channels = _state.value.channels.map {
                             if (it.id == ch.id) it.copy(
                                 description = info.description.ifBlank { it.description },
                                 category = info.category.ifBlank { it.category ?: "" }
-                                    .ifBlank { null }
+                                    .ifBlank { null },
+                                avatar = info.avatar.ifBlank { it.avatar }
                             ) else it
                         }
                     )
