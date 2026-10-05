@@ -75,9 +75,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val activity = context as? Activity
     val view = LocalView.current
 
-    // keepScreenOn — ТОЛЬКО пока канал реально играет.
-    // Пауза / ничего не выбрано / свёрнуто → keepScreenOn снимается,
-    // заставка работает, приставка засыпает через 15 минут.
     LaunchedEffect(state.isPlaying) {
         view.keepScreenOn = state.isPlaying
     }
@@ -90,8 +87,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
 
     val overlayFirstItem = remember { FocusRequester() }
     val panelFirstBtn = remember { FocusRequester() }
+    val fullscreenBox = remember { FocusRequester() }
 
-    // Тик каждую секунду — только таймер сна.
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
@@ -103,17 +100,34 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    // Автофокус на первый канал в оверлее
+    // Автофокус при входе в полный экран — с задержкой + повтор
+    LaunchedEffect(state.playerFullscreen) {
+        if (state.playerFullscreen) {
+            delay(300)
+            runCatching { fullscreenBox.requestFocus() }
+            delay(700)
+            runCatching { fullscreenBox.requestFocus() }
+        }
+    }
+
     LaunchedEffect(state.showChannelOverlay, state.channels.size) {
         if (state.showChannelOverlay && state.channels.isNotEmpty()) {
-            delay(150)
+            delay(200)
             runCatching { overlayFirstItem.requestFocus() }
+        }
+    }
+
+    // Возврат фокуса на Box после закрытия оверлея
+    LaunchedEffect(state.showChannelOverlay) {
+        if (!state.showChannelOverlay && state.playerFullscreen) {
+            delay(200)
+            runCatching { fullscreenBox.requestFocus() }
         }
     }
 
     LaunchedEffect(state.fullscreenControlsVisible) {
         if (state.fullscreenControlsVisible) {
-            delay(100)
+            delay(150)
             runCatching { panelFirstBtn.requestFocus() }
         }
     }
@@ -179,6 +193,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.Black)
+                .focusRequester(fullscreenBox)
+                .focusable()
                 .onPreviewKeyEvent { e ->
                     if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                     if (state.showChannelOverlay) return@onPreviewKeyEvent false
