@@ -40,19 +40,15 @@ class HomeViewModel @Inject constructor(
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state.asStateFlow()
 
-    // кеш программы в памяти: (id, дата) -> список
     private val programCache = mutableMapOf<Pair<String, LocalDate>, List<Program>>()
-    // id, для которых уже тянули метаданные в фоне
     private val infoLoaded = mutableSetOf<String>()
 
     init {
-        // сначала из кеша DataStore — мгновенно
         viewModelScope.launch {
             val snap = prefs.snapshot()
             _state.value = _state.value.copy(maxHeight = snap.maxHeight)
             loadCache(snap.cache)
         }
-        // потом обновляем сеть
         loadChannels()
     }
 
@@ -61,15 +57,25 @@ class HomeViewModel @Inject constructor(
         runCatching {
             val obj = com.google.gson.JsonParser.parseString(json).asJsonObject
             val list = mutableListOf<Channel>()
-            obj.entrySet().forEach { (id, v) ->
+            for ((id, v) in obj.entrySet()) {
                 val arr = v.asJsonArray
-                val title = arr.getOrNull(0)?.takeIf { !it.isJsonNull }?.asString ?: return@forEach
-                val group = arr.getOrNull(1)?.takeIf { !it.isJsonNull }?.asString
-                val desc = arr.getOrNull(2)?.takeIf { !it.isJsonNull }?.asString ?: ""
+                val titleEl = if (arr.size() > 0) arr.get(0) else null
+                val groupEl = if (arr.size() > 1) arr.get(1) else null
+                val descEl = if (arr.size() > 2) arr.get(2) else null
+                val title = if (titleEl != null && !titleEl.isJsonNull)
+                    titleEl.asString else null
+                if (title.isNullOrBlank()) continue
+                val group = if (groupEl != null && !groupEl.isJsonNull)
+                    groupEl.asString else null
+                val desc = if (descEl != null && !descEl.isJsonNull)
+                    descEl.asString else ""
                 list += Channel(id, title, desc, group)
             }
             if (list.isNotEmpty()) {
-                _state.value = _state.value.copy(channels = list, status = "Каналов: ${list.size} (кеш)")
+                _state.value = _state.value.copy(
+                    channels = list,
+                    status = "Каналов: ${list.size} (кеш)"
+                )
             }
         }
     }
@@ -80,7 +86,7 @@ class HomeViewModel @Inject constructor(
             _state.value.channels.forEach { ch ->
                 val arr = com.google.gson.JsonArray()
                 arr.add(ch.title)
-                if (ch.category != null) arr.add(ch.category) else arr.add(com.google.gson.JsonNull.INSTANCE)
+                arr.add(ch.category ?: "")
                 arr.add(ch.description)
                 obj.add(ch.id, arr)
             }
