@@ -1,6 +1,7 @@
 package com.gvineon550coder.tvapp.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -15,17 +16,22 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,22 +42,65 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.delay
 import java.time.LocalDate
 
+private const val AUTO_CLOSE_MS = 10 * 60 * 1000L
+
 @Composable
 fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val state by vm.state.collectAsState()
+    val activity = LocalActivity.current
 
     val config = LocalConfiguration.current
     val isPhone = config.screenWidthDp < 900
 
-    BackHandler(enabled = state.playerFullscreen) {
-        if (state.fullscreenControlsVisible) {
-            vm.hideFullscreenControls()
-        } else {
-            vm.exitPlayerFullscreen()
+    var showSleepDialog by remember { mutableStateOf(false) }
+    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+
+    // Тик каждую секунду:
+    //  - Таймер сна срабатывает всегда
+    //  - Автозакрытие по неактивности — ТОЛЬКО если канал НЕ играет
+    LaunchedEffect(Unit) {
+        while (true) {
+            now = System.currentTimeMillis()
+            val s = vm.state.value
+
+            if (s.sleepDeadline > 0 && now >= s.sleepDeadline) {
+                activity?.finishAffinity()
+                break
+            }
+            if (!s.isPlaying && (now - s.lastActivity) > AUTO_CLOSE_MS) {
+                activity?.finishAffinity()
+                break
+            }
+            delay(1000)
         }
+    }
+
+    BackHandler(enabled = state.playerFullscreen) {
+        if (state.fullscreenControlsVisible) vm.hideFullscreenControls()
+        else vm.exitPlayerFullscreen()
     }
     BackHandler(enabled = state.showSettings && !state.playerFullscreen) {
         vm.closeSettings()
+    }
+
+    // Диалог таймера сна
+    if (showSleepDialog) {
+        AlertDialog(
+            onDismissRequest = { showSleepDialog = false },
+            title = { Text("Таймер сна") },
+            text = {
+                Column {
+                    listOf(0 to "Выключить", 15 to "15 минут", 30 to "30 минут",
+                        60 to "1 час", 120 to "2 часа").forEach { (m, label) ->
+                        TextButton(onClick = {
+                            vm.setSleepTimer(m)
+                            showSleepDialog = false
+                        }) { Text(label) }
+                    }
+                }
+            },
+            confirmButton = {}
+        )
     }
 
     if (state.showSettings) {
@@ -69,7 +118,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         return
     }
 
-    // ---------- ПОЛНОЭКРАННЫЙ ПЛЕЕР ----------
+    // ПОЛНОЭКРАННЫЙ ПЛЕЕР
     if (state.playerFullscreen) {
 
         LaunchedEffect(state.fullscreenControlsVisible) {
@@ -83,6 +132,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             PlayerScreen(
                 streamUrl = state.streamUrl,
                 onResolutionChanged = { vm.setResolution(it) },
+                onPlayingChanged = { vm.setPlaying(it) },
                 useController = false,
                 modifier = Modifier.fillMaxSize()
             )
@@ -93,7 +143,10 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     .clickable(
                         indication = null,
                         interactionSource = remember { MutableInteractionSource() }
-                    ) { vm.toggleFullscreenControls() }
+                    ) {
+                        vm.registerActivity()
+                        vm.toggleFullscreenControls()
+                    }
             )
 
             if (state.fullscreenControlsVisible) {
@@ -113,14 +166,12 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        if (state.resolution.isNotEmpty()) {
-                            Text(
-                                "🔸 ${state.resolution}",
-                                style = MaterialTheme.typography.labelMedium,
-                                color = Color.LightGray
-                            )
-                        }
+                    if (state.resolution.isNotEmpty()) {
+                        Text(
+                            "🔸 ${state.resolution}",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = Color.LightGray
+                        )
                     }
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -130,9 +181,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         Button(onClick = { vm.nextChannel() }) { Text("Вперёд ⏭") }
                         Button(onClick = {
                             state.currentId?.let { vm.toggleFavorite(it) }
-                        }) {
-                            Text(if (isFav) "★" else "☆")
-                        }
+                        }) { Text(if (isFav) "★" else "☆") }
                         Box(Modifier.weight(1f))
                         Button(
                             onClick = { vm.hideFullscreenControls() },
@@ -155,10 +204,9 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         return
     }
 
-    // ---------- ОБЫЧНЫЙ ВИД ----------
+    // ОБЫЧНЫЙ ВИД
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
 
-        // Верхняя панель — компактная
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -176,12 +224,17 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             )
             IconBtn("⟳", { vm.loadChannels() }, enabled = !state.loading)
             IconBtn("⚙", { vm.openSettings() })
+            IconBtn("⏱", { showSleepDialog = true })
             if (state.streamUrl != null) {
                 IconBtn("⛶", { vm.togglePlayerFullscreen() })
             }
+            IconBtn(
+                "✕",
+                { activity?.finishAffinity() },
+                danger = true
+            )
         }
 
-        // Основная область
         Row(modifier = Modifier.fillMaxSize()) {
             Sidebar(
                 channels = state.channels,
@@ -202,7 +255,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
                     PlayerScreen(
                         streamUrl = state.streamUrl,
-                        onResolutionChanged = { vm.setResolution(it) }
+                        onResolutionChanged = { vm.setResolution(it) },
+                        onPlayingChanged = { vm.setPlaying(it) }
                     )
                 }
                 if (state.streamUrl != null) {
@@ -266,21 +320,32 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             )
         }
 
-        // Статус-строка внизу
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.surface)
                 .padding(horizontal = 12.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 state.status.ifBlank { "Готово" },
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
             )
+            if (state.sleepDeadline > 0) {
+                val leftSec = ((state.sleepDeadline - now) / 1000).coerceAtLeast(0)
+                val mm = leftSec / 60
+                val ss = leftSec % 60
+                Text(
+                    "⏱ %02d:%02d".format(mm, ss),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }
@@ -289,15 +354,20 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
 private fun IconBtn(
     text: String,
     onClick: () -> Unit,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    danger: Boolean = false
 ) {
+    val container = if (danger) MaterialTheme.colorScheme.error
+                    else MaterialTheme.colorScheme.surfaceVariant
+    val content = if (danger) Color.White
+                  else MaterialTheme.colorScheme.onSurfaceVariant
     Button(
         onClick = onClick,
         enabled = enabled,
         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+            containerColor = container,
+            contentColor = content
         ),
         modifier = Modifier.height(44.dp)
     ) {
