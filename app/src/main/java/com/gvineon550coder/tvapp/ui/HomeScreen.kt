@@ -1,7 +1,7 @@
 package com.gvineon550coder.tvapp.ui
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -47,10 +48,13 @@ private const val AUTO_CLOSE_MS = 10 * 60 * 1000L
 @Composable
 fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val state by vm.state.collectAsState()
-    val activity = LocalActivity.current
 
     val config = LocalConfiguration.current
     val isPhone = config.screenWidthDp < 900
+
+    // Получаем Activity через контекст — работает на всех версиях activity-compose
+    val context = LocalContext.current
+    val activity = context as? Activity
 
     var showSleepDialog by remember { mutableStateOf(false) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
