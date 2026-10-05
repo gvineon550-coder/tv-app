@@ -1,7 +1,9 @@
 package com.gvineon550coder.tvapp.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,16 +19,22 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.gvineon550coder.tvapp.data.Channel
+
+private val FOCUS_BORDER = Color(0xFFFFD54F)
 
 @Composable
 fun Sidebar(
@@ -86,22 +94,39 @@ private fun ChannelRow(
     onPick: (Channel) -> Unit,
     onToggleFavorite: (Channel) -> Unit
 ) {
-    val bg = if (isCurrent) MaterialTheme.colorScheme.primaryContainer
-             else MaterialTheme.colorScheme.surfaceVariant
+    var isFocused by remember { mutableStateOf(false) }
+
+    val bg = when {
+        isFocused -> MaterialTheme.colorScheme.primary
+        isCurrent -> MaterialTheme.colorScheme.primaryContainer
+        else -> MaterialTheme.colorScheme.surfaceVariant
+    }
+    val onBg = when {
+        isFocused -> MaterialTheme.colorScheme.onPrimary
+        isCurrent -> MaterialTheme.colorScheme.onPrimaryContainer
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
 
     Card(
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = bg),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .onFocusChanged { isFocused = it.isFocused }
+            .focusable()
+            .clickable { onPick(ch) }
+            .then(
+                if (isFocused) Modifier.border(
+                    2.dp, FOCUS_BORDER, RoundedCornerShape(8.dp)
+                ) else Modifier
+            )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onPick(ch) }
                 .padding(horizontal = 8.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Логотип канала или заглушка с первой буквой
             Box(
                 modifier = Modifier
                     .size(32.dp)
@@ -128,9 +153,8 @@ private fun ChannelRow(
             Text(
                 ch.title,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = if (isCurrent) FontWeight.Bold else FontWeight.Normal,
-                color = if (isCurrent) MaterialTheme.colorScheme.onPrimaryContainer
-                        else MaterialTheme.colorScheme.onSurfaceVariant,
+                fontWeight = if (isCurrent || isFocused) FontWeight.Bold else FontWeight.Normal,
+                color = onBg,
                 modifier = Modifier
                     .weight(1f)
                     .padding(start = 10.dp)
@@ -140,9 +164,7 @@ private fun ChannelRow(
                 if (isFav) "★" else "☆",
                 style = MaterialTheme.typography.titleLarge,
                 color = if (isFav) Color(0xFFFFC107) else Color.Gray,
-                modifier = Modifier
-                    .clickable { onToggleFavorite(ch) }
-                    .padding(start = 6.dp, end = 2.dp)
+                modifier = Modifier.padding(start = 6.dp, end = 2.dp)
             )
         }
     }
