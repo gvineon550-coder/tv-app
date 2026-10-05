@@ -35,7 +35,8 @@ data class HomeState(
     val favorites: Set<String> = emptySet(),
     val sleepDeadline: Long = 0L,
     val lastActivity: Long = System.currentTimeMillis(),
-    val isPlaying: Boolean = false
+    val isPlaying: Boolean = false,
+    val showChannelOverlay: Boolean = false
 )
 
 @HiltViewModel
@@ -87,6 +88,16 @@ class HomeViewModel @Inject constructor(
             else System.currentTimeMillis() + minutes * 60_000L
         _state.value = _state.value.copy(sleepDeadline = deadline)
         registerActivity()
+    }
+
+    fun openChannelOverlay() {
+        registerActivity()
+        _state.value = _state.value.copy(showChannelOverlay = true)
+    }
+
+    fun closeChannelOverlay() {
+        registerActivity()
+        _state.value = _state.value.copy(showChannelOverlay = false)
     }
 
     private fun parseFavorites(s: String): Set<String> {
@@ -206,7 +217,8 @@ class HomeViewModel @Inject constructor(
         registerActivity()
         _state.value = _state.value.copy(
             playerFullscreen = !_state.value.playerFullscreen,
-            fullscreenControlsVisible = false
+            fullscreenControlsVisible = false,
+            showChannelOverlay = false
         )
     }
 
@@ -214,7 +226,8 @@ class HomeViewModel @Inject constructor(
         registerActivity()
         _state.value = _state.value.copy(
             playerFullscreen = false,
-            fullscreenControlsVisible = false
+            fullscreenControlsVisible = false,
+            showChannelOverlay = false
         )
     }
 
@@ -244,6 +257,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun nextChannel() {
+        registerActivity()
         val list = _state.value.channels
         if (list.isEmpty()) return
         val cur = _state.value.currentId
@@ -253,6 +267,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun prevChannel() {
+        registerActivity()
         val list = _state.value.channels
         if (list.isEmpty()) return
         val cur = _state.value.currentId
@@ -284,6 +299,7 @@ class HomeViewModel @Inject constructor(
                 resolution = "",
                 fullscreenControlsVisible = false,
                 isPlaying = false,
+                showChannelOverlay = false,
                 status = "Получение потока: ${channel.title}..."
             )
             val snap = prefs.snapshot()
