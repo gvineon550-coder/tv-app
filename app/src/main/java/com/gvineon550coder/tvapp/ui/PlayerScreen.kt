@@ -10,7 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
@@ -36,6 +39,8 @@ fun PlayerScreen(
             )
         } else {
             val ctx = LocalContext.current
+            val lifecycleOwner = LocalLifecycleOwner.current
+
             val player = remember(streamUrl) {
                 ExoPlayer.Builder(ctx).build().apply {
                     setMediaItem(MediaItem.fromUri(streamUrl))
@@ -43,7 +48,27 @@ fun PlayerScreen(
                     playWhenReady = true
                 }
             }
-            DisposableEffect(streamUrl, player) {
+
+            DisposableEffect(streamUrl, player, lifecycleOwner) {
+                val observer = LifecycleEventObserver { _, event ->
+                    when (event) {
+                        Lifecycle.Event.ON_PAUSE -> {
+                            runCatching { player.pause() }
+                        }
+                        Lifecycle.Event.ON_RESUME -> {
+                            runCatching { player.play() }
+                        }
+                        Lifecycle.Event.ON_STOP -> {
+                            runCatching {
+                                player.pause()
+                                player.stop()
+                            }
+                        }
+                        else -> {}
+                    }
+                }
+                lifecycleOwner.lifecycle.addObserver(observer)
+
                 val listener = object : Player.Listener {
                     override fun onVideoSizeChanged(videoSize: VideoSize) {
                         if (videoSize.width > 0 && videoSize.height > 0) {
@@ -62,12 +87,18 @@ fun PlayerScreen(
                     }
                 }
                 player.addListener(listener)
+
                 onDispose {
+                    lifecycleOwner.lifecycle.removeObserver(observer)
                     player.removeListener(listener)
                     onPlayingChanged(false)
-                    player.release()
+                    runCatching {
+                        player.stop()
+                        player.release()
+                    }
                 }
             }
+
             AndroidView(
                 factory = { context ->
                     PlayerView(context).apply {
