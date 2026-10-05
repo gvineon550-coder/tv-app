@@ -74,6 +74,10 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val overlayFocus = remember { FocusRequester() }
     val panelFirstBtn = remember { FocusRequester() }
 
+    // Тик каждую секунду:
+    //  - Таймер сна срабатывает всегда
+    //  - Автозакрытие по неактивности — ТОЛЬКО если канал НЕ выбран
+    //    (streamUrl == null). Если канал играет/буферизует/на паузе — не закрываем.
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
@@ -81,7 +85,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             if (s.sleepDeadline > 0 && now >= s.sleepDeadline) {
                 activity?.finishAffinity(); break
             }
-            if (!s.isPlaying && (now - s.lastActivity) > AUTO_CLOSE_MS) {
+            if (s.streamUrl == null && (now - s.lastActivity) > AUTO_CLOSE_MS) {
                 activity?.finishAffinity(); break
             }
             delay(1000)
