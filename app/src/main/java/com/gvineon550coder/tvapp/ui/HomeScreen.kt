@@ -100,7 +100,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    // Автофокус при входе в полный экран — с задержкой + повтор
     LaunchedEffect(state.playerFullscreen) {
         if (state.playerFullscreen) {
             delay(300)
@@ -117,7 +116,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    // Возврат фокуса на Box после закрытия оверлея
     LaunchedEffect(state.showChannelOverlay) {
         if (!state.showChannelOverlay && state.playerFullscreen) {
             delay(200)
@@ -217,7 +215,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 streamUrl = state.streamUrl,
                 onResolutionChanged = { vm.setResolution(it) },
                 onPlayingChanged = { vm.setPlaying(it) },
-                useController = false,
                 modifier = Modifier.fillMaxSize()
             )
 
