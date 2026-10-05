@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text as M3Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,10 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Button
-import androidx.tv.material3.Checkbox
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.OutlinedTextField
 import androidx.tv.material3.Text
 
 @OptIn(ExperimentalTvMaterial3Api::class)
@@ -52,7 +52,8 @@ fun SettingsScreen(
         OutlinedTextField(
             value = apiProxy,
             onValueChange = { apiProxy = it },
-            label = { Text("https://ip:port") },
+            label = { M3Text("https://ip:port") },
+            singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -63,7 +64,8 @@ fun SettingsScreen(
         OutlinedTextField(
             value = streamProxy,
             onValueChange = { streamProxy = it },
-            label = { Text("http://ip:port") },
+            label = { M3Text("http://ip:port") },
+            singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
 
