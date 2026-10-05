@@ -37,7 +37,6 @@ fun PlayerScreen(
     streamUrl: String?,
     onResolutionChanged: (String) -> Unit = {},
     onPlayingChanged: (Boolean) -> Unit = {},
-    useController: Boolean = true,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize().background(Color.Black)) {
@@ -139,9 +138,12 @@ fun PlayerScreen(
                 factory = { context ->
                     PlayerView(context).apply {
                         this.player = player
-                        this.useController = useController
-                        // КРИТИЧНО: PlayerView не должен перехватывать фокус,
-                        // иначе Compose Box с onPreviewKeyEvent его не получит
+                        // Полностью отключаем контроллер: никакой шкалы времени,
+                        // никаких кнопок play/pause — для живого эфира они бесполезны
+                        this.useController = false
+                        // Убираем спиннер буферизации (крутящийся кружок)
+                        this.setShowBuffering(PlayerView.SHOW_BUFFERING_NEVER)
+                        // Не перехватывать фокус
                         isFocusable = false
                         isFocusableInTouchMode = false
                         descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
