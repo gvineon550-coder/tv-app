@@ -75,11 +75,14 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val activity = context as? Activity
     val view = LocalView.current
 
-    // keepScreenOn — экран не гаснет, система реже выгружает приложение
+    // keepScreenOn — ТОЛЬКО пока канал реально играет.
+    // Пауза / ничего не выбрано / свёрнуто → keepScreenOn снимается,
+    // заставка работает, приставка засыпает через 15 минут.
+    LaunchedEffect(state.isPlaying) {
+        view.keepScreenOn = state.isPlaying
+    }
     DisposableEffect(Unit) {
-        val prev = view.keepScreenOn
-        view.keepScreenOn = true
-        onDispose { view.keepScreenOn = prev }
+        onDispose { view.keepScreenOn = false }
     }
 
     var showSleepDialog by remember { mutableStateOf(false) }
@@ -89,7 +92,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val panelFirstBtn = remember { FocusRequester() }
 
     // Тик каждую секунду — только таймер сна.
-    // Автозакрытие по неактивности убрано полностью.
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
@@ -203,7 +205,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 modifier = Modifier.fillMaxSize()
             )
 
-            // Тап-детектор — реагирует, но не перехватывает фокус
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -270,7 +271,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 }
             }
 
-            // ---------- ОВЕРЛЕЙ СО СПИСКОМ КАНАЛОВ ----------
             if (state.showChannelOverlay) {
                 Box(
                     modifier = Modifier
