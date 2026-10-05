@@ -8,9 +8,6 @@ import java.util.concurrent.TimeUnit
 
 object ProxyUtil {
 
-    // User-Agent как у обычного браузера. Нужен, чтобы Rutube не видел
-    // "okhttp/4.12.0" и не ограничивал запросы. Это стандартный UA Chrome,
-    // с точки зрения сервера — просто зритель с браузера.
     private const val USER_AGENT =
         "Mozilla/5.0 (Linux; Android 13; Android TV) " +
         "AppleWebKit/537.36 (KHTML, like Gecko) " +
@@ -27,15 +24,25 @@ object ProxyUtil {
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .followRedirects(true)
-            // Interceptor добавляет User-Agent и базовые заголовки
-            // ко ВСЕМ запросам через этот клиент (API, play/options, m3u8).
             .addInterceptor { chain ->
-                val req = chain.request().newBuilder()
+                val original = chain.request()
+                val host = original.url.host.lowercase()
+
+                // Referer и Origin — только для запросов к rutube.ru.
+                // Для CDN (rtbcdn, m3u8, логотипы) их не ставим —
+                // некоторые CDN на чужой Referer отвечают 403.
+                val reqBuilder = original.newBuilder()
                     .header("User-Agent", USER_AGENT)
                     .header("Accept", "*/*")
                     .header("Accept-Language", "ru-RU,ru;q=0.9,en;q=0.8")
-                    .build()
-                chain.proceed(req)
+
+                if (host.endsWith("rutube.ru")) {
+                    reqBuilder
+                        .header("Referer", "https://rutube.ru/")
+                        .header("Origin", "https://rutube.ru")
+                }
+
+                chain.proceed(reqBuilder.build())
             }
 
         if (proxyUrl != null) {
