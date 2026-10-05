@@ -20,12 +20,10 @@ import androidx.media3.common.VideoSize
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
-import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 
-// Тот же UA, что и в ProxyUtil — держим в одном стиле
 private const val VIDEO_USER_AGENT =
     "Mozilla/5.0 (Linux; Android 13; Android TV) " +
     "AppleWebKit/537.36 (KHTML, like Gecko) " +
@@ -58,18 +56,14 @@ fun PlayerScreen(
                     .setReadTimeoutMs(20_000)
 
                 val hlsFactory = HlsMediaSource.Factory(httpFactory)
-                val mediaSource: MediaSource = hlsFactory.createMediaSource(
-                    MediaItem.fromUri(streamUrl)
-                )
 
-                ExoPlayer.Builder(ctx)
-                    .setMediaSourceFactory { hlsFactory }
-                    .build()
-                    .apply {
-                        setMediaSource(mediaSource)
-                        prepare()
-                        playWhenReady = true
-                    }
+                ExoPlayer.Builder(ctx).build().apply {
+                    setMediaSource(
+                        hlsFactory.createMediaSource(MediaItem.fromUri(streamUrl))
+                    )
+                    prepare()
+                    playWhenReady = true
+                }
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
