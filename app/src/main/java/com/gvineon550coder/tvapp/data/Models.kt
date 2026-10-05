@@ -9,7 +9,8 @@ data class Channel(
     val id: String,
     val title: String,
     val description: String = "",
-    val category: String? = null
+    val category: String? = null,
+    val avatar: String = ""
 )
 
 data class ChannelInfo(
@@ -36,8 +37,6 @@ data class StreamVariant(
     val bandwidth: Int,
     val url: String
 )
-
-// ---------- Ответы API ----------
 
 data class AutoWidgetResponse(
     val results: List<AutoWidgetEntry>? = null,
@@ -80,8 +79,6 @@ data class LiveStreams(
 data class HlsEntry(
     val url: String? = null
 )
-
-// ---------- Утилиты ----------
 
 fun Any?.toNormalizedText(): String = when (this) {
     null -> ""
