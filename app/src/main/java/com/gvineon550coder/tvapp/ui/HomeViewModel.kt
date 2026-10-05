@@ -31,7 +31,8 @@ data class HomeState(
     val maxHeight: Int = 0,
     val playerFullscreen: Boolean = false,
     val resolution: String = "",
-    val fullscreenControlsVisible: Boolean = false
+    val fullscreenControlsVisible: Boolean = false,
+    val favorites: Set<String> = emptySet()
 )
 
 @HiltViewModel
@@ -49,10 +50,31 @@ class HomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val snap = prefs.snapshot()
-            _state.value = _state.value.copy(maxHeight = snap.maxHeight)
+            _state.value = _state.value.copy(
+                maxHeight = snap.maxHeight,
+                favorites = parseFavorites(snap.favorites)
+            )
             loadCache(snap.cache)
+
+            // Парсим только если кеша нет ИЛИ прошло больше 7 дней
+            val now = System.currentTimeMillis()
+            val weekMs = 7L * 24 * 60 * 60 * 1000
+            val cacheEmpty = snap.cache.isBlank() || snap.cache == "{}"
+            val cacheOld = (now - snap.lastParse) > weekMs
+
+            if (cacheEmpty || cacheOld) {
+                loadChannels()
+            } else {
+                _state.value = _state.value.copy(
+                    status = "Каналы из кеша. Обновить можно кнопкой «Обновить»"
+                )
+            }
         }
-        loadChannels()
+    }
+
+    private fun parseFavorites(s: String): Set<String> {
+        if (s.isBlank()) return emptySet()
+        return s.split(",").map { it.trim() }.filter { it.isNotEmpty() }.toSet()
     }
 
     private fun loadCache(json: String) {
@@ -109,6 +131,7 @@ class HomeViewModel @Inject constructor(
             )
             if (filtered.isNotEmpty()) {
                 saveCache()
+                prefs.setLastParse(System.currentTimeMillis())
                 prefetchInfo(filtered)
             }
         }
@@ -173,6 +196,15 @@ class HomeViewModel @Inject constructor(
 
     fun hideFullscreenControls() {
         _state.value = _state.value.copy(fullscreenControlsVisible = false)
+    }
+
+    fun toggleFavorite(id: String) {
+        val cur = _state.value.favorites
+        val next = if (id in cur) cur - id else cur + id
+        _state.value = _state.value.copy(favorites = next)
+        viewModelScope.launch {
+            prefs.setFavorites(next.joinToString(","))
+        }
     }
 
     fun nextChannel() {
