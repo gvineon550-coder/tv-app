@@ -32,7 +32,10 @@ data class HomeState(
     val playerFullscreen: Boolean = false,
     val resolution: String = "",
     val fullscreenControlsVisible: Boolean = false,
-    val favorites: Set<String> = emptySet()
+    val favorites: Set<String> = emptySet(),
+    val sleepDeadline: Long = 0L,
+    val lastActivity: Long = System.currentTimeMillis(),
+    val isPlaying: Boolean = false
 )
 
 @HiltViewModel
@@ -69,6 +72,21 @@ class HomeViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    fun registerActivity() {
+        _state.value = _state.value.copy(lastActivity = System.currentTimeMillis())
+    }
+
+    fun setPlaying(value: Boolean) {
+        _state.value = _state.value.copy(isPlaying = value)
+    }
+
+    fun setSleepTimer(minutes: Int) {
+        val deadline = if (minutes <= 0) 0L
+            else System.currentTimeMillis() + minutes * 60_000L
+        _state.value = _state.value.copy(sleepDeadline = deadline)
+        registerActivity()
     }
 
     private fun parseFavorites(s: String): Set<String> {
@@ -123,6 +141,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun loadChannels() {
+        registerActivity()
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true, status = "Загрузка каналов...")
             val ch = runCatching { repo.fetchChannels() }.getOrDefault(emptyList())
@@ -169,13 +188,22 @@ class HomeViewModel @Inject constructor(
     }
 
     fun setSearch(text: String) {
+        registerActivity()
         _state.value = _state.value.copy(search = text)
     }
 
-    fun openSettings() { _state.value = _state.value.copy(showSettings = true) }
-    fun closeSettings() { _state.value = _state.value.copy(showSettings = false) }
+    fun openSettings() {
+        registerActivity()
+        _state.value = _state.value.copy(showSettings = true)
+    }
+
+    fun closeSettings() {
+        registerActivity()
+        _state.value = _state.value.copy(showSettings = false)
+    }
 
     fun togglePlayerFullscreen() {
+        registerActivity()
         _state.value = _state.value.copy(
             playerFullscreen = !_state.value.playerFullscreen,
             fullscreenControlsVisible = false
@@ -183,6 +211,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun exitPlayerFullscreen() {
+        registerActivity()
         _state.value = _state.value.copy(
             playerFullscreen = false,
             fullscreenControlsVisible = false
@@ -194,6 +223,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun toggleFullscreenControls() {
+        registerActivity()
         _state.value = _state.value.copy(
             fullscreenControlsVisible = !_state.value.fullscreenControlsVisible
         )
@@ -204,6 +234,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun toggleFavorite(id: String) {
+        registerActivity()
         val cur = _state.value.favorites
         val next = if (id in cur) cur - id else cur + id
         _state.value = _state.value.copy(favorites = next)
@@ -244,6 +275,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun play(channel: Channel) {
+        registerActivity()
         viewModelScope.launch {
             _state.value = _state.value.copy(
                 currentId = channel.id,
@@ -251,6 +283,7 @@ class HomeViewModel @Inject constructor(
                 streamUrl = null,
                 resolution = "",
                 fullscreenControlsVisible = false,
+                isPlaying = false,
                 status = "Получение потока: ${channel.title}..."
             )
             val snap = prefs.snapshot()
