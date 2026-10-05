@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,10 +19,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -46,6 +51,7 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -71,13 +77,9 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     var showSleepDialog by remember { mutableStateOf(false) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
 
-    val overlayFocus = remember { FocusRequester() }
+    val overlayFirstItem = remember { FocusRequester() }
     val panelFirstBtn = remember { FocusRequester() }
 
-    // Тик каждую секунду:
-    //  - Таймер сна срабатывает всегда
-    //  - Автозакрытие по неактивности — ТОЛЬКО если канал НЕ выбран
-    //    (streamUrl == null). Если канал играет/буферизует/на паузе — не закрываем.
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
@@ -92,10 +94,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    LaunchedEffect(state.showChannelOverlay) {
-        if (state.showChannelOverlay) {
-            delay(100)
-            runCatching { overlayFocus.requestFocus() }
+    // Автофокус на первый канал в оверлее
+    LaunchedEffect(state.showChannelOverlay, state.channels.size) {
+        if (state.showChannelOverlay && state.channels.isNotEmpty()) {
+            delay(150)
+            runCatching { overlayFirstItem.requestFocus() }
         }
     }
 
@@ -169,6 +172,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 .background(Color.Black)
                 .onPreviewKeyEvent { e ->
                     if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                    // Когда оверлей или панель открыты — не перехватываем,
+                    // пусть фокус ходит по элементам
                     if (state.showChannelOverlay) return@onPreviewKeyEvent false
                     if (state.fullscreenControlsVisible) return@onPreviewKeyEvent false
 
@@ -193,15 +198,15 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 modifier = Modifier.fillMaxSize()
             )
 
+            // Тап-детектор для мыши/пальца (не перехватывает фокус)
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clickable(
-                        indication = null,
-                        interactionSource = remember { MutableInteractionSource() }
-                    ) {
-                        vm.registerActivity()
-                        if (!state.showChannelOverlay) vm.toggleFullscreenControls()
+                    .pointerInput(Unit) {
+                        detectTapGestures {
+                            vm.registerActivity()
+                            if (!state.showChannelOverlay) vm.toggleFullscreenControls()
+                        }
                     }
             )
 
@@ -260,40 +265,94 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 }
             }
 
+            // ---------- ОВЕРЛЕЙ СО СПИСКОМ КАНАЛОВ ----------
             if (state.showChannelOverlay) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color(0xAA000000))
-                        .clickable(
-                            indication = null,
-                            interactionSource = remember { MutableInteractionSource() }
-                        ) { vm.closeChannelOverlay() }
+                        // pointerInput — реагирует на тап, но НЕ перехватывает фокус
+                        .pointerInput(Unit) {
+                            detectTapGestures {
+                                vm.closeChannelOverlay()
+                            }
+                        }
                 ) {
                     Surface(
                         modifier = Modifier
                             .align(Alignment.CenterStart)
                             .fillMaxHeight()
-                            .width(380.dp)
-                            .focusRequester(overlayFocus)
-                            .focusable(),
+                            .width(400.dp),
                         color = MaterialTheme.colorScheme.background
                     ) {
-                        Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+                        Column(modifier = Modifier.fillMaxSize().padding(12.dp)) {
                             Text(
-                                "Выбор канала",
+                                "📺 Выбор канала",
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.onBackground,
-                                modifier = Modifier.padding(8.dp)
+                                modifier = Modifier.padding(bottom = 8.dp)
                             )
-                            Sidebar(
-                                channels = state.channels,
-                                favorites = state.favorites,
-                                currentId = state.currentId,
-                                onPick = { ch -> vm.play(ch) },
-                                onToggleFavorite = { ch -> vm.toggleFavorite(ch.id) },
-                                modifier = Modifier.fillMaxSize()
-                            )
+                            if (state.channels.isEmpty()) {
+                                Text(
+                                    "Каналы не загружены",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            } else {
+                                LazyColumn(
+                                    modifier = Modifier.fillMaxSize(),
+                                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                                ) {
+                                    itemsIndexed(
+                                        state.channels,
+                                        key = { _, ch -> ch.id }
+                                    ) { idx, ch ->
+                                        val isCurrent = ch.id == state.currentId
+                                        var isFocused by remember { mutableStateOf(false) }
+                                        val bg = when {
+                                            isFocused -> MaterialTheme.colorScheme.primary
+                                            isCurrent -> MaterialTheme.colorScheme.primaryContainer
+                                            else -> MaterialTheme.colorScheme.surfaceVariant
+                                        }
+                                        val fg = when {
+                                            isFocused -> MaterialTheme.colorScheme.onPrimary
+                                            isCurrent -> MaterialTheme.colorScheme.onPrimaryContainer
+                                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                                        }
+                                        Card(
+                                            shape = RoundedCornerShape(8.dp),
+                                            colors = CardDefaults.cardColors(containerColor = bg),
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .then(
+                                                    if (idx == 0)
+                                                        Modifier.focusRequester(overlayFirstItem)
+                                                    else Modifier
+                                                )
+                                                .onFocusChanged { isFocused = it.isFocused }
+                                                .focusable()
+                                                .clickable { vm.play(ch) }
+                                                .then(
+                                                    if (isFocused) Modifier.border(
+                                                        2.dp, FOCUS_BORDER,
+                                                        RoundedCornerShape(8.dp)
+                                                    ) else Modifier
+                                                )
+                                        ) {
+                                            Text(
+                                                text = ch.title,
+                                                style = MaterialTheme.typography.bodyLarge,
+                                                fontWeight = if (isCurrent || isFocused)
+                                                    FontWeight.Bold else FontWeight.Normal,
+                                                color = fg,
+                                                maxLines = 1,
+                                                overflow = TextOverflow.Ellipsis,
+                                                modifier = Modifier.padding(12.dp)
+                                            )
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
