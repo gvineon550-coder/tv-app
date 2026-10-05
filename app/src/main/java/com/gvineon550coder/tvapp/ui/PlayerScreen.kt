@@ -17,10 +17,19 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
+import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
+import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+
+// Тот же UA, что и в ProxyUtil — держим в одном стиле
+private const val VIDEO_USER_AGENT =
+    "Mozilla/5.0 (Linux; Android 13; Android TV) " +
+    "AppleWebKit/537.36 (KHTML, like Gecko) " +
+    "Chrome/120.0.0.0 Safari/537.36"
 
 @Composable
 fun PlayerScreen(
@@ -42,27 +51,34 @@ fun PlayerScreen(
             val lifecycleOwner = LocalLifecycleOwner.current
 
             val player = remember(streamUrl) {
-                ExoPlayer.Builder(ctx).build().apply {
-                    setMediaItem(MediaItem.fromUri(streamUrl))
-                    prepare()
-                    playWhenReady = true
-                }
+                val httpFactory = DefaultHttpDataSource.Factory()
+                    .setUserAgent(VIDEO_USER_AGENT)
+                    .setAllowCrossProtocolRedirects(true)
+                    .setConnectTimeoutMs(15_000)
+                    .setReadTimeoutMs(20_000)
+
+                val hlsFactory = HlsMediaSource.Factory(httpFactory)
+                val mediaSource: MediaSource = hlsFactory.createMediaSource(
+                    MediaItem.fromUri(streamUrl)
+                )
+
+                ExoPlayer.Builder(ctx)
+                    .setMediaSourceFactory { hlsFactory }
+                    .build()
+                    .apply {
+                        setMediaSource(mediaSource)
+                        prepare()
+                        playWhenReady = true
+                    }
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
                 val observer = LifecycleEventObserver { _, event ->
                     when (event) {
-                        Lifecycle.Event.ON_PAUSE -> {
-                            runCatching { player.pause() }
-                        }
-                        Lifecycle.Event.ON_RESUME -> {
-                            runCatching { player.play() }
-                        }
-                        Lifecycle.Event.ON_STOP -> {
-                            runCatching {
-                                player.pause()
-                                player.stop()
-                            }
+                        Lifecycle.Event.ON_PAUSE -> runCatching { player.pause() }
+                        Lifecycle.Event.ON_RESUME -> runCatching { player.play() }
+                        Lifecycle.Event.ON_STOP -> runCatching {
+                            player.pause(); player.stop()
                         }
                         else -> {}
                     }
@@ -75,11 +91,9 @@ fun PlayerScreen(
                             onResolutionChanged("${videoSize.width}x${videoSize.height}")
                         }
                     }
-
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         onPlayingChanged(isPlaying)
                     }
-
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         val playing = player.isPlaying &&
                                 playbackState == Player.STATE_READY
