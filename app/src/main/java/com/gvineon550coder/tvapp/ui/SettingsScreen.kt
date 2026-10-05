@@ -6,23 +6,23 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text as M3Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.tv.material3.Button
-import androidx.tv.material3.ExperimentalTvMaterial3Api
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
 
-@OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     initialApiProxy: String,
@@ -37,10 +37,13 @@ fun SettingsScreen(
     var apiProxyEnabled by remember { mutableStateOf(initialApiProxyEnabled) }
     var streamProxy by remember { mutableStateOf(initialStreamProxy) }
     var streamProxyEnabled by remember { mutableStateOf(initialStreamProxyEnabled) }
-    var maxHeight by remember { mutableStateOf(initialMaxHeight) }
+    var maxHeight by remember { mutableIntStateOf(initialMaxHeight) }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(24.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text("Настройки", style = MaterialTheme.typography.headlineMedium)
@@ -52,7 +55,7 @@ fun SettingsScreen(
         OutlinedTextField(
             value = apiProxy,
             onValueChange = { apiProxy = it },
-            label = { M3Text("https://ip:port") },
+            label = { Text("https://ip:port") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
@@ -64,7 +67,7 @@ fun SettingsScreen(
         OutlinedTextField(
             value = streamProxy,
             onValueChange = { streamProxy = it },
-            label = { M3Text("http://ip:port") },
+            label = { Text("http://ip:port") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
