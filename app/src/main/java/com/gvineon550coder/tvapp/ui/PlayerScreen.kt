@@ -23,6 +23,7 @@ import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
+import com.gvineon550coder.tvapp.PlayerService
 
 private const val VIDEO_USER_AGENT =
     "Mozilla/5.0 (Linux; Android 13; Android TV) " +
@@ -67,13 +68,14 @@ fun PlayerScreen(
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
+                // Запускаем foreground service — система обязана уважать
+                runCatching { PlayerService.start(ctx) }
+
                 val observer = LifecycleEventObserver { _, event ->
                     when (event) {
                         Lifecycle.Event.ON_PAUSE -> runCatching { player.pause() }
                         Lifecycle.Event.ON_RESUME -> runCatching { player.play() }
-                        Lifecycle.Event.ON_STOP -> runCatching {
-                            player.pause(); player.stop()
-                        }
+                        Lifecycle.Event.ON_STOP -> runCatching { player.pause() }
                         else -> {}
                     }
                 }
@@ -104,6 +106,7 @@ fun PlayerScreen(
                         player.stop()
                         player.release()
                     }
+                    runCatching { PlayerService.stop(ctx) }
                 }
             }
 
