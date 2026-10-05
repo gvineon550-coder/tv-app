@@ -27,7 +27,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -88,6 +87,15 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val overlayFirstItem = remember { FocusRequester() }
     val panelFirstBtn = remember { FocusRequester() }
     val fullscreenBox = remember { FocusRequester() }
+    val firstChannelFocus = remember { FocusRequester() }
+
+    // Автофокус на первый канал при старте
+    LaunchedEffect(state.channels.size) {
+        if (state.channels.isNotEmpty() && !state.playerFullscreen) {
+            delay(300)
+            runCatching { firstChannelFocus.requestFocus() }
+        }
+    }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -381,6 +389,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     // ---------- ОБЫЧНЫЙ ВИД ----------
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
 
+        // Верхняя панель — только кнопки, без поиска
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -389,17 +398,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            OutlinedTextField(
-                value = state.search,
-                onValueChange = vm::setSearch,
-                placeholder = { Text("Поиск") },
-                singleLine = true,
-                modifier = Modifier.weight(1f).height(52.dp)
-            )
             TvButton("⟳", "Обновить",
                 onClick = { vm.loadChannels() }, enabled = !state.loading)
             TvButton("⚙", "Настройки", onClick = { vm.openSettings() })
             TvButton("⏱", "Таймер сна", onClick = { showSleepDialog = true })
+            Box(Modifier.weight(1f))
             TvButton("✕", "Выход", danger = true,
                 onClick = { activity?.finishAffinity() })
         }
@@ -417,7 +420,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 modifier = Modifier
                     .width(300.dp)
                     .fillMaxHeight()
-                    .padding(horizontal = 4.dp)
+                    .padding(horizontal = 4.dp),
+                firstItemFocus = firstChannelFocus
             )
 
             Column(modifier = Modifier.fillMaxHeight().weight(1f)) {
