@@ -2,6 +2,7 @@ package com.gvineon550coder.tvapp.ui
 
 import android.content.Context
 import android.os.PowerManager
+import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -50,7 +51,6 @@ fun PlayerScreen(
             val ctx = LocalContext.current
             val lifecycleOwner = LocalLifecycleOwner.current
 
-            // WakeLock — создаём один раз, но держим ТОЛЬКО когда канал играет
             val wakeLock = remember {
                 val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
                 pm.newWakeLock(
@@ -99,12 +99,9 @@ fun PlayerScreen(
 
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         onPlayingChanged(isPlaying)
-                        // WakeLock — только пока играет
                         if (isPlaying) {
                             if (!wakeLock.isHeld) {
-                                runCatching {
-                                    wakeLock.acquire(6 * 60 * 60 * 1000L)
-                                }
+                                runCatching { wakeLock.acquire(6 * 60 * 60 * 1000L) }
                             }
                         } else {
                             if (wakeLock.isHeld) {
@@ -143,6 +140,11 @@ fun PlayerScreen(
                     PlayerView(context).apply {
                         this.player = player
                         this.useController = useController
+                        // КРИТИЧНО: PlayerView не должен перехватывать фокус,
+                        // иначе Compose Box с onPreviewKeyEvent его не получит
+                        isFocusable = false
+                        isFocusableInTouchMode = false
+                        descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
                     }
                 },
                 modifier = Modifier.fillMaxSize()
