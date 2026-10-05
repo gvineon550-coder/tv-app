@@ -7,21 +7,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.tv.material3.Button
-import androidx.tv.material3.ExperimentalTvMaterial3Api
-import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
 import com.gvineon550coder.tvapp.data.Program
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-@OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun ProgramPanel(
     programs: List<Program>,
@@ -52,7 +50,7 @@ fun ProgramPanel(
         when {
             loading -> Text("Загрузка программы…", modifier = Modifier.padding(top = 8.dp))
             programs.isEmpty() -> Text(
-                "На эту дату программы нет",
+                "На эту программу нет данных",
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
