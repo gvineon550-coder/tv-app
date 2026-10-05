@@ -23,6 +23,7 @@ import androidx.tv.material3.Text
 fun PlayerScreen(
     streamUrl: String?,
     onResolutionChanged: (String) -> Unit = {},
+    onPlayingChanged: (Boolean) -> Unit = {},
     useController: Boolean = true,
     modifier: Modifier = Modifier
 ) {
@@ -49,10 +50,21 @@ fun PlayerScreen(
                             onResolutionChanged("${videoSize.width}x${videoSize.height}")
                         }
                     }
+
+                    override fun onIsPlayingChanged(isPlaying: Boolean) {
+                        onPlayingChanged(isPlaying)
+                    }
+
+                    override fun onPlaybackStateChanged(playbackState: Int) {
+                        val playing = player.isPlaying &&
+                                playbackState == Player.STATE_READY
+                        onPlayingChanged(playing)
+                    }
                 }
                 player.addListener(listener)
                 onDispose {
                     player.removeListener(listener)
+                    onPlayingChanged(false)
                     player.release()
                 }
             }
