@@ -50,6 +50,17 @@ fun PlayerScreen(
             val ctx = LocalContext.current
             val lifecycleOwner = LocalLifecycleOwner.current
 
+            // WakeLock — создаём один раз, но держим ТОЛЬКО когда канал играет
+            val wakeLock = remember {
+                val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+                pm.newWakeLock(
+                    PowerManager.PARTIAL_WAKE_LOCK,
+                    "tvapp:playback"
+                ).apply {
+                    setReferenceCounted(false)
+                }
+            }
+
             val player = remember(streamUrl) {
                 val httpFactory = DefaultHttpDataSource.Factory()
                     .setUserAgent(VIDEO_USER_AGENT)
@@ -69,18 +80,6 @@ fun PlayerScreen(
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
-                // WakeLock — не даёт CPU засыпать и системе выгружать процесс.
-                // Никаких уведомлений не требуется.
-                val powerManager = ctx
-                    .getSystemService(Context.POWER_SERVICE) as PowerManager
-                val wakeLock = powerManager.newWakeLock(
-                    PowerManager.PARTIAL_WAKE_LOCK,
-                    "tvapp:playback"
-                ).apply {
-                    setReferenceCounted(false)
-                    runCatching { acquire(6 * 60 * 60 * 1000L) } // максимум 6 часов
-                }
-
                 val observer = LifecycleEventObserver { _, event ->
                     when (event) {
                         Lifecycle.Event.ON_PAUSE -> runCatching { player.pause() }
@@ -97,13 +96,30 @@ fun PlayerScreen(
                             onResolutionChanged("${videoSize.width}x${videoSize.height}")
                         }
                     }
+
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         onPlayingChanged(isPlaying)
+                        // WakeLock — только пока играет
+                        if (isPlaying) {
+                            if (!wakeLock.isHeld) {
+                                runCatching {
+                                    wakeLock.acquire(6 * 60 * 60 * 1000L)
+                                }
+                            }
+                        } else {
+                            if (wakeLock.isHeld) {
+                                runCatching { wakeLock.release() }
+                            }
+                        }
                     }
+
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         val playing = player.isPlaying &&
                                 playbackState == Player.STATE_READY
                         onPlayingChanged(playing)
+                        if (!playing && wakeLock.isHeld) {
+                            runCatching { wakeLock.release() }
+                        }
                     }
                 }
                 player.addListener(listener)
