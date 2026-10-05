@@ -2,6 +2,7 @@ package com.gvineon550coder.tvapp.data
 
 import com.gvineon550coder.tvapp.util.ProxyUtil
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -40,10 +41,37 @@ class RutubeRepository @Inject constructor(
         return api
     }
 
+    /**
+     * Повтор запроса при сетевых ошибках. Небольшая пауза между попытками.
+     * Всего 3 попытки: 1 основная + 2 retry.
+     */
+    private suspend fun <T> retry(
+        attempts: Int = 3,
+        initialDelayMs: Long = 400L,
+        block: suspend () -> T
+    ): T? {
+        var lastEx: Exception? = null
+        var delayMs = initialDelayMs
+        repeat(attempts) { i ->
+            try {
+                return block()
+            } catch (e: Exception) {
+                lastEx = e
+                if (i < attempts - 1) {
+                    delay(delayMs)
+                    delayMs *= 2
+                }
+            }
+        }
+        if (lastEx != null) {
+            // не пробрасываем — вызывающий код сам решит, что делать
+        }
+        return null
+    }
+
     // ---------- Каналы ----------
     suspend fun fetchChannels(): List<Channel> = withContext(Dispatchers.IO) {
-        val raw = runCatching { api().getChannels() }.getOrNull()
-            ?: return@withContext emptyList()
+        val raw = retry { api().getChannels() } ?: return@withContext emptyList()
         val synonyms = parseSynonyms(prefs.snapshot().synonyms)
         parseChannels(raw, synonyms)
     }
@@ -96,7 +124,7 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Инфо о канале ----------
     suspend fun fetchChannelInfo(id: String): ChannelInfo = withContext(Dispatchers.IO) {
-        val resp = runCatching { api().getPlayOptions(id) }.getOrNull()
+        val resp = retry { api().getPlayOptions(id) }
             ?: return@withContext ChannelInfo(ok = false)
         val blocked = isBlocked(resp)
         ChannelInfo(
@@ -112,7 +140,7 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Поток ----------
     suspend fun fetchStream(id: String, maxHeight: Int): ChannelInfo = withContext(Dispatchers.IO) {
-        val resp = runCatching { api().getPlayOptions(id) }.getOrNull()
+        val resp = retry { api().getPlayOptions(id) }
             ?: return@withContext ChannelInfo(ok = false)
         val blocked = isBlocked(resp)
         if (blocked) {
@@ -135,25 +163,30 @@ class RutubeRepository @Inject constructor(
         )
     }
 
-    private fun resolveStream(hlsUrl: String, maxHeight: Int): String? {
-        return runCatching {
+    private suspend fun resolveStream(hlsUrl: String, maxHeight: Int): String? {
+        // Читаем m3u8-плейлист с retry
+        val body = retry {
             val client = ProxyUtil.buildClient(cachedApiProxy)
             val req = Request.Builder().url(hlsUrl)
                 .header("User-Agent", "Mozilla/5.0 (Linux; Android TV)")
                 .build()
-            val body = client.newCall(req).execute().body?.string().orEmpty()
-            if (body.isEmpty()) return@runCatching null
-            if (!body.contains("#EXT-X-STREAM-INF") && body.contains("#EXTINF")) {
-                return@runCatching hlsUrl
-            }
-            val variants = M3u8Parser.parseVariants(body, hlsUrl)
-            M3u8Parser.pickBest(variants, maxHeight) ?: hlsUrl
-        }.getOrNull()
+            client.newCall(req).execute().body?.string().orEmpty()
+        } ?: return null
+
+        if (body.isEmpty()) return null
+
+        // Медиа-плейлист без вариантов — отдаём как есть
+        if (!body.contains("#EXT-X-STREAM-INF") && body.contains("#EXTINF")) {
+            return hlsUrl
+        }
+
+        val variants = M3u8Parser.parseVariants(body, hlsUrl)
+        return M3u8Parser.pickBest(variants, maxHeight) ?: hlsUrl
     }
 
     // ---------- Программа передач ----------
     suspend fun fetchProgram(id: String, date: LocalDate): List<Program> = withContext(Dispatchers.IO) {
-        val raw = runCatching { api().getProgram(id, date.toString()) }.getOrNull()
+        val raw = retry { api().getProgram(id, date.toString()) }
             ?: return@withContext emptyList()
         parseProgram(raw, date)
     }
