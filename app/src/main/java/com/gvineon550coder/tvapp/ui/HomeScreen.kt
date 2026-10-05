@@ -7,7 +7,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,6 +32,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -54,6 +54,7 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -61,7 +62,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.delay
 import java.time.LocalDate
 
-private const val AUTO_CLOSE_MS = 10 * 60 * 1000L
 private val FOCUS_BORDER = Color(0xFFFFD54F)
 
 @Composable
@@ -73,6 +73,14 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
 
     val context = LocalContext.current
     val activity = context as? Activity
+    val view = LocalView.current
+
+    // keepScreenOn — экран не гаснет, система реже выгружает приложение
+    DisposableEffect(Unit) {
+        val prev = view.keepScreenOn
+        view.keepScreenOn = true
+        onDispose { view.keepScreenOn = prev }
+    }
 
     var showSleepDialog by remember { mutableStateOf(false) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -80,14 +88,13 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val overlayFirstItem = remember { FocusRequester() }
     val panelFirstBtn = remember { FocusRequester() }
 
+    // Тик каждую секунду — только таймер сна.
+    // Автозакрытие по неактивности убрано полностью.
     LaunchedEffect(Unit) {
         while (true) {
             now = System.currentTimeMillis()
             val s = vm.state.value
             if (s.sleepDeadline > 0 && now >= s.sleepDeadline) {
-                activity?.finishAffinity(); break
-            }
-            if (s.streamUrl == null && (now - s.lastActivity) > AUTO_CLOSE_MS) {
                 activity?.finishAffinity(); break
             }
             delay(1000)
@@ -172,8 +179,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 .background(Color.Black)
                 .onPreviewKeyEvent { e ->
                     if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
-                    // Когда оверлей или панель открыты — не перехватываем,
-                    // пусть фокус ходит по элементам
                     if (state.showChannelOverlay) return@onPreviewKeyEvent false
                     if (state.fullscreenControlsVisible) return@onPreviewKeyEvent false
 
@@ -198,7 +203,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 modifier = Modifier.fillMaxSize()
             )
 
-            // Тап-детектор для мыши/пальца (не перехватывает фокус)
+            // Тап-детектор — реагирует, но не перехватывает фокус
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -271,7 +276,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color(0xAA000000))
-                        // pointerInput — реагирует на тап, но НЕ перехватывает фокус
                         .pointerInput(Unit) {
                             detectTapGestures {
                                 vm.closeChannelOverlay()
