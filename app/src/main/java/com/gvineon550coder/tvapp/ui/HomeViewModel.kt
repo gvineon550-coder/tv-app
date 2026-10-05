@@ -29,7 +29,9 @@ data class HomeState(
     val search: String = "",
     val showSettings: Boolean = false,
     val maxHeight: Int = 0,
-    val playerFullscreen: Boolean = false
+    val playerFullscreen: Boolean = false,
+    val resolution: String = "",
+    val fullscreenControlsVisible: Boolean = false
 )
 
 @HiltViewModel
@@ -146,11 +148,49 @@ class HomeViewModel @Inject constructor(
     fun closeSettings() { _state.value = _state.value.copy(showSettings = false) }
 
     fun togglePlayerFullscreen() {
-        _state.value = _state.value.copy(playerFullscreen = !_state.value.playerFullscreen)
+        _state.value = _state.value.copy(
+            playerFullscreen = !_state.value.playerFullscreen,
+            fullscreenControlsVisible = false
+        )
     }
 
     fun exitPlayerFullscreen() {
-        _state.value = _state.value.copy(playerFullscreen = false)
+        _state.value = _state.value.copy(
+            playerFullscreen = false,
+            fullscreenControlsVisible = false
+        )
+    }
+
+    fun setResolution(value: String) {
+        _state.value = _state.value.copy(resolution = value)
+    }
+
+    fun toggleFullscreenControls() {
+        _state.value = _state.value.copy(
+            fullscreenControlsVisible = !_state.value.fullscreenControlsVisible
+        )
+    }
+
+    fun hideFullscreenControls() {
+        _state.value = _state.value.copy(fullscreenControlsVisible = false)
+    }
+
+    fun nextChannel() {
+        val list = _state.value.channels
+        if (list.isEmpty()) return
+        val cur = _state.value.currentId
+        val idx = list.indexOfFirst { it.id == cur }
+        val nextIdx = if (idx < 0) 0 else (idx + 1) % list.size
+        play(list[nextIdx])
+    }
+
+    fun prevChannel() {
+        val list = _state.value.channels
+        if (list.isEmpty()) return
+        val cur = _state.value.currentId
+        val idx = list.indexOfFirst { it.id == cur }
+        val prevIdx = if (idx < 0) 0 else (idx - 1 + list.size) % list.size
+        play(list[prevIdx])
     }
 
     fun saveSettings(apiProxy: String, apiProxyEnabled: Boolean,
@@ -172,6 +212,8 @@ class HomeViewModel @Inject constructor(
                 currentId = channel.id,
                 currentTitle = channel.title,
                 streamUrl = null,
+                resolution = "",
+                fullscreenControlsVisible = false,
                 status = "Получение потока: ${channel.title}..."
             )
             val snap = prefs.snapshot()
