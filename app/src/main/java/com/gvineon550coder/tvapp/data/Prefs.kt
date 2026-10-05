@@ -27,7 +27,7 @@ class Prefs(private val context: Context) {
         val LAST_PARSE = longPreferencesKey("last_parse")
     }
 
-    val maxHeight: Flow<Int> = context.dataStore.data.map { it[MAX_HEIGHT] ?: 0 }
+    val maxHeight: Flow<Int> = context.dataStore.data.map { it[MAX_HEIGHT] ?: 1080 }
     val apiProxy: Flow<String> = context.dataStore.data.map { it[API_PROXY] ?: "" }
     val apiProxyEnabled: Flow<Boolean> = context.dataStore.data.map { it[API_PROXY_ENABLED] ?: false }
     val streamProxy: Flow<String> = context.dataStore.data.map { it[STREAM_PROXY] ?: "" }
