@@ -42,7 +42,8 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Каналы ----------
     suspend fun fetchChannels(): List<Channel> = withContext(Dispatchers.IO) {
-        val raw = runCatching { api().getChannels() }.getOrNull() ?: return@withContext emptyList()
+        val raw = runCatching { api().getChannels() }.getOrNull()
+            ?: return@withContext emptyList()
         val synonyms = parseSynonyms(prefs.snapshot().synonyms)
         parseChannels(raw, synonyms)
     }
@@ -256,12 +257,18 @@ class RutubeRepository @Inject constructor(
     private fun parseSynonyms(json: String): Map<String, Pair<String?, String?>> {
         return runCatching {
             val obj = com.google.gson.JsonParser.parseString(json).asJsonObject
-            obj.entrySet().associate { (k, v) ->
+            val result = mutableMapOf<String, Pair<String?, String?>>()
+            for ((k, v) in obj.entrySet()) {
                 val arr = v.asJsonArray
-                val title = arr.getOrNull(0)?.takeIf { !it.isJsonNull }?.asString
-                val group = arr.getOrNull(1)?.takeIf { !it.isJsonNull }?.asString
-                k to (title to group)
+                val titleEl = if (arr.size() > 0) arr.get(0) else null
+                val groupEl = if (arr.size() > 1) arr.get(1) else null
+                val title = if (titleEl != null && !titleEl.isJsonNull)
+                    titleEl.asString else null
+                val group = if (groupEl != null && !groupEl.isJsonNull)
+                    groupEl.asString else null
+                result[k] = title to group
             }
+            result
         }.getOrDefault(emptyMap())
     }
 
