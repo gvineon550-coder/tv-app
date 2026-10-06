@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.gvineon550coder.tvapp.data.Channel
 import com.gvineon550coder.tvapp.data.ChannelInfo
 import com.gvineon550coder.tvapp.data.Prefs
-import com.gvineon550coder.tvapp.data.Program
 import com.gvineon550coder.tvapp.data.RutubeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import javax.inject.Inject
 
 data class HomeState(
@@ -26,9 +24,6 @@ data class HomeState(
     val currentId: String? = null,
     val currentTitle: String = "",
     val streamUrl: String? = null,
-    val program: List<Program> = emptyList(),
-    val programDate: LocalDate = LocalDate.now(),
-    val programLoading: Boolean = false,
     val search: String = "",
     val showSettings: Boolean = false,
     val maxHeight: Int = 0,
@@ -52,7 +47,6 @@ class HomeViewModel @Inject constructor(
     private val _state = MutableStateFlow(HomeState())
     val state: StateFlow<HomeState> = _state.asStateFlow()
 
-    private val programCache = mutableMapOf<Pair<String, LocalDate>, List<Program>>()
     private val infoLoaded = mutableSetOf<String>()
 
     private var refreshAttempts = 0
@@ -90,7 +84,6 @@ class HomeViewModel @Inject constructor(
         _state.value = _state.value.copy(isPlaying = value)
     }
 
-    /** Переключить диагностический оверлей. */
     fun toggleDiagnostics() {
         registerActivity()
         _state.value = _state.value.copy(
@@ -360,7 +353,6 @@ class HomeViewModel @Inject constructor(
                 streamUrl = info.streamUrl,
                 status = "Играет: ${channel.title}"
             )
-            loadProgram(channel.id, LocalDate.now())
         }
     }
 
@@ -373,25 +365,7 @@ class HomeViewModel @Inject constructor(
         saveCache()
     }
 
-    fun loadProgram(id: String, date: LocalDate) {
-        val key = id to date
-        programCache[key]?.let {
-            _state.value = _state.value.copy(program = it, programDate = date)
-            return
-        }
-        viewModelScope.launch {
-            _state.value = _state.value.copy(programLoading = true, programDate = date)
-            val list = runCatching { repo.fetchProgram(id, date) }.getOrDefault(emptyList())
-            if (programCache.size >= MAX_PROGRAM_CACHE) {
-                programCache.clear()
-            }
-            programCache[key] = list
-            _state.value = _state.value.copy(program = list, programLoading = false)
-        }
-    }
-
     companion object {
-        private const val MAX_PROGRAM_CACHE = 50
         private const val MAX_REFRESH_ATTEMPTS = 2
     }
 }
