@@ -19,13 +19,6 @@ interface ApiService {
     @GET("api/play/options/{id}")
     suspend fun getPlayOptions(@Path("id") id: String): PlayOptionsResponse
 
-    @GET("pangolin/api/web/tvprogram/{id}/")
-    suspend fun getProgram(
-        @Path("id") id: String,
-        @Query("programDate") date: String,
-        @Query("client") client: String = "wdp"
-    ): Map<String, Any>?
-
     @GET
     suspend fun getRaw(@Url url: String): ResponseBody
 }
