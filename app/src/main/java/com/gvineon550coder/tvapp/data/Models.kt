@@ -1,10 +1,12 @@
 package com.gvineon550coder.tvapp.data
 
+import androidx.compose.runtime.Immutable
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+@Immutable
 data class Channel(
     val id: String,
     val title: String,
@@ -24,6 +26,7 @@ data class ChannelInfo(
     val avatar: String = ""
 )
 
+@Immutable
 data class Program(
     val title: String,
     val start: LocalDateTime?,
@@ -31,6 +34,7 @@ data class Program(
     val desc: String = ""
 )
 
+@Immutable
 data class StreamVariant(
     val pixels: Int,
     val height: Int,
