@@ -54,6 +54,9 @@ class HomeViewModel @Inject constructor(
     private val programCache = mutableMapOf<Pair<String, LocalDate>, List<Program>>()
     private val infoLoaded = mutableSetOf<String>()
 
+    // Счётчик перезапросов URL — защита от бесконечного цикла
+    private var refreshAttempts = 0
+
     init {
         viewModelScope.launch {
             val snap = prefs.snapshot()
@@ -83,6 +86,8 @@ class HomeViewModel @Inject constructor(
     }
 
     fun setPlaying(value: Boolean) {
+        // Успешное воспроизведение сбрасывает счётчик перезапросов
+        if (value) refreshAttempts = 0
         _state.value = _state.value.copy(isPlaying = value)
     }
 
@@ -175,7 +180,6 @@ class HomeViewModel @Inject constructor(
 
     private fun prefetchInfo(channels: List<Channel>) {
         viewModelScope.launch {
-            // Грузим по 4 канала параллельно — быстрее, но не заваливаем Rutube
             channels.chunked(4).forEach { batch ->
                 val results = batch.map { ch ->
                     async(Dispatchers.IO) {
@@ -302,7 +306,30 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    /** Публичный вход — ручной выбор канала. Сбрасывает счётчик перезапросов. */
     fun play(channel: Channel) {
+        refreshAttempts = 0
+        playInternal(channel)
+    }
+
+    /**
+     * Перезапрос URL текущего канала. Вызывается из плеера, когда retry исчерпаны.
+     * Максимум 2 попытки подряд — защита от бесконечного цикла.
+     */
+    fun refreshCurrentStream() {
+        if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
+            _state.value = _state.value.copy(
+                status = "Канал недоступен. Переключите канал."
+            )
+            return
+        }
+        refreshAttempts++
+        val cur = _state.value.currentId ?: return
+        val ch = _state.value.channels.firstOrNull { it.id == cur } ?: return
+        playInternal(ch)
+    }
+
+    private fun playInternal(channel: Channel) {
         registerActivity()
         viewModelScope.launch {
             _state.value = _state.value.copy(
@@ -353,8 +380,17 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _state.value = _state.value.copy(programLoading = true, programDate = date)
             val list = runCatching { repo.fetchProgram(id, date) }.getOrDefault(emptyList())
+            // Кэш не должен расти бесконечно: 50 записей × ~40 КБ ≈ 2 МБ максимум
+            if (programCache.size >= MAX_PROGRAM_CACHE) {
+                programCache.clear()
+            }
             programCache[key] = list
             _state.value = _state.value.copy(program = list, programLoading = false)
         }
+    }
+
+    companion object {
+        private const val MAX_PROGRAM_CACHE = 50
+        private const val MAX_REFRESH_ATTEMPTS = 2
     }
 }
