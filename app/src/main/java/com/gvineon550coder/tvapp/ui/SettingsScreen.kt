@@ -30,7 +30,8 @@ fun SettingsScreen(
     initialStreamProxy: String,
     initialStreamProxyEnabled: Boolean,
     initialMaxHeight: Int,
-    onSave: (String, Boolean, String, Boolean, Int) -> Unit,
+    initialJsonSourceUrl: String,
+    onSave: (String, Boolean, String, Boolean, Int, String) -> Unit,
     onCancel: () -> Unit
 ) {
     var apiProxy by remember { mutableStateOf(initialApiProxy) }
@@ -38,6 +39,7 @@ fun SettingsScreen(
     var streamProxy by remember { mutableStateOf(initialStreamProxy) }
     var streamProxyEnabled by remember { mutableStateOf(initialStreamProxyEnabled) }
     var maxHeight by remember { mutableIntStateOf(initialMaxHeight) }
+    var jsonSourceUrl by remember { mutableStateOf(initialJsonSourceUrl) }
 
     Column(
         modifier = Modifier
@@ -47,6 +49,23 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text("Настройки", style = MaterialTheme.typography.headlineMedium)
+
+        Text(
+            "Источник каналов (JSON)",
+            style = MaterialTheme.typography.titleMedium
+        )
+        OutlinedTextField(
+            value = jsonSourceUrl,
+            onValueChange = { jsonSourceUrl = it },
+            label = { Text("https://.../channels.json") },
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(
+            "Оставьте пустым — приложение будет использовать API Rutube напрямую.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = apiProxyEnabled, onCheckedChange = { apiProxyEnabled = it })
@@ -87,7 +106,7 @@ fun SettingsScreen(
         ) {
             Button(onClick = {
                 onSave(apiProxy, apiProxyEnabled, streamProxy,
-                    streamProxyEnabled, maxHeight)
+                    streamProxyEnabled, maxHeight, jsonSourceUrl)
             }) { Text("Сохранить") }
             Button(onClick = onCancel) { Text("Отмена") }
         }
