@@ -58,8 +58,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import kotlinx.coroutines.delay
-import java.time.LocalDate
 
 private val FOCUS_BORDER = Color(0xFFFFD54F)
 
@@ -431,6 +429,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 firstItemFocus = firstChannelFocus
             )
 
+            // Плеер — теперь занимает всё оставшееся пространство
             Column(modifier = Modifier.fillMaxHeight().weight(1f)) {
                 Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
                     PlayerScreen(
@@ -477,25 +476,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     }
                 }
             }
-
-            ProgramPanel(
-                programs = state.program,
-                date = state.programDate,
-                loading = state.programLoading,
-                onPrevDay = {
-                    val id = state.currentId ?: return@ProgramPanel
-                    vm.loadProgram(id, state.programDate.minusDays(1))
-                },
-                onNextDay = {
-                    val id = state.currentId ?: return@ProgramPanel
-                    vm.loadProgram(id, state.programDate.plusDays(1))
-                },
-                onToday = {
-                    val id = state.currentId ?: return@ProgramPanel
-                    vm.loadProgram(id, LocalDate.now())
-                },
-                modifier = Modifier.width(260.dp).fillMaxHeight()
-            )
         }
 
         Row(
