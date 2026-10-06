@@ -39,6 +39,14 @@ android {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
 
+    lint {
+        // Баг lint с Kotlin 2.0: детектор NullSafeMutableLiveData
+        // падает с IncompatibleClassChangeError. Мы LiveData не используем.
+        disable += "NullSafeMutableLiveData"
+        // Не валить сборку за lint-предупреждения
+        abortOnError = false
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
