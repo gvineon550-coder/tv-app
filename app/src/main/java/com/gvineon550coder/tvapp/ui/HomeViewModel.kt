@@ -8,6 +8,9 @@ import com.gvineon550coder.tvapp.data.Prefs
 import com.gvineon550coder.tvapp.data.Program
 import com.gvineon550coder.tvapp.data.RutubeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -172,26 +175,36 @@ class HomeViewModel @Inject constructor(
 
     private fun prefetchInfo(channels: List<Channel>) {
         viewModelScope.launch {
-            for (ch in channels) {
-                if (ch.id in infoLoaded) continue
-                val info = runCatching { repo.fetchChannelInfo(ch.id) }.getOrNull() ?: continue
-                if (info.blocked) {
-                    hideBlocked(ch.id, info.reason)
-                    continue
-                }
-                infoLoaded += ch.id
-                if (info.description.isNotBlank() || info.category.isNotBlank()
-                    || info.avatar.isNotBlank()) {
-                    _state.value = _state.value.copy(
-                        channels = _state.value.channels.map {
-                            if (it.id == ch.id) it.copy(
-                                description = info.description.ifBlank { it.description },
-                                category = info.category.ifBlank { it.category ?: "" }
-                                    .ifBlank { null },
-                                avatar = info.avatar.ifBlank { it.avatar }
-                            ) else it
-                        }
-                    )
+            // Грузим по 4 канала параллельно — быстрее, но не заваливаем Rutube
+            channels.chunked(4).forEach { batch ->
+                val results = batch.map { ch ->
+                    async(Dispatchers.IO) {
+                        if (ch.id in infoLoaded) return@async ch.id to null
+                        val info = runCatching { repo.fetchChannelInfo(ch.id) }.getOrNull()
+                        ch.id to info
+                    }
+                }.awaitAll()
+
+                for ((id, info) in results) {
+                    if (info == null) continue
+                    if (info.blocked) {
+                        hideBlocked(id, info.reason)
+                        continue
+                    }
+                    infoLoaded += id
+                    if (info.description.isNotBlank() || info.category.isNotBlank()
+                        || info.avatar.isNotBlank()) {
+                        _state.value = _state.value.copy(
+                            channels = _state.value.channels.map {
+                                if (it.id == id) it.copy(
+                                    description = info.description.ifBlank { it.description },
+                                    category = info.category.ifBlank { it.category ?: "" }
+                                        .ifBlank { null },
+                                    avatar = info.avatar.ifBlank { it.avatar }
+                                ) else it
+                            }
+                        )
+                    }
                 }
             }
             saveCache()
