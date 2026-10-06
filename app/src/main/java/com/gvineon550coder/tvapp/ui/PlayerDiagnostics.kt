@@ -57,8 +57,6 @@ fun errorCodeName(code: Int): String = when (code) {
         "DECODING_FORMAT_UNSUPPORTED (кодек?)"
     PlaybackException.ERROR_CODE_DECODING_FORMAT_EXCEEDS_CAPABILITIES ->
         "FORMAT_EXCEEDS_CAPABILITIES"
-    PlaybackException.ERROR_CODE_RENDERER_FAILED ->
-        "RENDERER_FAILED"
     PlaybackException.ERROR_CODE_AUDIO_TRACK_INIT_FAILED ->
         "AUDIO_TRACK_INIT_FAILED"
     PlaybackException.ERROR_CODE_AUDIO_TRACK_WRITE_FAILED ->
@@ -87,7 +85,7 @@ fun formatBitrate(bps: Int): String = when {
     else -> "$bps bps"
 }
 
-/** Форматирует буфер в секунды. */
+/** Форматирует буфер в читаемые единицы. */
 fun formatBuffer(ms: Long): String = when {
     ms <= 0 -> "0s"
     ms < 1000 -> "${ms}ms"
