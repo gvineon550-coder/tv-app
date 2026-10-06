@@ -176,7 +176,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 initialApiProxy = "", initialApiProxyEnabled = false,
                 initialStreamProxy = "", initialStreamProxyEnabled = false,
                 initialMaxHeight = state.maxHeight,
-                onSave = { a, ae, s, se, mh -> vm.saveSettings(a, ae, s, se, mh) },
+                initialJsonSourceUrl = state.jsonSourceUrl,
+                onSave = { a, ae, s, se, mh, jsu -> vm.saveSettings(a, ae, s, se, mh, jsu) },
                 onCancel = { vm.closeSettings() }
             )
         }
