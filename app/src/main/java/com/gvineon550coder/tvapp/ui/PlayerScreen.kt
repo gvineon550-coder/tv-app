@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -18,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -49,6 +54,7 @@ fun PlayerScreen(
     onResolutionChanged: (String) -> Unit = {},
     onPlayingChanged: (Boolean) -> Unit = {},
     onFatalError: (() -> Unit)? = null,
+    showDiagnostics: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize().background(Color.Black)) {
@@ -64,6 +70,9 @@ fun PlayerScreen(
             val scope = rememberCoroutineScope()
 
             var retryCount by remember(streamUrl) { mutableIntStateOf(0) }
+            val diagnostics = remember {
+                mutableStateOf(PlayerDiagnostics(streamUrl = streamUrl))
+            }
 
             val wakeLock = remember {
                 val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -94,7 +103,6 @@ fun PlayerScreen(
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
-                // Foreground Service стартует при входе в плеер
                 runCatching { PlayerService.start(ctx) }
 
                 val observer = LifecycleEventObserver { _, event ->
@@ -102,13 +110,10 @@ fun PlayerScreen(
                         Lifecycle.Event.ON_PAUSE -> runCatching { player.pause() }
                         Lifecycle.Event.ON_RESUME -> {
                             runCatching { player.play() }
-                            // Возврат из фона — снова стартуем FGS
                             runCatching { PlayerService.start(ctx) }
                         }
                         Lifecycle.Event.ON_STOP -> {
                             runCatching { player.pause() }
-                            // Уход в фон — останавливаем FGS,
-                            // чтобы не висел при standby приставки
                             runCatching { PlayerService.stop(ctx) }
                         }
                         else -> {}
@@ -119,12 +124,21 @@ fun PlayerScreen(
                 val listener = object : Player.Listener {
                     override fun onVideoSizeChanged(videoSize: VideoSize) {
                         if (videoSize.width > 0 && videoSize.height > 0) {
-                            onResolutionChanged("${videoSize.width}x${videoSize.height}")
+                            val res = "${videoSize.width}x${videoSize.height}"
+                            onResolutionChanged(res)
+                            diagnostics.value = diagnostics.value.copy(
+                                videoSize = res,
+                                lastEvent = "videoSize=$res"
+                            )
                         }
                     }
 
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         onPlayingChanged(isPlaying)
+                        diagnostics.value = diagnostics.value.copy(
+                            isPlaying = isPlaying,
+                            lastEvent = if (isPlaying) "playing" else "paused"
+                        )
                         if (isPlaying) {
                             if (!wakeLock.isHeld) {
                                 runCatching { wakeLock.acquire(6 * 60 * 60 * 1000L) }
@@ -141,10 +155,17 @@ fun PlayerScreen(
                                 playbackState == Player.STATE_READY
                         onPlayingChanged(playing)
 
-                        // Плеер восстановился после retry — сбрасываем счётчик
                         if (playbackState == Player.STATE_READY) {
                             retryCount = 0
                         }
+
+                        diagnostics.value = diagnostics.value.copy(
+                            playbackState = playbackStateName(playbackState),
+                            bitrate = player.videoFormat?.bitrate ?: 0,
+                            bufferedMs = player.bufferedPosition,
+                            retryCount = retryCount,
+                            lastEvent = "state=${playbackStateName(playbackState)}"
+                        )
 
                         if (!playing && wakeLock.isHeld) {
                             runCatching { wakeLock.release() }
@@ -152,8 +173,21 @@ fun PlayerScreen(
                     }
 
                     override fun onPlayerError(error: PlaybackException) {
+                        val name = errorCodeName(error.errorCode)
+                        diagnostics.value = diagnostics.value.copy(
+                            errorCode = error.errorCode,
+                            errorName = name,
+                            errorMessage = error.message ?: error.cause?.message ?: "",
+                            retryCount = retryCount,
+                            lastEvent = "error=$name"
+                        )
+
                         if (retryCount < MAX_RETRIES) {
                             retryCount++
+                            diagnostics.value = diagnostics.value.copy(
+                                retryCount = retryCount,
+                                lastEvent = "retry #$retryCount"
+                            )
                             scope.launch {
                                 delay(RETRY_DELAY_MS)
                                 runCatching {
@@ -162,7 +196,6 @@ fun PlayerScreen(
                                 }
                             }
                         } else {
-                            // Все попытки исчерпаны — просим наружу свежий URL
                             onFatalError?.invoke()
                         }
                     }
@@ -180,7 +213,6 @@ fun PlayerScreen(
                     runCatching {
                         if (wakeLock.isHeld) wakeLock.release()
                     }
-                    // Останавливаем FGS при выходе из плеера
                     runCatching { PlayerService.stop(ctx) }
                 }
             }
@@ -198,6 +230,48 @@ fun PlayerScreen(
                 },
                 modifier = Modifier.fillMaxSize()
             )
+
+            if (showDiagnostics) {
+                DiagnosticsOverlay(
+                    d = diagnostics.value,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(12.dp)
+                )
+            }
         }
+    }
+}
+
+/**
+ * Диагностический оверлей — плашка в левом верхнем углу.
+ * Видна только при showDiagnostics = true.
+ */
+@Composable
+private fun DiagnosticsOverlay(
+    d: PlayerDiagnostics,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .background(Color(0xCC000000), RoundedCornerShape(8.dp))
+            .padding(10.dp)
+    ) {
+        Text(
+            text = buildString {
+                appendLine("URL: …${d.streamUrl.takeLast(50)}")
+                appendLine("state: ${d.playbackState}  play=${d.isPlaying}")
+                appendLine("video: ${d.videoSize}  br=${formatBitrate(d.bitrate)}")
+                appendLine("buffer: ${formatBuffer(d.bufferedMs)}")
+                appendLine("error: ${d.errorName}")
+                if (d.errorMessage.isNotBlank())
+                    appendLine("msg: ${d.errorMessage.take(80)}")
+                appendLine("retry: ${d.retryCount}/$MAX_RETRIES")
+                append("last: ${d.lastEvent}")
+            },
+            color = Color(0xFF7CFF7C),
+            fontFamily = FontFamily.Monospace,
+            style = MaterialTheme.typography.bodySmall
+        )
     }
 }
