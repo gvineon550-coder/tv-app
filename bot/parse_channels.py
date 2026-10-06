@@ -3,12 +3,13 @@
 Парсер каналов Rutube для tv-app.
 
 Запускается через GitHub Actions по расписанию.
-Результат — channels.json в ветке gh-pages, доступен через GitHub Pages.
+Все запросы к Rutube API идут С СЕРВЕРОВ GITHUB, не с IP пользователя.
 
 Что делает:
 1. Дёргает autowidget/2 — список всех каналов
 2. Для каждого канала дёргает play/options/{id}
-3. Собирает JSON со всем необходимым для приложения
+3. Второй проход для каналов без URL
+4. Сохраняет JSON со всем необходимым для приложения
 
 Автор: gvineon550-coder
 """
@@ -45,24 +46,33 @@ CATEGORY_RENAMES = {
     "Новости и СМИ": "Новости",
 }
 
+# Сколько попыток на один запрос
+MAX_RETRIES = 5
+# Пауза между каналами (сек)
+CHANNEL_DELAY = 0.5
+# Пауза между попытками (сек), умножается на номер попытки
+RETRY_DELAY_BASE = 1.0
+
 
 # ---------- HTTP ----------
 
-def http_get(url, params=None, timeout=20):
-    for attempt in range(3):
+def http_get(url, params=None, timeout=30):
+    last_ex = None
+    for attempt in range(MAX_RETRIES):
         try:
             r = requests.get(url, params=params, headers=HEADERS, timeout=timeout)
             r.raise_for_status()
             return r
         except Exception as e:
-            if attempt < 2:
-                print(f"  retry {attempt + 1}: {e}")
-                time.sleep(0.5 * (attempt + 1))
-            else:
-                raise
+            last_ex = e
+            if attempt < MAX_RETRIES - 1:
+                delay = RETRY_DELAY_BASE * (attempt + 1)
+                print(f"  retry {attempt + 1}/{MAX_RETRIES - 1}: {e} (wait {delay}s)")
+                time.sleep(delay)
+    raise last_ex
 
 
-# ---------- Парсинг каналов ----------
+# ---------- Утилиты ----------
 
 def clean_title(s):
     s = s.strip()
@@ -95,6 +105,8 @@ def description_text(value):
         return value.strip()
     return str(value).strip()
 
+
+# ---------- Парсинг каналов ----------
 
 def fetch_channels():
     url = f"{BASE}/api/feeds/autowidget/2"
@@ -202,16 +214,21 @@ def fetch_play_options(channel_id):
 
 
 def enrich_channel(ch):
+    """
+    Дополняет канал данными из play/options.
+    Возвращает True если удалось получить stream_url или определить blocked.
+    Изменяет ch in-place.
+    """
     try:
         resp = fetch_play_options(ch["id"])
     except Exception as e:
         print(f"  ✗ {ch['id']}: {e}")
-        return ch
+        return False
 
     if is_blocked(resp):
         ch["blocked"] = True
         ch["blocked_reason"] = blocked_reason(resp)
-        return ch
+        return True
 
     # avatar
     author = resp.get("author")
@@ -226,14 +243,21 @@ def enrich_channel(ch):
             first = hls[0]
             if isinstance(first, dict):
                 ch["stream_url"] = first.get("url")
+                return True
 
-    return ch
+    # URL нет — канал существует, но live не отдаётся
+    return False
 
 
 # ---------- main ----------
 
 def main():
-    print("→ Fetching channel list...")
+    print("=" * 60)
+    print("TV App — Rutube Channels Parser")
+    print(f"Started: {datetime.now(timezone.utc).isoformat()}")
+    print("=" * 60)
+
+    print("\n→ Fetching channel list...")
     try:
         data = fetch_channels()
     except Exception as e:
@@ -247,28 +271,64 @@ def main():
         print("FATAL: no channels parsed")
         sys.exit(1)
 
-    enriched = []
+    print("\n--- First pass ---")
     for i, ch in enumerate(channels, 1):
         print(f"[{i}/{len(channels)}] {ch['id']} — {ch['title']}")
-        enriched.append(enrich_channel(ch))
-        time.sleep(0.3)  # не флудим API
+        enrich_channel(ch)
+        time.sleep(CHANNEL_DELAY)
 
-    # считаем статистику
-    blocked = sum(1 for c in enriched if c.get("blocked"))
-    with_url = sum(1 for c in enriched if c.get("stream_url"))
-    print(f"→ Result: {len(enriched)} channels, "
-          f"{blocked} blocked, {with_url} with stream_url")
+    # Второй проход — для каналов, где не удалось получить URL и не blocked
+    retry_pool = [
+        c for c in channels
+        if not c.get("stream_url") and not c.get("blocked")
+    ]
+
+    if retry_pool:
+        print(f"\n--- Second pass: {len(retry_pool)} channels without URL ---")
+        time.sleep(5)  # даём Rutube передохнуть
+        for i, ch in enumerate(retry_pool, 1):
+            print(f"[retry {i}/{len(retry_pool)}] {ch['id']} — {ch['title']}")
+            enrich_channel(ch)
+            time.sleep(1.0)
+
+    # Статистика
+    blocked_count = sum(1 for c in channels if c.get("blocked"))
+    with_url_count = sum(1 for c in channels if c.get("stream_url"))
+    no_url_count = len(channels) - blocked_count - with_url_count
+
+    print("\n" + "=" * 60)
+    print("RESULT")
+    print("=" * 60)
+    print(f"Total channels:    {len(channels)}")
+    print(f"✅ With stream_url: {with_url_count}")
+    print(f"🚫 Blocked:        {blocked_count}")
+    print(f"⚠️  No URL:         {no_url_count}")
+
+    if no_url_count > 0:
+        print(f"\nChannels without URL (первые 10):")
+        for c in channels:
+            if not c.get("stream_url") and not c.get("blocked"):
+                print(f"  - {c['id']} — {c['title']}")
+                no_url_count -= 1
+                if no_url_count <= -10:
+                    break
+
+    print()
 
     payload = {
         "updated": datetime.now(timezone.utc).isoformat(),
-        "total": len(enriched),
-        "channels": enriched,
+        "total": len(channels),
+        "with_url": with_url_count,
+        "blocked": blocked_count,
+        "no_url": len(channels) - blocked_count - with_url_count,
+        "channels": channels,
     }
 
     with open("channels.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
     print("→ Saved channels.json")
+    print(f"→ Done at {datetime.now(timezone.utc).isoformat()}")
 
 
 if __name__ == "__main__":
