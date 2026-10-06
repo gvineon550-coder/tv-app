@@ -8,7 +8,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,6 +22,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
 import androidx.media3.datasource.DefaultHttpDataSource
@@ -27,17 +32,23 @@ import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import com.gvineon550coder.tvapp.PlayerService
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private const val VIDEO_USER_AGENT =
     "Mozilla/5.0 (Linux; Android 13; Android TV) " +
     "AppleWebKit/537.36 (KHTML, like Gecko) " +
     "Chrome/120.0.0.0 Safari/537.36"
 
+private const val MAX_RETRIES = 3
+private const val RETRY_DELAY_MS = 3_000L
+
 @Composable
 fun PlayerScreen(
     streamUrl: String?,
     onResolutionChanged: (String) -> Unit = {},
     onPlayingChanged: (Boolean) -> Unit = {},
+    onFatalError: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize().background(Color.Black)) {
@@ -50,6 +61,9 @@ fun PlayerScreen(
         } else {
             val ctx = LocalContext.current
             val lifecycleOwner = LocalLifecycleOwner.current
+            val scope = rememberCoroutineScope()
+
+            var retryCount by remember(streamUrl) { mutableIntStateOf(0) }
 
             val wakeLock = remember {
                 val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -80,15 +94,23 @@ fun PlayerScreen(
             }
 
             DisposableEffect(streamUrl, player, lifecycleOwner) {
-                // Запускаем Foreground Service — система обязана держать
-                // процесс живым, пока играет прямой эфир
+                // Foreground Service стартует при входе в плеер
                 runCatching { PlayerService.start(ctx) }
 
                 val observer = LifecycleEventObserver { _, event ->
                     when (event) {
                         Lifecycle.Event.ON_PAUSE -> runCatching { player.pause() }
-                        Lifecycle.Event.ON_RESUME -> runCatching { player.play() }
-                        Lifecycle.Event.ON_STOP -> runCatching { player.pause() }
+                        Lifecycle.Event.ON_RESUME -> {
+                            runCatching { player.play() }
+                            // Возврат из фона — снова стартуем FGS
+                            runCatching { PlayerService.start(ctx) }
+                        }
+                        Lifecycle.Event.ON_STOP -> {
+                            runCatching { player.pause() }
+                            // Уход в фон — останавливаем FGS,
+                            // чтобы не висел при standby приставки
+                            runCatching { PlayerService.stop(ctx) }
+                        }
                         else -> {}
                     }
                 }
@@ -118,8 +140,30 @@ fun PlayerScreen(
                         val playing = player.isPlaying &&
                                 playbackState == Player.STATE_READY
                         onPlayingChanged(playing)
+
+                        // Плеер восстановился после retry — сбрасываем счётчик
+                        if (playbackState == Player.STATE_READY) {
+                            retryCount = 0
+                        }
+
                         if (!playing && wakeLock.isHeld) {
                             runCatching { wakeLock.release() }
+                        }
+                    }
+
+                    override fun onPlayerError(error: PlaybackException) {
+                        if (retryCount < MAX_RETRIES) {
+                            retryCount++
+                            scope.launch {
+                                delay(RETRY_DELAY_MS)
+                                runCatching {
+                                    player.prepare()
+                                    player.playWhenReady = true
+                                }
+                            }
+                        } else {
+                            // Все попытки исчерпаны — просим наружу свежий URL
+                            onFatalError?.invoke()
                         }
                     }
                 }
@@ -136,7 +180,7 @@ fun PlayerScreen(
                     runCatching {
                         if (wakeLock.isHeld) wakeLock.release()
                     }
-                    // Останавливаем Foreground Service
+                    // Останавливаем FGS при выходе из плеера
                     runCatching { PlayerService.stop(ctx) }
                 }
             }
@@ -145,12 +189,8 @@ fun PlayerScreen(
                 factory = { context ->
                     PlayerView(context).apply {
                         this.player = player
-                        // Полностью отключаем контроллер: никакой шкалы времени,
-                        // никаких кнопок play/pause — для живого эфира они бесполезны
                         this.useController = false
-                        // Убираем спиннер буферизации (крутящийся кружок)
                         this.setShowBuffering(PlayerView.SHOW_BUFFERING_NEVER)
-                        // Не перехватывать фокус
                         isFocusable = false
                         isFocusableInTouchMode = false
                         descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
