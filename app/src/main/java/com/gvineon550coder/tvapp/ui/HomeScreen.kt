@@ -58,6 +58,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.coroutines.delay
 
 private val FOCUS_BORDER = Color(0xFFFFD54F)
 
@@ -391,7 +392,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     // ---------- ОБЫЧНЫЙ ВИД ----------
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
 
-        // Верхняя панель — только кнопки, без поиска
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -429,7 +429,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 firstItemFocus = firstChannelFocus
             )
 
-            // Плеер — теперь занимает всё оставшееся пространство
             Column(modifier = Modifier.fillMaxHeight().weight(1f)) {
                 Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
                     PlayerScreen(
