@@ -7,7 +7,6 @@ import kotlinx.coroutines.withContext
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.LocalDate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -184,81 +183,6 @@ class RutubeRepository @Inject constructor(
         return M3u8Parser.pickBest(variants, maxHeight) ?: hlsUrl
     }
 
-    // ---------- Программа передач ----------
-    suspend fun fetchProgram(id: String, date: LocalDate): List<Program> = withContext(Dispatchers.IO) {
-        val raw = retry { api().getProgram(id, date.toString()) }
-            ?: return@withContext emptyList()
-        parseProgram(raw, date)
-    }
-
-    private fun parseProgram(data: Map<String, Any>, baseDate: LocalDate): List<Program> {
-        val list = findProgramList(data) ?: return emptyList()
-        val out = mutableListOf<Program>()
-        for (entry in list) {
-            if (entry !is Map<*, *>) continue
-            val title = firstString(entry, LIST_OF_TITLE_KEYS) ?: continue
-            val start = pickTime(entry, START_KEYS, baseDate)
-            val end = pickTime(entry, END_KEYS, start?.toLocalDate() ?: baseDate)
-            val desc = firstString(entry, DESC_KEYS) ?: ""
-            out += Program(title, start, end, desc)
-        }
-        return out.sortedWith(compareBy(nullsLast()) { it.start })
-    }
-
-    private fun findProgramList(data: Any?, depth: Int = 0): List<*>? {
-        if (depth > 6) return null
-        when (data) {
-            is List<*> -> {
-                if (data.isEmpty()) return null
-                val looks = data.count {
-                    it is Map<*, *> && hasAny(it, LIST_OF_TITLE_KEYS)
-                }
-                if (looks * 2 >= data.size && looks > 0) return data
-                data.forEach { findProgramList(it, depth + 1)?.let { r -> return r } }
-            }
-            is Map<*, *> -> {
-                val pref = mutableListOf<Any?>()
-                val rest = mutableListOf<Any?>()
-                for ((k, v) in data) {
-                    if (v !is Map<*, *> && v !is List<*>) continue
-                    if (k in LIST_KEYS) pref += v else rest += v
-                }
-                (pref + rest).forEach {
-                    findProgramList(it, depth + 1)?.let { r -> return r }
-                }
-            }
-        }
-        return null
-    }
-
-    private fun hasAny(map: Map<*, *>, keys: Set<String>): Boolean =
-        keys.any { map[it] != null && map[it].toString().isNotBlank() }
-
-    private fun firstString(map: Map<*, *>, keys: Set<String>): String? {
-        for (k in keys) {
-            val v = map[k] ?: continue
-            if (v is Map<*, *>) {
-                val inner = v["rus"] ?: v["ru"] ?: v["name"] ?: v.values.firstOrNull()
-                if (inner != null) return inner.toString().trim()
-            }
-            val s = v.toString().trim()
-            if (s.isNotEmpty()) return s
-        }
-        return null
-    }
-
-    private fun pickTime(
-        map: Map<*, *>,
-        keys: Set<String>,
-        baseDate: LocalDate?
-    ): java.time.LocalDateTime? {
-        for (k in keys) {
-            val v = map[k] ?: continue
-            parseProgramTime(v, baseDate)?.let { return it }
-        }
-        return null
-    }
-
     // ---------- Скрытые / заблокированные ----------
     private fun isBlocked(resp: PlayOptionsResponse): Boolean {
         val t = resp.type
@@ -327,26 +251,5 @@ class RutubeRepository @Inject constructor(
             val t = s.trim()
             return CATEGORY_RENAMES[t] ?: t
         }
-
-        private val LIST_OF_TITLE_KEYS = setOf(
-            "title", "name", "program_title", "event_name",
-            "show_title", "caption", "topic"
-        )
-        private val START_KEYS = setOf(
-            "start", "start_time", "begin_time", "begin",
-            "start_date", "begin_date", "air_time", "time", "date"
-        )
-        private val END_KEYS = setOf(
-            "stop", "end_time", "end", "finish_time", "finish",
-            "stop_time", "end_date", "finish_date"
-        )
-        private val DESC_KEYS = setOf(
-            "description", "desc", "details", "annotation",
-            "about", "text", "subtitle"
-        )
-        private val LIST_KEYS = setOf(
-            "results", "items", "programs", "program", "schedule",
-            "tv_program", "broadcasts", "events", "list", "data", "result"
-        )
     }
 }
