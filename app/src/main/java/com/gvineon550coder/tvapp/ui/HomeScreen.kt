@@ -223,6 +223,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 streamUrl = state.streamUrl,
                 onResolutionChanged = { vm.setResolution(it) },
                 onPlayingChanged = { vm.setPlaying(it) },
+                onFatalError = { vm.refreshCurrentStream() },
                 modifier = Modifier.fillMaxSize()
             )
 
@@ -429,7 +430,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     PlayerScreen(
                         streamUrl = state.streamUrl,
                         onResolutionChanged = { vm.setResolution(it) },
-                        onPlayingChanged = { vm.setPlaying(it) }
+                        onPlayingChanged = { vm.setPlaying(it) },
+                        onFatalError = { vm.refreshCurrentStream() }
                     )
                 }
                 if (state.streamUrl != null) {
