@@ -35,7 +35,8 @@ data class HomeState(
     val lastActivity: Long = System.currentTimeMillis(),
     val isPlaying: Boolean = false,
     val showChannelOverlay: Boolean = false,
-    val showDiagnostics: Boolean = false
+    val showDiagnostics: Boolean = false,
+    val jsonSourceUrl: String = ""
 )
 
 @HiltViewModel
@@ -56,16 +57,25 @@ class HomeViewModel @Inject constructor(
             val snap = prefs.snapshot()
             _state.value = _state.value.copy(
                 maxHeight = snap.maxHeight,
-                favorites = parseFavorites(snap.favorites)
+                favorites = parseFavorites(snap.favorites),
+                jsonSourceUrl = snap.jsonSourceUrl
             )
             loadCache(snap.cache)
+
+            // Сначала пробуем JSON-источник
+            val jsonOk = runCatching {
+                repo.loadFromJson(snap.jsonSourceUrl)
+            }.getOrDefault(false)
 
             val now = System.currentTimeMillis()
             val weekMs = 7L * 24 * 60 * 60 * 1000
             val cacheEmpty = snap.cache.isBlank() || snap.cache == "{}"
             val cacheOld = (now - snap.lastParse) > weekMs
 
-            if (cacheEmpty || cacheOld) {
+            if (jsonOk) {
+                // JSON загружен — каналы оттуда, без prefetch
+                loadChannels()
+            } else if (cacheEmpty || cacheOld) {
                 loadChannels()
             } else {
                 _state.value = _state.value.copy(
@@ -173,7 +183,10 @@ class HomeViewModel @Inject constructor(
             if (filtered.isNotEmpty()) {
                 saveCache()
                 prefs.setLastParse(System.currentTimeMillis())
-                prefetchInfo(filtered)
+                // Если JSON загружен — данные уже полные, prefetch не нужен
+                if (!repo.isJsonLoaded()) {
+                    prefetchInfo(filtered)
+                }
             }
         }
     }
@@ -295,14 +308,22 @@ class HomeViewModel @Inject constructor(
 
     fun saveSettings(apiProxy: String, apiProxyEnabled: Boolean,
                      streamProxy: String, streamProxyEnabled: Boolean,
-                     maxHeight: Int) {
+                     maxHeight: Int, jsonSourceUrl: String) {
         viewModelScope.launch {
             prefs.setApiProxy(apiProxy)
             prefs.setApiProxyEnabled(apiProxyEnabled)
             prefs.setStreamProxy(streamProxy)
             prefs.setStreamProxyEnabled(streamProxyEnabled)
             prefs.setMaxHeight(maxHeight)
-            _state.value = _state.value.copy(maxHeight = maxHeight, showSettings = false)
+            prefs.setJsonSourceUrl(jsonSourceUrl)
+            _state.value = _state.value.copy(
+                maxHeight = maxHeight,
+                showSettings = false,
+                jsonSourceUrl = jsonSourceUrl
+            )
+            // Если URL JSON изменился — перезагружаем
+            repo.clearJsonCache()
+            loadChannels()
         }
     }
 
