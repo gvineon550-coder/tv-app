@@ -89,7 +89,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val fullscreenBox = remember { FocusRequester() }
     val firstChannelFocus = remember { FocusRequester() }
 
-    // Автофокус на первый канал при старте
     LaunchedEffect(state.channels.size) {
         if (state.channels.isNotEmpty() && !state.playerFullscreen) {
             delay(300)
@@ -224,6 +223,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 onResolutionChanged = { vm.setResolution(it) },
                 onPlayingChanged = { vm.setPlaying(it) },
                 onFatalError = { vm.refreshCurrentStream() },
+                showDiagnostics = state.showDiagnostics,
                 modifier = Modifier.fillMaxSize()
             )
 
@@ -285,6 +285,9 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                             onClick = { state.currentId?.let { vm.toggleFavorite(it) } })
                         TvButton("⛶", "Свернуть",
                             onClick = { vm.exitPlayerFullscreen() })
+                        TvButton("🐞", "Диагностика",
+                            highlight = state.showDiagnostics,
+                            onClick = { vm.toggleDiagnostics() })
                         Box(Modifier.weight(1f))
                         TvButton("✕ Выйти", "Закрыть приложение",
                             danger = true,
@@ -403,6 +406,9 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 onClick = { vm.loadChannels() }, enabled = !state.loading)
             TvButton("⚙", "Настройки", onClick = { vm.openSettings() })
             TvButton("⏱", "Таймер сна", onClick = { showSleepDialog = true })
+            TvButton("🐞", "Диагностика",
+                highlight = state.showDiagnostics,
+                onClick = { vm.toggleDiagnostics() })
             Box(Modifier.weight(1f))
             TvButton("✕", "Выход", danger = true,
                 onClick = { activity?.finishAffinity() })
@@ -431,7 +437,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                         streamUrl = state.streamUrl,
                         onResolutionChanged = { vm.setResolution(it) },
                         onPlayingChanged = { vm.setPlaying(it) },
-                        onFatalError = { vm.refreshCurrentStream() }
+                        onFatalError = { vm.refreshCurrentStream() },
+                        showDiagnostics = state.showDiagnostics
                     )
                 }
                 if (state.streamUrl != null) {
