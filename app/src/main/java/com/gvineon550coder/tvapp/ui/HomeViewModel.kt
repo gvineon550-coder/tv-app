@@ -39,7 +39,8 @@ data class HomeState(
     val sleepDeadline: Long = 0L,
     val lastActivity: Long = System.currentTimeMillis(),
     val isPlaying: Boolean = false,
-    val showChannelOverlay: Boolean = false
+    val showChannelOverlay: Boolean = false,
+    val showDiagnostics: Boolean = false
 )
 
 @HiltViewModel
@@ -54,7 +55,6 @@ class HomeViewModel @Inject constructor(
     private val programCache = mutableMapOf<Pair<String, LocalDate>, List<Program>>()
     private val infoLoaded = mutableSetOf<String>()
 
-    // Счётчик перезапросов URL — защита от бесконечного цикла
     private var refreshAttempts = 0
 
     init {
@@ -86,9 +86,16 @@ class HomeViewModel @Inject constructor(
     }
 
     fun setPlaying(value: Boolean) {
-        // Успешное воспроизведение сбрасывает счётчик перезапросов
         if (value) refreshAttempts = 0
         _state.value = _state.value.copy(isPlaying = value)
+    }
+
+    /** Переключить диагностический оверлей. */
+    fun toggleDiagnostics() {
+        registerActivity()
+        _state.value = _state.value.copy(
+            showDiagnostics = !_state.value.showDiagnostics
+        )
     }
 
     fun setSleepTimer(minutes: Int) {
@@ -306,16 +313,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    /** Публичный вход — ручной выбор канала. Сбрасывает счётчик перезапросов. */
     fun play(channel: Channel) {
         refreshAttempts = 0
         playInternal(channel)
     }
 
-    /**
-     * Перезапрос URL текущего канала. Вызывается из плеера, когда retry исчерпаны.
-     * Максимум 2 попытки подряд — защита от бесконечного цикла.
-     */
     fun refreshCurrentStream() {
         if (refreshAttempts >= MAX_REFRESH_ATTEMPTS) {
             _state.value = _state.value.copy(
@@ -380,7 +382,6 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _state.value = _state.value.copy(programLoading = true, programDate = date)
             val list = runCatching { repo.fetchProgram(id, date) }.getOrDefault(emptyList())
-            // Кэш не должен расти бесконечно: 50 записей × ~40 КБ ≈ 2 МБ максимум
             if (programCache.size >= MAX_PROGRAM_CACHE) {
                 programCache.clear()
             }
