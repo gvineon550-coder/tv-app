@@ -18,17 +18,16 @@ class TvApp : Application(), ImageLoaderFactory {
             }
             // Логотипы каналов — мелкие (5–20 КБ),
             // 15 МБ RAM хватает на ~750–3000 картинок.
-            // Не даём кэшу расти до дефолтных 250 МБ.
             .memoryCache {
                 MemoryCache.Builder(this)
-                    .maxSizeBytes(15L * 1024 * 1024)
+                    .maxSizeBytes(15 * 1024 * 1024)
                     .build()
             }
             // Дисковый кэш тоже ограничиваем: 20 МБ хватает с запасом.
             .diskCache {
                 DiskCache.Builder()
                     .directory(cacheDir.resolve("image_cache"))
-                    .maxSizeBytes(20L * 1024 * 1024)
+                    .maxSizeBytes(20 * 1024 * 1024)
                     .build()
             }
             .build()
