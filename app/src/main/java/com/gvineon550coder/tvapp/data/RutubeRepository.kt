@@ -1,5 +1,6 @@
 package com.gvineon550coder.tvapp.data
 
+import com.google.gson.annotations.SerializedName
 import com.gvineon550coder.tvapp.util.ProxyUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -10,6 +11,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// ---------- DTO для JSON с GitHub Pages ----------
+
+data class JsonChannelsResponse(
+    @SerializedName("updated") val updated: String? = null,
+    @SerializedName("total") val total: Int = 0,
+    @SerializedName("channels") val channels: List<JsonChannel>? = null
+)
+
+data class JsonChannel(
+    @SerializedName("id") val id: String? = null,
+    @SerializedName("title") val title: String? = null,
+    @SerializedName("description") val description: String? = null,
+    @SerializedName("category") val category: String? = null,
+    @SerializedName("avatar") val avatar: String? = null,
+    @SerializedName("stream_url") val streamUrl: String? = null,
+    @SerializedName("blocked") val blocked: Boolean = false,
+    @SerializedName("blocked_reason") val blockedReason: String? = null
+)
+
 @Singleton
 class RutubeRepository @Inject constructor(
     private val prefs: Prefs
@@ -18,6 +38,16 @@ class RutubeRepository @Inject constructor(
 
     private var cachedApiProxy: String? = null
     private var api: ApiService = buildApi(null)
+
+    // ---------- Кеш JSON в памяти ----------
+    @Volatile private var jsonSourceUrl: String? = null
+    @Volatile private var jsonChannels: List<Channel>? = null
+    @Volatile private var jsonStreamUrls: Map<String, String> = emptyMap()
+    @Volatile private var jsonBlocked: Map<String, String> = emptyMap()
+    @Volatile private var jsonDescriptions: Map<String, String> = emptyMap()
+    @Volatile private var jsonCategories: Map<String, String> = emptyMap()
+    @Volatile private var jsonAvatars: Map<String, String> = emptyMap()
+    @Volatile private var jsonLoadedFlag: Boolean = false
 
     private fun buildApi(proxy: String?): ApiService {
         val client = ProxyUtil.buildClient(proxy)
@@ -40,10 +70,6 @@ class RutubeRepository @Inject constructor(
         return api
     }
 
-    /**
-     * Повтор запроса при сетевых ошибках. Небольшая пауза между попытками.
-     * Всего 3 попытки: 1 основная + 2 retry.
-     */
     private suspend fun <T> retry(
         attempts: Int = 3,
         initialDelayMs: Long = 400L,
@@ -63,13 +89,103 @@ class RutubeRepository @Inject constructor(
             }
         }
         if (lastEx != null) {
-            // не пробрасываем — вызывающий код сам решит, что делать
+            // не пробрасываем
         }
         return null
     }
 
+    // ---------- JSON-источник ----------
+
+    fun isJsonLoaded(): Boolean = jsonLoadedFlag
+
+    /**
+     * Загружает JSON с GitHub Pages. Кеширует в памяти.
+     * Если URL не изменился и JSON уже загружен — не перекачивает.
+     */
+    suspend fun loadFromJson(url: String?): Boolean = withContext(Dispatchers.IO) {
+        if (url.isNullOrBlank()) {
+            jsonLoadedFlag = false
+            return@withContext false
+        }
+        if (jsonLoadedFlag && jsonSourceUrl == url && jsonChannels != null) {
+            return@withContext true
+        }
+
+        val body = retry {
+            val client = ProxyUtil.buildClient(null)
+            val req = Request.Builder()
+                .url(url)
+                .header("Accept", "application/json")
+                .build()
+            client.newCall(req).execute().body?.string().orEmpty()
+        } ?: return@withContext false
+
+        if (body.isEmpty()) return@withContext false
+
+        val parsed = runCatching {
+            com.google.gson.Gson().fromJson(body, JsonChannelsResponse::class.java)
+        }.getOrNull() ?: return@withContext false
+
+        val rawChannels = parsed.channels ?: return@withContext false
+
+        val channels = mutableListOf<Channel>()
+        val streams = mutableMapOf<String, String>()
+        val blocked = mutableMapOf<String, String>()
+        val descriptions = mutableMapOf<String, String>()
+        val categories = mutableMapOf<String, String>()
+        val avatars = mutableMapOf<String, String>()
+
+        for (jc in rawChannels) {
+            val id = jc.id ?: continue
+            val title = jc.title?.trim().orEmpty()
+            if (title.isEmpty()) continue
+
+            if (jc.blocked) {
+                blocked[id] = jc.blockedReason ?: "видео недоступно"
+                continue
+            }
+
+            channels += Channel(
+                id = id,
+                title = title,
+                description = jc.description ?: "",
+                category = jc.category?.takeIf { it.isNotBlank() },
+                avatar = jc.avatar ?: ""
+            )
+            jc.streamUrl?.let { streams[id] = it }
+            descriptions[id] = jc.description ?: ""
+            categories[id] = jc.category ?: ""
+            avatars[id] = jc.avatar ?: ""
+        }
+
+        jsonSourceUrl = url
+        jsonChannels = channels
+        jsonStreamUrls = streams
+        jsonBlocked = blocked
+        jsonDescriptions = descriptions
+        jsonCategories = categories
+        jsonAvatars = avatars
+        jsonLoadedFlag = true
+        true
+    }
+
+    fun clearJsonCache() {
+        jsonSourceUrl = null
+        jsonChannels = null
+        jsonStreamUrls = emptyMap()
+        jsonBlocked = emptyMap()
+        jsonDescriptions = emptyMap()
+        jsonCategories = emptyMap()
+        jsonAvatars = emptyMap()
+        jsonLoadedFlag = false
+    }
+
     // ---------- Каналы ----------
     suspend fun fetchChannels(): List<Channel> = withContext(Dispatchers.IO) {
+        // Приоритет — JSON
+        jsonChannels?.let { return@withContext it }
+
+        // Fallback — API
         val raw = retry { api().getChannels() } ?: return@withContext emptyList()
         val synonyms = parseSynonyms(prefs.snapshot().synonyms)
         parseChannels(raw, synonyms)
@@ -123,6 +239,26 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Инфо о канале ----------
     suspend fun fetchChannelInfo(id: String): ChannelInfo = withContext(Dispatchers.IO) {
+        if (jsonLoadedFlag) {
+            val blockedReason = jsonBlocked[id]
+            if (blockedReason != null) {
+                return@withContext ChannelInfo(
+                    ok = true, blocked = true, reason = blockedReason
+                )
+            }
+            if (jsonChannels?.any { it.id == id } == true) {
+                return@withContext ChannelInfo(
+                    ok = true,
+                    blocked = false,
+                    description = jsonDescriptions[id] ?: "",
+                    category = jsonCategories[id] ?: "",
+                    avatar = jsonAvatars[id] ?: ""
+                )
+            }
+            return@withContext ChannelInfo(ok = false)
+        }
+
+        // Fallback — API
         val resp = retry { api().getPlayOptions(id) }
             ?: return@withContext ChannelInfo(ok = false)
         val blocked = isBlocked(resp)
@@ -139,6 +275,28 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Поток ----------
     suspend fun fetchStream(id: String, maxHeight: Int): ChannelInfo = withContext(Dispatchers.IO) {
+        if (jsonLoadedFlag) {
+            val blockedReason = jsonBlocked[id]
+            if (blockedReason != null) {
+                return@withContext ChannelInfo(
+                    ok = true, blocked = true, reason = blockedReason
+                )
+            }
+            val url = jsonStreamUrls[id]
+            if (url != null) {
+                val streamUrl = resolveStream(url, maxHeight)
+                return@withContext ChannelInfo(
+                    ok = true,
+                    streamUrl = streamUrl,
+                    description = jsonDescriptions[id] ?: "",
+                    category = jsonCategories[id] ?: "",
+                    avatar = jsonAvatars[id] ?: ""
+                )
+            }
+            // Канал есть, но URL нет — пробуем API fallback
+        }
+
+        // Fallback — API
         val resp = retry { api().getPlayOptions(id) }
             ?: return@withContext ChannelInfo(ok = false)
         val blocked = isBlocked(resp)
@@ -163,7 +321,6 @@ class RutubeRepository @Inject constructor(
     }
 
     private suspend fun resolveStream(hlsUrl: String, maxHeight: Int): String? {
-        // Читаем m3u8-плейлист с retry
         val body = retry {
             val client = ProxyUtil.buildClient(cachedApiProxy)
             val req = Request.Builder().url(hlsUrl)
@@ -174,7 +331,6 @@ class RutubeRepository @Inject constructor(
 
         if (body.isEmpty()) return null
 
-        // Медиа-плейлист без вариантов — отдаём как есть
         if (!body.contains("#EXT-X-STREAM-INF") && body.contains("#EXTINF")) {
             return hlsUrl
         }
