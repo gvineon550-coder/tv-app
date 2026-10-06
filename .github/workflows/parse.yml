@@ -1,0 +1,45 @@
+name: Parse Rutube Channels
+
+on:
+  schedule:
+    # Каждый понедельник в 03:00 UTC (раз в неделю)
+    - cron: '0 3 * * 1'
+  workflow_dispatch:  # ручной запуск кнопкой в Actions
+
+permissions:
+  contents: write
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run parser
+        run: python bot/parse_channels.py
+
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p dist
+          cp channels.json dist/channels.json
+          ls -la dist/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          keep_files: false
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Update channels.json'
