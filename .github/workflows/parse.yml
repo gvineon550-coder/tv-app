@@ -24,6 +24,12 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Show runner IP (не твой, GitHub)
+        run: |
+          echo "GitHub Actions runner IP:"
+          curl -s https://api.ipify.org
+          echo
+
       - name: Run parser
         run: python bot/parse_channels.py
 
