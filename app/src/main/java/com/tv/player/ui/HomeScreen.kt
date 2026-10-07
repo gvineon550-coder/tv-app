@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -87,6 +88,17 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val panelFirstBtn = remember { FocusRequester() }
     val fullscreenBox = remember { FocusRequester() }
     val firstChannelFocus = remember { FocusRequester() }
+
+    // ---------- PIN-диалог (поверх всего) ----------
+    if (state.showPinDialog) {
+        PinDialog(
+            mode = state.pinDialogMode,
+            hasPin = state.hasPin,
+            error = state.pinError,
+            onSubmit = { vm.submitPin(it) },
+            onCancel = { vm.cancelPinDialog() }
+        )
+    }
 
     LaunchedEffect(state.channels.size) {
         if (state.channels.isNotEmpty() && !state.playerFullscreen) {
@@ -177,8 +189,11 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                 initialStreamProxy = "", initialStreamProxyEnabled = false,
                 initialMaxHeight = state.maxHeight,
                 initialJsonSourceUrl = state.jsonSourceUrl,
+                hasPin = state.hasPin,
                 onSave = { a, ae, s, se, mh, jsu -> vm.saveSettings(a, ae, s, se, mh, jsu) },
-                onCancel = { vm.closeSettings() }
+                onCancel = { vm.closeSettings() },
+                onSetPin = { vm.requestSetPin() },
+                onRemovePin = { vm.requestRemovePin() }
             )
         }
         return
@@ -403,7 +418,8 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         ) {
             TvButton("⟳", "Обновить",
                 onClick = { vm.loadChannels() }, enabled = !state.loading)
-            TvButton("⚙", "Настройки", onClick = { vm.openSettings() })
+            TvButton("⚙", "Настройки",
+                onClick = { vm.onSettingsClick() })
             TvButton("⏱", "Таймер сна", onClick = { showSleepDialog = true })
             TvButton("🐞", "Диагностика",
                 highlight = state.showDiagnostics,
@@ -507,6 +523,160 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         }
     }
 }
+
+// ============================================================
+// PIN-ДИАЛОГ
+// ============================================================
+
+@Composable
+private fun PinDialog(
+    mode: PinDialogMode,
+    hasPin: Boolean,
+    error: String,
+    onSubmit: (String) -> Unit,
+    onCancel: () -> Unit
+) {
+    var input by remember { mutableStateOf("") }
+
+    val title = when (mode) {
+        PinDialogMode.OPEN_SETTINGS -> "Введите PIN"
+        PinDialogMode.SET_PIN -> "Установить PIN"
+        PinDialogMode.REMOVE_PIN -> "Снять PIN"
+        PinDialogMode.NONE -> ""
+    }
+
+    val hint = when (mode) {
+        PinDialogMode.SET_PIN -> "Минимум 4 цифры"
+        PinDialogMode.REMOVE_PIN -> "Введите текущий PIN"
+        else -> ""
+    }
+
+    AlertDialog(
+        onDismissRequest = { onCancel() },
+        title = { Text(title, style = MaterialTheme.typography.titleLarge) },
+        text = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                if (hint.isNotEmpty()) {
+                    Text(
+                        hint,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
+                Text(
+                    text = if (input.isEmpty()) "○ ○ ○ ○"
+                           else input.map { "●" }.joinToString(" "),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary
+                )
+
+                if (error.isNotEmpty()) {
+                    Text(
+                        error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+
+                PinKeyboard(
+                    onDigit = { d -> if (input.length < 6) input += d },
+                    onBackspace = { if (input.isNotEmpty()) input = input.dropLast(1) },
+                    onSubmit = { if (input.isNotEmpty()) onSubmit(input) }
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { if (input.isNotEmpty()) onSubmit(input) }) {
+                Text("ОК")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { onCancel() }) {
+                Text("Отмена")
+            }
+        }
+    )
+}
+
+@Composable
+private fun PinKeyboard(
+    onDigit: (String) -> Unit,
+    onBackspace: () -> Unit,
+    onSubmit: () -> Unit
+) {
+    val rows = listOf(
+        listOf("1", "2", "3"),
+        listOf("4", "5", "6"),
+        listOf("7", "8", "9"),
+        listOf("⌫", "0", "ОК")
+    )
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        for (row in rows) {
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                for (key in row) {
+                    PinKey(
+                        label = key,
+                        onClick = {
+                            when (key) {
+                                "⌫" -> onBackspace()
+                                "ОК" -> onSubmit()
+                                else -> onDigit(key)
+                            }
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PinKey(label: String, onClick: () -> Unit) {
+    var isFocused by remember { mutableStateOf(false) }
+
+    val bg = when {
+        isFocused -> MaterialTheme.colorScheme.primary
+        else -> MaterialTheme.colorScheme.surfaceVariant
+    }
+    val fg = when {
+        isFocused -> MaterialTheme.colorScheme.onPrimary
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+
+    Box(
+        modifier = Modifier
+            .size(width = 64.dp, height = 48.dp)
+            .background(bg, RoundedCornerShape(8.dp))
+            .border(
+                width = if (isFocused) 2.dp else 0.dp,
+                color = if (isFocused) FOCUS_BORDER else Color.Transparent,
+                shape = RoundedCornerShape(8.dp)
+            )
+            .focusable()
+            .onFocusChanged { isFocused = it.isFocused }
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            label,
+            style = MaterialTheme.typography.titleMedium,
+            color = fg
+        )
+    }
+}
+
+// ============================================================
+// КНОПКА
+// ============================================================
 
 @Composable
 private fun TvButton(
