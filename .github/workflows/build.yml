@@ -47,14 +47,14 @@ jobs:
       - name: Lint
         run: ./gradlew lintDebug --stacktrace || echo "Lint warnings ignored"
 
-      - name: Build Debug APK
+      - name: Build Debug APK (для отладки)
         run: >
           ./gradlew assembleDebug
           -PappVersionCode=${{ github.run_number }}
           -PappVersionName=1.0.${{ github.run_number }}
           --stacktrace
 
-      - name: Build Release APK (проверка сборки)
+      - name: Build Release APK (с R8)
         run: >
           ./gradlew assembleRelease
           -PappVersionCode=${{ github.run_number }}
@@ -64,7 +64,8 @@ jobs:
       - name: Prepare APK
         run: |
           mkdir -p apk-out
-          cp app/build/outputs/apk/debug/app-debug.apk \
+          # Копируем RELEASE APK (с R8-обфускацией)
+          cp app/build/outputs/apk/release/app-release.apk \
              apk-out/TV-1.0.${{ github.run_number }}.apk
 
       - name: Upload Artifact
@@ -80,7 +81,7 @@ jobs:
           tag_name: build-${{ github.run_number }}
           name: TV 1.0.${{ github.run_number }}
           body: |
-            Автоматическая сборка.
+            Автоматическая сборка (release, R8).
             Версия: 1.0.${{ github.run_number }}
             Коммит: ${{ github.sha }}
           files: apk-out/TV-1.0.${{ github.run_number }}.apk
