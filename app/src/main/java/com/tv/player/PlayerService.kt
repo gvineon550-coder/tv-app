@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp
+package com.tv.player
 
 import android.app.Notification
 import android.app.NotificationChannel

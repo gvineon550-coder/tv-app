@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.data
+package com.tv.player.data
 
 import okhttp3.ResponseBody
 import retrofit2.http.GET

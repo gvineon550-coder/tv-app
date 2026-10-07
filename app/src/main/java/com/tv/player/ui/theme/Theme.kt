@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.ui.theme
+package com.tv.player.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme

@@ -1,7 +1,7 @@
-package com.gvineon550coder.tvapp.data
+package com.tv.player.data
 
 import com.google.gson.annotations.SerializedName
-import com.gvineon550coder.tvapp.util.ProxyUtil
+import com.tv.player.util.ProxyUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext

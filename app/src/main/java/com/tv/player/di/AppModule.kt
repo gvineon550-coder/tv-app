@@ -1,7 +1,7 @@
-package com.gvineon550coder.tvapp.di
+package com.tv.player.di
 
 import android.content.Context
-import com.gvineon550coder.tvapp.data.Prefs
+import com.tv.player.data.Prefs
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.ui
+package com.tv.player.ui
 
 import android.app.Activity
 import androidx.activity.compose.BackHandler

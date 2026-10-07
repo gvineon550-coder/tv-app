@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.data
+package com.tv.player.data
 
 import java.net.URI
 

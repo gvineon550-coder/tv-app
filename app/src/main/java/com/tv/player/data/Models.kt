@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.data
+package com.tv.player.data
 
 import androidx.compose.runtime.Immutable
 import java.time.LocalDate

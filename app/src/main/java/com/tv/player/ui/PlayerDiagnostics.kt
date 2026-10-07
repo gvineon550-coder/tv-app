@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.ui
+package com.tv.player.ui
 
 import androidx.media3.common.PlaybackException
 

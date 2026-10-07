@@ -1,11 +1,11 @@
-package com.gvineon550coder.tvapp.ui
+package com.tv.player.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gvineon550coder.tvapp.data.Channel
-import com.gvineon550coder.tvapp.data.ChannelInfo
-import com.gvineon550coder.tvapp.data.Prefs
-import com.gvineon550coder.tvapp.data.RutubeRepository
+import com.tv.player.data.Channel
+import com.tv.player.data.ChannelInfo
+import com.tv.player.data.Prefs
+import com.tv.player.data.RutubeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

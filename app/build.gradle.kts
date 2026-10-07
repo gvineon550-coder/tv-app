@@ -11,7 +11,7 @@ val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntO
 val appVersionName = (project.findProperty("appVersionName") as String?) ?: "1.0"
 
 android {
-    namespace = "com.gvineon550coder.tvapp"
+    namespace = "com.tv.player"
     compileSdk = 35
 
     defaultConfig {

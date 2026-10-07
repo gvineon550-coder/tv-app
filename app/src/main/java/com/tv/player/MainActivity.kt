@@ -1,11 +1,11 @@
-package com.gvineon550coder.tvapp
+package com.tv.player
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.tv.material3.Surface
-import com.gvineon550coder.tvapp.ui.HomeScreen
-import com.gvineon550coder.tvapp.ui.theme.TVTheme
+import com.tv.player.ui.HomeScreen
+import com.tv.player.ui.theme.TVTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.util
+package com.tv.player.util
 
 import okhttp3.Credentials
 import okhttp3.OkHttpClient

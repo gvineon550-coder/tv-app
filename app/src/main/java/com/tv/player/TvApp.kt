@@ -1,11 +1,11 @@
-package com.gvineon550coder.tvapp
+package com.tv.player
 
 import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
-import com.gvineon550coder.tvapp.util.ProxyUtil
+import com.tv.player.util.ProxyUtil
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

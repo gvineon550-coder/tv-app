@@ -13,8 +13,8 @@
 -keepattributes AnnotationDefault
 
 # ---------- Модели данных (Gson читает через рефлексию) ----------
--keep class com.gvineon550coder.tvapp.data.** { *; }
--keepclassmembers class com.gvineon550coder.tvapp.data.** { *; }
+-keep class com.tv.player.data.** { *; }
+-keepclassmembers class com.tv.player.data.** { *; }
 
 # ---------- Gson ----------
 -keep class com.google.gson.** { *; }

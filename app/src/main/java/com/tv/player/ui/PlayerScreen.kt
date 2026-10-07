@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.ui
+package com.tv.player.ui
 
 import android.content.Context
 import android.os.PowerManager
@@ -36,7 +36,7 @@ import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
-import com.gvineon550coder.tvapp.PlayerService
+import com.tv.player.PlayerService
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

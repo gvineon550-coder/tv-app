@@ -1,4 +1,4 @@
-package com.gvineon550coder.tvapp.ui
+package com.tv.player.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,7 +34,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.gvineon550coder.tvapp.data.Channel
+import com.tv.player.data.Channel
 
 private val FOCUS_BORDER = Color(0xFFFFD54F)
 
