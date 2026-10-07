@@ -26,6 +26,7 @@ class Prefs(private val context: Context) {
         val FAVORITES = stringPreferencesKey("favorites")
         val LAST_PARSE = longPreferencesKey("last_parse")
         val JSON_SOURCE_URL = stringPreferencesKey("json_source_url")
+        val PIN_HASH = stringPreferencesKey("pin_hash")
 
         const val DEFAULT_JSON_URL =
             "https://gvineon550-coder.github.io/tv-app/channels.json"
@@ -43,6 +44,7 @@ class Prefs(private val context: Context) {
     val jsonSourceUrl: Flow<String> = context.dataStore.data.map {
         it[JSON_SOURCE_URL] ?: DEFAULT_JSON_URL
     }
+    val pinHash: Flow<String> = context.dataStore.data.map { it[PIN_HASH] ?: "" }
 
     suspend fun setMaxHeight(v: Int) = context.dataStore.edit { it[MAX_HEIGHT] = v }
     suspend fun setApiProxy(v: String) = context.dataStore.edit { it[API_PROXY] = v }
@@ -54,6 +56,7 @@ class Prefs(private val context: Context) {
     suspend fun setFavorites(v: String) = context.dataStore.edit { it[FAVORITES] = v }
     suspend fun setLastParse(v: Long) = context.dataStore.edit { it[LAST_PARSE] = v }
     suspend fun setJsonSourceUrl(v: String) = context.dataStore.edit { it[JSON_SOURCE_URL] = v }
+    suspend fun setPinHash(v: String) = context.dataStore.edit { it[PIN_HASH] = v }
 
     suspend fun snapshot(): Snapshot = Snapshot(
         apiProxyEnabled = apiProxyEnabled.first(),
@@ -65,7 +68,8 @@ class Prefs(private val context: Context) {
         cache = cache.first(),
         favorites = favorites.first(),
         lastParse = lastParse.first(),
-        jsonSourceUrl = jsonSourceUrl.first()
+        jsonSourceUrl = jsonSourceUrl.first(),
+        pinHash = pinHash.first()
     )
 
     data class Snapshot(
@@ -78,6 +82,7 @@ class Prefs(private val context: Context) {
         val cache: String,
         val favorites: String,
         val lastParse: Long,
-        val jsonSourceUrl: String
+        val jsonSourceUrl: String,
+        val pinHash: String
     )
 }
