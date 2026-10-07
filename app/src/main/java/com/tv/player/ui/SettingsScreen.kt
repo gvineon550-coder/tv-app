@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -21,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -31,8 +33,11 @@ fun SettingsScreen(
     initialStreamProxyEnabled: Boolean,
     initialMaxHeight: Int,
     initialJsonSourceUrl: String,
+    hasPin: Boolean,
     onSave: (String, Boolean, String, Boolean, Int, String) -> Unit,
-    onCancel: () -> Unit
+    onCancel: () -> Unit,
+    onSetPin: () -> Unit,
+    onRemovePin: () -> Unit
 ) {
     var apiProxy by remember { mutableStateOf(initialApiProxy) }
     var apiProxyEnabled by remember { mutableStateOf(initialApiProxyEnabled) }
@@ -50,10 +55,27 @@ fun SettingsScreen(
     ) {
         Text("Настройки", style = MaterialTheme.typography.headlineMedium)
 
+        // ---------- Родительский контроль ----------
+        Text("Родительский контроль", style = MaterialTheme.typography.titleMedium)
         Text(
-            "Источник каналов (JSON)",
-            style = MaterialTheme.typography.titleMedium
+            if (hasPin) "PIN установлен — настройки защищены"
+            else "PIN не установлен — настройки открыты",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+        Button(
+            onClick = { if (hasPin) onRemovePin() else onSetPin() },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = if (hasPin) MaterialTheme.colorScheme.error
+                                 else MaterialTheme.colorScheme.primary,
+                contentColor = Color.White
+            )
+        ) {
+            Text(if (hasPin) "Снять PIN" else "Установить PIN")
+        }
+
+        // ---------- Источник каналов ----------
+        Text("Источник каналов (JSON)", style = MaterialTheme.typography.titleMedium)
         OutlinedTextField(
             value = jsonSourceUrl,
             onValueChange = { jsonSourceUrl = it },
