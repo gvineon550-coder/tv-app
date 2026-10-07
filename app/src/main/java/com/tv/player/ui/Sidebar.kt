@@ -1,8 +1,9 @@
 package com.tv.player.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -38,6 +39,7 @@ import com.tv.player.data.Channel
 
 private val FOCUS_BORDER = Color(0xFFFFD54F)
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Sidebar(
     channels: List<Channel>,
@@ -109,6 +111,7 @@ private fun CategoryHeader(text: String, color: Color) {
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ChannelRow(
     ch: Channel,
@@ -142,7 +145,10 @@ private fun ChannelRow(
             )
             .onFocusChanged { isFocused = it.isFocused }
             .focusable()
-            .clickable { onPick(ch) }
+            .combinedClickable(
+                onClick = { onPick(ch) },
+                onLongClick = { onToggleFavorite(ch) }
+            )
             .then(
                 if (isFocused) Modifier.border(
                     2.dp, FOCUS_BORDER, RoundedCornerShape(8.dp)
