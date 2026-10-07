@@ -7,7 +7,6 @@ plugins {
 }
 
 // Версия берётся из параметров Gradle (передаём из GitHub Actions).
-// Локально — значения по умолчанию.
 val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 1
 val appVersionName = (project.findProperty("appVersionName") as String?) ?: "1.0"
 
@@ -17,7 +16,6 @@ android {
 
     defaultConfig {
         // applicationId — то, что видит Android в системе.
-        // Не светим ник в настройках приставки.
         applicationId = "com.tv.player"
         minSdk = 23
         targetSdk = 35
@@ -42,10 +40,7 @@ android {
     }
 
     lint {
-        // Баг lint с Kotlin 2.0: детектор NullSafeMutableLiveData
-        // падает с IncompatibleClassChangeError. Мы LiveData не используем.
         disable += "NullSafeMutableLiveData"
-        // Не валить сборку за lint-предупреждения
         abortOnError = false
     }
 
@@ -54,14 +49,14 @@ android {
             isMinifyEnabled = false
         }
         release {
-            // R8 пока выключен — включим отдельным шагом
-            isMinifyEnabled = false
-            isShrinkResources = false
+            // R8 включён — обфускация + сжатие ресурсов
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Временно debug-подпись, чтобы release-APK собирался
+            // Подпись debug-ключом (для сайдлоада норм)
             signingConfig = signingConfigs.getByName("debug")
         }
     }
