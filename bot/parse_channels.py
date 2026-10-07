@@ -1,7 +1,22 @@
 #!/usr/bin/env python3
 """
 Парсер каналов Rutube для tv-app.
-Все запросы к Rutube API идут с СЕРВЕРОВ GITHUB, не с IP пользователя.
+
+Запускается через GitHub Actions по расписанию (раз в неделю).
+Все запросы к Rutube API идут С СЕРВЕРОВ GITHUB, не с IP пользователя.
+
+Что делает:
+1. Дёргает autowidget/2 — список всех каналов
+2. Для каждого канала дёргает play/options/{id}
+3. Собирает JSON со всем необходимым для приложения
+4. Публикует в ветку gh-pages
+
+Особенности:
+- Умный retry: 404/403 не повторяет, 5xx/timeout повторяет
+- Не фильтрует каналы с 404 (гео-блок GitHub) — оставляет для fallback в приложении
+- Фильтрует только явно заблокированные (blocking_rule/player_stub)
+
+Автор: gvineon550-coder
 """
 
 import json
@@ -12,7 +27,7 @@ from datetime import datetime, timezone
 try:
     import requests
 except ImportError:
-    print("ERROR: requests not installed")
+    print("ERROR: requests not installed. Run: pip install requests")
     sys.exit(1)
 
 
@@ -60,7 +75,6 @@ def http_get(url, params=None, timeout=15):
         try:
             r = requests.get(url, params=params, headers=HEADERS, timeout=timeout)
             if r.status_code in PERMANENT_ERRORS:
-                # Постоянная ошибка — не retry
                 raise requests.HTTPError(
                     f"{r.status_code} {r.reason}",
                     response=r
@@ -70,7 +84,7 @@ def http_get(url, params=None, timeout=15):
         except requests.HTTPError as e:
             status = e.response.status_code if e.response is not None else 0
             if status in PERMANENT_ERRORS:
-                raise  # не retry
+                raise
             last_ex = e
             if attempt < MAX_RETRIES - 1:
                 time.sleep(RETRY_DELAY_BASE * (attempt + 1))
@@ -165,7 +179,7 @@ def parse_channels(data):
             "stream_url": None,
             "blocked": False,
             "blocked_reason": "",
-            "unavailable": False,  # новый флаг — 404/410
+            "unavailable": False,
         })
 
     results = data.get("results")
@@ -320,11 +334,12 @@ def main():
     print(f"  timeout = {STATS['timeout']}")
     print(f"  other   = {STATS['other']}")
 
-    # Сохраняем только рабочие каналы
-    # (unavailable и blocked — исключаем из итогового JSON)
+    # Оставляем ВСЕ каналы, кроме явно blocked (blocking_rule/player_stub).
+    # 404 от GitHub IP — это гео-блок федеральных каналов для США.
+    # Твой RU IP получит URL через fallback в приложении.
     final_channels = [
         c for c in channels
-        if not c.get("unavailable") and not c.get("blocked")
+        if not c.get("blocked")
     ]
 
     print(f"\n→ Final channels in JSON: {len(final_channels)}")
