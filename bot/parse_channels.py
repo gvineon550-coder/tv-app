@@ -7,7 +7,7 @@
 
 Что делает:
 1. Дёргает autowidget/2 — список всех каналов
-2. Для каждого канала дёргает play/options/{id}
+2. Для каждого канала дёргает play/options/{id} с полным набором параметров
 3. Собирает JSON со всем необходимым для приложения
 4. Публикует в ветку gh-pages
 
@@ -15,8 +15,7 @@
 - Умный retry: 404/403 не повторяет, 5xx/timeout повторяет
 - Не фильтрует каналы с 404 (гео-блок GitHub) — оставляет для fallback в приложении
 - Фильтрует только явно заблокированные (blocking_rule/player_stub)
-
-Автор: gvineon550-coder
+- Полный набор параметров для play/options (как у веб-плеера)
 """
 
 import json
@@ -32,7 +31,7 @@ except ImportError:
 
 
 UA = (
-    "Mozilla/5.0 (Linux; Android TV) "
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36"
 )
@@ -234,11 +233,25 @@ def blocked_reason(resp):
 
 # ---------- play/options ----------
 
+def fetch_play_options(channel_id):
+    url = f"{BASE}/api/play/options/{channel_id}/"
+    params = {
+        "no_404": "true",
+        "referer": "https://rutube.ru",
+        "pver": "v2",
+        "client": "wdp",
+        "mq": "all",
+        "av1": "1",
+        "ac_client": "web",
+        "ver": "2.121.0",
+    }
+    r = http_get(url, params=params)
+    return r.json()
+
+
 def enrich_channel(ch):
     try:
-        url = f"{BASE}/api/play/options/{ch['id']}/"
-        r = http_get(url)
-        resp = r.json()
+        resp = fetch_play_options(ch["id"])
         STATS["ok"] += 1
     except requests.HTTPError as e:
         status = e.response.status_code if e.response is not None else 0
