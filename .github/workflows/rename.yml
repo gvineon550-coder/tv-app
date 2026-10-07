@@ -1,0 +1,71 @@
+name: Rename Package (one-time)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show before
+        run: |
+          echo "=== Directories with old package ==="
+          find app/src -type d -path "*gvineon550coder*" || echo "none"
+          echo "=== Files with old references ==="
+          grep -rl "com\.gvineon550coder\.tvapp" app/ 2>/dev/null | head -30 || echo "none"
+          echo "=== proguard ==="
+          grep -n "gvineon550coder" app/proguard-rules.pro || echo "none"
+
+      - name: Replace in files
+        run: |
+          # Все .kt, .xml, .kts, .pro в app/
+          find app -type f \( -name "*.kt" -o -name "*.xml" -o -name "*.kts" -o -name "*.pro" \) \
+            -exec sed -i 's/com\.gvineon550coder\.tvapp/com.tv.player/g' {} +
+          # На случай, если где-то осталось без .tvapp
+          find app -type f \( -name "*.kt" -o -name "*.xml" -o -name "*.kts" -o -name "*.pro" \) \
+            -exec sed -i 's/com\.gvineon550coder/com.tv.player/g' {} +
+
+      - name: Rename directories
+        run: |
+          # MAIN
+          if [ -d "app/src/main/java/com/gvineon550coder/tvapp" ]; then
+            mkdir -p app/src/main/java/com/tv/player
+            mv app/src/main/java/com/gvineon550coder/tvapp/* app/src/main/java/com/tv/player/
+            rm -rf app/src/main/java/com/gvineon550coder
+          fi
+          # TEST
+          if [ -d "app/src/test/java/com/gvineon550coder/tvapp" ]; then
+            mkdir -p app/src/test/java/com/tv/player
+            mv app/src/test/java/com/gvineon550coder/tvapp/* app/src/test/java/com/tv/player/
+            rm -rf app/src/test/java/com/gvineon550coder
+          fi
+          # ANDROIDTEST (если есть)
+          if [ -d "app/src/androidTest/java/com/gvineon550coder/tvapp" ]; then
+            mkdir -p app/src/androidTest/java/com/tv/player
+            mv app/src/androidTest/java/com/gvineon550coder/tvapp/* app/src/androidTest/java/com/tv/player/
+            rm -rf app/src/androidTest/java/com/gvineon550coder
+          fi
+
+      - name: Verify after
+        run: |
+          echo "=== Directories after ==="
+          find app/src -type d | grep -E "(tv|player)" || echo "none"
+          echo "=== Old references (should be 0) ==="
+          grep -r "gvineon550coder" app/ 2>/dev/null || echo "✅ OK: no gvineon550coder in app/"
+          echo "=== namespace check ==="
+          grep "namespace" app/build.gradle.kts
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "refactor: rename package com.gvineon550coder.tvapp → com.tv.player"
+          git push
