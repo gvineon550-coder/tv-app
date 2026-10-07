@@ -14,7 +14,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 import javax.inject.Inject
+
+enum class PinDialogMode {
+    NONE,
+    OPEN_SETTINGS,
+    SET_PIN,
+    REMOVE_PIN
+}
 
 data class HomeState(
     val loading: Boolean = false,
@@ -36,7 +44,11 @@ data class HomeState(
     val isPlaying: Boolean = false,
     val showChannelOverlay: Boolean = false,
     val showDiagnostics: Boolean = false,
-    val jsonSourceUrl: String = ""
+    val jsonSourceUrl: String = "",
+    val hasPin: Boolean = false,
+    val showPinDialog: Boolean = false,
+    val pinDialogMode: PinDialogMode = PinDialogMode.NONE,
+    val pinError: String = ""
 )
 
 @HiltViewModel
@@ -49,20 +61,21 @@ class HomeViewModel @Inject constructor(
     val state: StateFlow<HomeState> = _state.asStateFlow()
 
     private val infoLoaded = mutableSetOf<String>()
-
     private var refreshAttempts = 0
+    private var currentPinHash: String = ""
 
     init {
         viewModelScope.launch {
             val snap = prefs.snapshot()
+            currentPinHash = snap.pinHash
             _state.value = _state.value.copy(
                 maxHeight = snap.maxHeight,
                 favorites = parseFavorites(snap.favorites),
-                jsonSourceUrl = snap.jsonSourceUrl
+                jsonSourceUrl = snap.jsonSourceUrl,
+                hasPin = snap.pinHash.isNotBlank()
             )
             loadCache(snap.cache)
 
-            // Сначала пробуем JSON-источник
             val jsonOk = runCatching {
                 repo.loadFromJson(snap.jsonSourceUrl)
             }.getOrDefault(false)
@@ -73,7 +86,6 @@ class HomeViewModel @Inject constructor(
             val cacheOld = (now - snap.lastParse) > weekMs
 
             if (jsonOk) {
-                // JSON загружен — каналы оттуда, без prefetch
                 loadChannels()
             } else if (cacheEmpty || cacheOld) {
                 loadChannels()
@@ -83,6 +95,103 @@ class HomeViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun sha256(s: String): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        val bytes = md.digest(s.toByteArray(Charsets.UTF_8))
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
+    fun onSettingsClick() {
+        registerActivity()
+        if (_state.value.hasPin) {
+            _state.value = _state.value.copy(
+                showPinDialog = true,
+                pinDialogMode = PinDialogMode.OPEN_SETTINGS,
+                pinError = ""
+            )
+        } else {
+            openSettings()
+        }
+    }
+
+    fun requestSetPin() {
+        _state.value = _state.value.copy(
+            showPinDialog = true,
+            pinDialogMode = PinDialogMode.SET_PIN,
+            pinError = ""
+        )
+    }
+
+    fun requestRemovePin() {
+        _state.value = _state.value.copy(
+            showPinDialog = true,
+            pinDialogMode = PinDialogMode.REMOVE_PIN,
+            pinError = ""
+        )
+    }
+
+    fun submitPin(pin: String) {
+        val mode = _state.value.pinDialogMode
+        when (mode) {
+            PinDialogMode.OPEN_SETTINGS -> {
+                if (sha256(pin) == currentPinHash) {
+                    _state.value = _state.value.copy(
+                        showPinDialog = false,
+                        pinDialogMode = PinDialogMode.NONE,
+                        pinError = ""
+                    )
+                    openSettings()
+                } else {
+                    _state.value = _state.value.copy(pinError = "Неверный PIN")
+                }
+            }
+            PinDialogMode.SET_PIN -> {
+                if (pin.length < 4) {
+                    _state.value = _state.value.copy(pinError = "Минимум 4 цифры")
+                    return
+                }
+                val hash = sha256(pin)
+                viewModelScope.launch {
+                    prefs.setPinHash(hash)
+                    currentPinHash = hash
+                    _state.value = _state.value.copy(
+                        hasPin = true,
+                        showPinDialog = false,
+                        pinDialogMode = PinDialogMode.NONE,
+                        pinError = "",
+                        status = "PIN установлен"
+                    )
+                }
+            }
+            PinDialogMode.REMOVE_PIN -> {
+                if (sha256(pin) == currentPinHash) {
+                    viewModelScope.launch {
+                        prefs.setPinHash("")
+                        currentPinHash = ""
+                        _state.value = _state.value.copy(
+                            hasPin = false,
+                            showPinDialog = false,
+                            pinDialogMode = PinDialogMode.NONE,
+                            pinError = "",
+                            status = "PIN снят"
+                        )
+                    }
+                } else {
+                    _state.value = _state.value.copy(pinError = "Неверный PIN")
+                }
+            }
+            PinDialogMode.NONE -> {}
+        }
+    }
+
+    fun cancelPinDialog() {
+        _state.value = _state.value.copy(
+            showPinDialog = false,
+            pinDialogMode = PinDialogMode.NONE,
+            pinError = ""
+        )
     }
 
     fun registerActivity() {
@@ -183,7 +292,6 @@ class HomeViewModel @Inject constructor(
             if (filtered.isNotEmpty()) {
                 saveCache()
                 prefs.setLastParse(System.currentTimeMillis())
-                // Если JSON загружен — данные уже полные, prefetch не нужен
                 if (!repo.isJsonLoaded()) {
                     prefetchInfo(filtered)
                 }
@@ -233,7 +341,7 @@ class HomeViewModel @Inject constructor(
         _state.value = _state.value.copy(search = text)
     }
 
-    fun openSettings() {
+    private fun openSettings() {
         registerActivity()
         _state.value = _state.value.copy(showSettings = true)
     }
@@ -321,7 +429,6 @@ class HomeViewModel @Inject constructor(
                 showSettings = false,
                 jsonSourceUrl = jsonSourceUrl
             )
-            // Если URL JSON изменился — перезагружаем
             repo.clearJsonCache()
             loadChannels()
         }
