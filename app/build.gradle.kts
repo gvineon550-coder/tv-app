@@ -16,7 +16,9 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.gvineon550coder.tvapp"
+        // applicationId — то, что видит Android в системе.
+        // Не светим ник в настройках приставки.
+        applicationId = "com.tv.player"
         minSdk = 23
         targetSdk = 35
         versionCode = appVersionCode
