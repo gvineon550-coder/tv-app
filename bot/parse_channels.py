@@ -1,17 +1,7 @@
 #!/usr/bin/env python3
 """
 Парсер каналов Rutube для tv-app.
-
-Запускается через GitHub Actions по расписанию.
-Все запросы к Rutube API идут С СЕРВЕРОВ GITHUB, не с IP пользователя.
-
-Что делает:
-1. Дёргает autowidget/2 — список всех каналов
-2. Для каждого канала дёргает play/options/{id}
-3. Второй проход для каналов без URL
-4. Сохраняет JSON со всем необходимым для приложения
-
-Автор: gvineon550-coder
+Все запросы к Rutube API идут с СЕРВЕРОВ GITHUB, не с IP пользователя.
 """
 
 import json
@@ -22,7 +12,7 @@ from datetime import datetime, timezone
 try:
     import requests
 except ImportError:
-    print("ERROR: requests not installed. Run: pip install requests")
+    print("ERROR: requests not installed")
     sys.exit(1)
 
 
@@ -46,29 +36,51 @@ CATEGORY_RENAMES = {
     "Новости и СМИ": "Новости",
 }
 
-# Сколько попыток на один запрос
-MAX_RETRIES = 5
-# Пауза между каналами (сек)
-CHANNEL_DELAY = 0.5
-# Пауза между попытками (сек), умножается на номер попытки
-RETRY_DELAY_BASE = 1.0
+MAX_RETRIES = 3
+CHANNEL_DELAY = 0.15
+RETRY_DELAY_BASE = 0.5
+
+# Постоянные коды — не retry
+PERMANENT_ERRORS = {400, 401, 403, 404, 410, 422}
+
+# Счётчики для статистики
+STATS = {"ok": 0, "404": 0, "403": 0, "5xx": 0, "timeout": 0, "other": 0}
 
 
 # ---------- HTTP ----------
 
-def http_get(url, params=None, timeout=30):
+def http_get(url, params=None, timeout=15):
+    """
+    Умный retry:
+    - 404/403/400 и т.п. → сразу raise (постоянные ошибки)
+    - 5xx / timeout / network → retry до MAX_RETRIES
+    """
     last_ex = None
     for attempt in range(MAX_RETRIES):
         try:
             r = requests.get(url, params=params, headers=HEADERS, timeout=timeout)
+            if r.status_code in PERMANENT_ERRORS:
+                # Постоянная ошибка — не retry
+                raise requests.HTTPError(
+                    f"{r.status_code} {r.reason}",
+                    response=r
+                )
             r.raise_for_status()
             return r
-        except Exception as e:
+        except requests.HTTPError as e:
+            status = e.response.status_code if e.response is not None else 0
+            if status in PERMANENT_ERRORS:
+                raise  # не retry
             last_ex = e
             if attempt < MAX_RETRIES - 1:
-                delay = RETRY_DELAY_BASE * (attempt + 1)
-                print(f"  retry {attempt + 1}/{MAX_RETRIES - 1}: {e} (wait {delay}s)")
-                time.sleep(delay)
+                time.sleep(RETRY_DELAY_BASE * (attempt + 1))
+        except (requests.Timeout, requests.ConnectionError) as e:
+            last_ex = e
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(RETRY_DELAY_BASE * (attempt + 1))
+        except Exception as e:
+            last_ex = e
+            break
     raise last_ex
 
 
@@ -153,6 +165,7 @@ def parse_channels(data):
             "stream_url": None,
             "blocked": False,
             "blocked_reason": "",
+            "unavailable": False,  # новый флаг — 404/410
         })
 
     results = data.get("results")
@@ -207,35 +220,41 @@ def blocked_reason(resp):
 
 # ---------- play/options ----------
 
-def fetch_play_options(channel_id):
-    url = f"{BASE}/api/play/options/{channel_id}/"
-    r = http_get(url)
-    return r.json()
-
-
 def enrich_channel(ch):
-    """
-    Дополняет канал данными из play/options.
-    Возвращает True если удалось получить stream_url или определить blocked.
-    Изменяет ch in-place.
-    """
     try:
-        resp = fetch_play_options(ch["id"])
-    except Exception as e:
-        print(f"  ✗ {ch['id']}: {e}")
-        return False
+        url = f"{BASE}/api/play/options/{ch['id']}/"
+        r = http_get(url)
+        resp = r.json()
+        STATS["ok"] += 1
+    except requests.HTTPError as e:
+        status = e.response.status_code if e.response is not None else 0
+        if status == 404 or status == 410:
+            STATS["404"] += 1
+            ch["unavailable"] = True
+        elif status == 403:
+            STATS["403"] += 1
+            ch["unavailable"] = True
+        elif 500 <= status < 600:
+            STATS["5xx"] += 1
+        else:
+            STATS["other"] += 1
+        return
+    except (requests.Timeout, requests.ConnectionError):
+        STATS["timeout"] += 1
+        return
+    except Exception:
+        STATS["other"] += 1
+        return
 
     if is_blocked(resp):
         ch["blocked"] = True
         ch["blocked_reason"] = blocked_reason(resp)
-        return True
+        return
 
-    # avatar
     author = resp.get("author")
     if isinstance(author, dict):
         ch["avatar"] = author.get("avatar_url") or ""
 
-    # master m3u8 URL — приложение само выберет качество
     live = resp.get("live_streams") or {}
     if isinstance(live, dict):
         hls = live.get("hls") or []
@@ -243,10 +262,6 @@ def enrich_channel(ch):
             first = hls[0]
             if isinstance(first, dict):
                 ch["stream_url"] = first.get("url")
-                return True
-
-    # URL нет — канал существует, но live не отдаётся
-    return False
 
 
 # ---------- main ----------
@@ -266,68 +281,66 @@ def main():
 
     channels = parse_channels(data)
     print(f"→ Got {len(channels)} channels")
+    print(f"→ Estimated time: ~{int(len(channels) * CHANNEL_DELAY)} sec + network\n")
 
     if not channels:
         print("FATAL: no channels parsed")
         sys.exit(1)
 
-    print("\n--- First pass ---")
+    t_start = time.time()
     for i, ch in enumerate(channels, 1):
-        print(f"[{i}/{len(channels)}] {ch['id']} — {ch['title']}")
         enrich_channel(ch)
+        if i % 20 == 0 or i == len(channels):
+            elapsed = time.time() - t_start
+            eta = (elapsed / i) * (len(channels) - i)
+            print(f"[{i}/{len(channels)}] elapsed={int(elapsed)}s eta={int(eta)}s "
+                  f"| 404={STATS['404']} ok={STATS['ok']}")
         time.sleep(CHANNEL_DELAY)
 
-    # Второй проход — для каналов, где не удалось получить URL и не blocked
-    retry_pool = [
-        c for c in channels
-        if not c.get("stream_url") and not c.get("blocked")
-    ]
-
-    if retry_pool:
-        print(f"\n--- Second pass: {len(retry_pool)} channels without URL ---")
-        time.sleep(5)  # даём Rutube передохнуть
-        for i, ch in enumerate(retry_pool, 1):
-            print(f"[retry {i}/{len(retry_pool)}] {ch['id']} — {ch['title']}")
-            enrich_channel(ch)
-            time.sleep(1.0)
-
-    # Статистика
     blocked_count = sum(1 for c in channels if c.get("blocked"))
     with_url_count = sum(1 for c in channels if c.get("stream_url"))
-    no_url_count = len(channels) - blocked_count - with_url_count
+    unavailable_count = sum(1 for c in channels if c.get("unavailable"))
+    no_url_count = len(channels) - blocked_count - with_url_count - unavailable_count
 
     print("\n" + "=" * 60)
     print("RESULT")
     print("=" * 60)
-    print(f"Total channels:    {len(channels)}")
-    print(f"✅ With stream_url: {with_url_count}")
-    print(f"🚫 Blocked:        {blocked_count}")
-    print(f"⚠️  No URL:         {no_url_count}")
-
-    if no_url_count > 0:
-        print(f"\nChannels without URL (первые 10):")
-        for c in channels:
-            if not c.get("stream_url") and not c.get("blocked"):
-                print(f"  - {c['id']} — {c['title']}")
-                no_url_count -= 1
-                if no_url_count <= -10:
-                    break
-
+    print(f"Total channels:      {len(channels)}")
+    print(f"✅ With stream_url:  {with_url_count}")
+    print(f"🚫 Blocked:          {blocked_count}")
+    print(f"❌ Unavailable(404): {unavailable_count}")
+    print(f"⚠️  No URL:           {no_url_count}")
+    print(f"⏱️  Total time:       {int(time.time() - t_start)}s")
     print()
+    print("HTTP stats:")
+    print(f"  ok      = {STATS['ok']}")
+    print(f"  404     = {STATS['404']}")
+    print(f"  403     = {STATS['403']}")
+    print(f"  5xx     = {STATS['5xx']}")
+    print(f"  timeout = {STATS['timeout']}")
+    print(f"  other   = {STATS['other']}")
+
+    # Сохраняем только рабочие каналы
+    # (unavailable и blocked — исключаем из итогового JSON)
+    final_channels = [
+        c for c in channels
+        if not c.get("unavailable") and not c.get("blocked")
+    ]
+
+    print(f"\n→ Final channels in JSON: {len(final_channels)}")
 
     payload = {
         "updated": datetime.now(timezone.utc).isoformat(),
-        "total": len(channels),
-        "with_url": with_url_count,
-        "blocked": blocked_count,
-        "no_url": len(channels) - blocked_count - with_url_count,
-        "channels": channels,
+        "total": len(final_channels),
+        "with_url": sum(1 for c in final_channels if c.get("stream_url")),
+        "no_url": sum(1 for c in final_channels if not c.get("stream_url")),
+        "channels": final_channels,
     }
 
     with open("channels.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    print("→ Saved channels.json")
+    print("\n→ Saved channels.json")
     print(f"→ Done at {datetime.now(timezone.utc).isoformat()}")
 
 
