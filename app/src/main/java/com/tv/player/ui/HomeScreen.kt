@@ -81,7 +81,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val activity = context as? Activity
     val view = LocalView.current
 
-    // ---------- ЭКРАН АКТИВАЦИИ (если лицензия не разрешена) ----------
+    // ---------- ЭКРАН АКТИВАЦИИ ----------
     when (state.licenseState) {
         LicenseState.Checking -> {
             LicenseCheckingScreen()
@@ -116,7 +116,6 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val fullscreenBox = remember { FocusRequester() }
     val firstChannelFocus = remember { FocusRequester() }
 
-    // ---------- PIN-диалог ----------
     if (state.showPinDialog) {
         PinDialog(
             mode = state.pinDialogMode,
@@ -190,14 +189,24 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         vm.closeSettings()
     }
 
+    // ---------- ТАЙМЕР СНА (расширенный) ----------
     if (showSleepDialog) {
         AlertDialog(
             onDismissRequest = { showSleepDialog = false },
             title = { Text("Таймер сна") },
             text = {
                 Column {
-                    listOf(0 to "Выключить", 15 to "15 минут", 30 to "30 минут",
-                        60 to "1 час", 120 to "2 часа").forEach { (m, label) ->
+                    listOf(
+                        0 to "Выключить",
+                        15 to "15 минут",
+                        30 to "30 минут",
+                        60 to "1 час",
+                        120 to "2 часа",
+                        240 to "4 часа",
+                        360 to "6 часов",
+                        480 to "8 часов",
+                        720 to "12 часов"
+                    ).forEach { (m, label) ->
                         TextButton(onClick = {
                             vm.setSleepTimer(m)
                             showSleepDialog = false
@@ -578,7 +587,7 @@ private fun LicenseCheckingScreen() {
 }
 
 // ============================================================
-// ЭКРАН АКТИВАЦИИ (с прокруткой)
+// ЭКРАН АКТИВАЦИИ
 // ============================================================
 
 @Composable
@@ -615,7 +624,6 @@ private fun LicenseActivationScreen(
                 textAlign = TextAlign.Center
             )
 
-            // Крупный ID устройства (компактнее, чтобы влезал даже на телефоне)
             Surface(
                 color = MaterialTheme.colorScheme.primaryContainer,
                 shape = RoundedCornerShape(12.dp)
@@ -652,7 +660,6 @@ private fun LicenseActivationScreen(
                 Text("Выйти")
             }
 
-            // Отступ снизу, чтобы кнопки не прилипали к краю экрана
             Spacer(Modifier.height(16.dp))
         }
     }
