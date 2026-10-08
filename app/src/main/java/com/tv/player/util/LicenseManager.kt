@@ -41,10 +41,10 @@ object LicenseManager {
     // !!! Свои устройства — работают всегда, без проверок !!!
     // Узнать свой ID: первый запуск новой версии покажет его на экране активации.
     // Впиши ID телефона и приставки сюда, потом пересобери APK.
-    private val MY_DEVICES = setOf(
-        // "1234",  // ← твой телефон (заполним после первого запуска)
-        // "5678",  // ← твоя приставка (заполним после первого запуска)
-    )
+    // Пример:
+    //   private val MY_DEVICES: Set<String> = setOf("1234", "5678")
+    // Пока пусто — все устройства проверяются через licenses.json.
+    private val MY_DEVICES: Set<String> = emptySet()
 
     private const val PREFS_NAME = "license_cache"
     private const val KEY_ALLOWED = "allowed"
