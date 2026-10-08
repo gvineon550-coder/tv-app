@@ -1,12 +1,16 @@
 package com.tv.player.ui
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tv.player.data.Channel
 import com.tv.player.data.ChannelInfo
 import com.tv.player.data.Prefs
 import com.tv.player.data.RutubeRepository
+import com.tv.player.util.LicenseManager
+import com.tv.player.util.LicenseResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -22,6 +26,13 @@ enum class PinDialogMode {
     OPEN_SETTINGS,
     SET_PIN,
     REMOVE_PIN
+}
+
+enum class LicenseState {
+    Checking,
+    Allowed,
+    Denied,
+    Unknown
 }
 
 data class HomeState(
@@ -48,13 +59,18 @@ data class HomeState(
     val hasPin: Boolean = false,
     val showPinDialog: Boolean = false,
     val pinDialogMode: PinDialogMode = PinDialogMode.NONE,
-    val pinError: String = ""
+    val pinError: String = "",
+    // ---------- Лицензия ----------
+    val licenseState: LicenseState = LicenseState.Checking,
+    val deviceId: String = "",
+    val licenseReason: String = ""
 )
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repo: RutubeRepository,
-    private val prefs: Prefs
+    private val prefs: Prefs,
+    @ApplicationContext private val appContext: Context
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
@@ -66,36 +82,90 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val snap = prefs.snapshot()
-            currentPinHash = snap.pinHash
+            // ---------- 1. Проверка лицензии ПЕРВЫМ ДЕЛОМ ----------
+            checkLicense()
+
+            // Если лицензия не разрешена — не загружаем ничего
+            if (_state.value.licenseState != LicenseState.Allowed) {
+                return@launch
+            }
+
+            // ---------- 2. Обычная инициализация ----------
+            initInternal()
+        }
+    }
+
+    private suspend fun initInternal() {
+        val snap = prefs.snapshot()
+        currentPinHash = snap.pinHash
+        _state.value = _state.value.copy(
+            maxHeight = snap.maxHeight,
+            favorites = parseFavorites(snap.favorites),
+            jsonSourceUrl = snap.jsonSourceUrl,
+            hasPin = snap.pinHash.isNotBlank()
+        )
+        loadCache(snap.cache)
+
+        val jsonOk = runCatching {
+            repo.loadFromJson(snap.jsonSourceUrl)
+        }.getOrDefault(false)
+
+        val now = System.currentTimeMillis()
+        val weekMs = 7L * 24 * 60 * 60 * 1000
+        val cacheEmpty = snap.cache.isBlank() || snap.cache == "{}"
+        val cacheOld = (now - snap.lastParse) > weekMs
+
+        if (jsonOk) {
+            loadChannels()
+        } else if (cacheEmpty || cacheOld) {
+            loadChannels()
+        } else {
             _state.value = _state.value.copy(
-                maxHeight = snap.maxHeight,
-                favorites = parseFavorites(snap.favorites),
-                jsonSourceUrl = snap.jsonSourceUrl,
-                hasPin = snap.pinHash.isNotBlank()
+                status = "Каналов: ${_state.value.channels.size} (кеш)"
             )
-            loadCache(snap.cache)
+        }
+    }
 
-            val jsonOk = runCatching {
-                repo.loadFromJson(snap.jsonSourceUrl)
-            }.getOrDefault(false)
+    // ---------- Проверка лицензии ----------
 
-            val now = System.currentTimeMillis()
-            val weekMs = 7L * 24 * 60 * 60 * 1000
-            val cacheEmpty = snap.cache.isBlank() || snap.cache == "{}"
-            val cacheOld = (now - snap.lastParse) > weekMs
+    private suspend fun checkLicense() {
+        _state.value = _state.value.copy(
+            licenseState = LicenseState.Checking,
+            deviceId = LicenseManager.getDeviceId()
+        )
+        val result = runCatching { LicenseManager.check(appContext) }.getOrNull()
+        when (result) {
+            is LicenseResult.Allowed -> _state.value = _state.value.copy(
+                licenseState = LicenseState.Allowed,
+                licenseReason = ""
+            )
+            is LicenseResult.Denied -> _state.value = _state.value.copy(
+                licenseState = LicenseState.Denied,
+                licenseReason = "Устройство не в списке разрешённых"
+            )
+            is LicenseResult.Unknown -> _state.value = _state.value.copy(
+                licenseState = LicenseState.Unknown,
+                licenseReason = result.reason
+            )
+            null -> _state.value = _state.value.copy(
+                licenseState = LicenseState.Unknown,
+                licenseReason = "Ошибка проверки"
+            )
+        }
+    }
 
-            if (jsonOk) {
-                loadChannels()
-            } else if (cacheEmpty || cacheOld) {
-                loadChannels()
-            } else {
-                _state.value = _state.value.copy(
-                    status = "Каналов: ${_state.value.channels.size} (кеш)"
-                )
+    /** Кнопка «Проверить ещё раз» на экране активации. */
+    fun recheckLicense() {
+        viewModelScope.launch {
+            LicenseManager.clearCache(appContext)
+            checkLicense()
+            if (_state.value.licenseState == LicenseState.Allowed) {
+                initInternal()
             }
         }
     }
+
+    // ---------- SHA-256 ----------
 
     private fun sha256(s: String): String {
         val md = MessageDigest.getInstance("SHA-256")
