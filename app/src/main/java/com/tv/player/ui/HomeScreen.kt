@@ -22,7 +22,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -576,7 +578,7 @@ private fun LicenseCheckingScreen() {
 }
 
 // ============================================================
-// ЭКРАН АКТИВАЦИИ
+// ЭКРАН АКТИВАЦИИ (с прокруткой)
 // ============================================================
 
 @Composable
@@ -590,12 +592,13 @@ private fun LicenseActivationScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(32.dp),
+            .verticalScroll(rememberScrollState())
+            .padding(24.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
@@ -612,18 +615,18 @@ private fun LicenseActivationScreen(
                 textAlign = TextAlign.Center
             )
 
-            // Крупный ID устройства
+            // Крупный ID устройства (компактнее, чтобы влезал даже на телефоне)
             Surface(
                 color = MaterialTheme.colorScheme.primaryContainer,
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
                     text = deviceId.ifBlank { "----" },
-                    fontSize = 64.sp,
+                    fontSize = 56.sp,
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier = Modifier.padding(horizontal = 32.dp, vertical = 16.dp)
+                    modifier = Modifier.padding(horizontal = 28.dp, vertical = 12.dp)
                 )
             }
 
@@ -636,7 +639,7 @@ private fun LicenseActivationScreen(
                 )
             }
 
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(4.dp))
 
             Button(
                 onClick = onRecheck,
@@ -648,6 +651,9 @@ private fun LicenseActivationScreen(
             TextButton(onClick = onExit) {
                 Text("Выйти")
             }
+
+            // Отступ снизу, чтобы кнопки не прилипали к краю экрана
+            Spacer(Modifier.height(16.dp))
         }
     }
 }
