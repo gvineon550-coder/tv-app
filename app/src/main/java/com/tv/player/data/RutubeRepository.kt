@@ -98,10 +98,6 @@ class RutubeRepository @Inject constructor(
 
     fun isJsonLoaded(): Boolean = jsonLoadedFlag
 
-    /**
-     * Загружает JSON с GitHub Pages. Кеширует в памяти.
-     * Если URL не изменился и JSON уже загружен — не перекачивает.
-     */
     suspend fun loadFromJson(url: String?): Boolean = withContext(Dispatchers.IO) {
         if (url.isNullOrBlank()) {
             jsonLoadedFlag = false
@@ -182,10 +178,7 @@ class RutubeRepository @Inject constructor(
 
     // ---------- Каналы ----------
     suspend fun fetchChannels(): List<Channel> = withContext(Dispatchers.IO) {
-        // Приоритет — JSON
         jsonChannels?.let { return@withContext it }
-
-        // Fallback — API
         val raw = retry { api().getChannels() } ?: return@withContext emptyList()
         val synonyms = parseSynonyms(prefs.snapshot().synonyms)
         parseChannels(raw, synonyms)
@@ -238,6 +231,8 @@ class RutubeRepository @Inject constructor(
     }
 
     // ---------- Инфо о канале ----------
+    // ВАЖНО: если в JSON аватар пустой — идём в API за реальным аватаром.
+    // Это нужно для каналов, где GitHub-парсер получил 404 (гео-блок).
     suspend fun fetchChannelInfo(id: String): ChannelInfo = withContext(Dispatchers.IO) {
         if (jsonLoadedFlag) {
             val blockedReason = jsonBlocked[id]
@@ -246,16 +241,20 @@ class RutubeRepository @Inject constructor(
                     ok = true, blocked = true, reason = blockedReason
                 )
             }
-            if (jsonChannels?.any { it.id == id } == true) {
+            val jsonAvatar = jsonAvatars[id] ?: ""
+            val jsonDesc = jsonDescriptions[id] ?: ""
+            val jsonCat = jsonCategories[id] ?: ""
+            // Если в JSON всё есть — отдаём быстро, без API
+            if (jsonAvatar.isNotBlank() && jsonDesc.isNotBlank()) {
                 return@withContext ChannelInfo(
                     ok = true,
                     blocked = false,
-                    description = jsonDescriptions[id] ?: "",
-                    category = jsonCategories[id] ?: "",
-                    avatar = jsonAvatars[id] ?: ""
+                    description = jsonDesc,
+                    category = jsonCat,
+                    avatar = jsonAvatar
                 )
             }
-            return@withContext ChannelInfo(ok = false)
+            // Иначе — fallthrough в API (за аватаром или описанием)
         }
 
         // Fallback — API
@@ -293,7 +292,7 @@ class RutubeRepository @Inject constructor(
                     avatar = jsonAvatars[id] ?: ""
                 )
             }
-            // Канал есть, но URL нет — пробуем API fallback
+            // URL нет — пробуем API fallback
         }
 
         // Fallback — API
