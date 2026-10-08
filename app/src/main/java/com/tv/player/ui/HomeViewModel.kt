@@ -346,7 +346,6 @@ class HomeViewModel @Inject constructor(
 
             // Мерджим свежий JSON с кэшем:
             // если в JSON аватар/описание пустые, а в кэше заполнены — берём из кэша.
-            // Благодаря этому запросы к API идут только когда данных реально нет.
             val currentById = _state.value.channels.associateBy { it.id }
             val merged = filtered.map { fresh ->
                 val cached = currentById[fresh.id]
@@ -369,7 +368,6 @@ class HomeViewModel @Inject constructor(
                 saveCache()
                 prefs.setLastParse(System.currentTimeMillis())
 
-                // Префетч только для тех, где ВСЁ ЕЩЁ нет аватара/описания.
                 val needPrefetch = merged.filter {
                     it.avatar.isBlank() || it.description.isBlank()
                 }
@@ -398,14 +396,13 @@ class HomeViewModel @Inject constructor(
                         continue
                     }
                     infoLoaded += id
-                    if (info.description.isNotBlank() || info.category.isNotBlank()
-                        || info.avatar.isNotBlank()) {
+                    if (info.description.isNotBlank() || info.avatar.isNotBlank()) {
                         _state.value = _state.value.copy(
                             channels = _state.value.channels.map {
                                 if (it.id == id) it.copy(
                                     description = info.description.ifBlank { it.description },
-                                    category = info.category.ifBlank { it.category ?: "" }
-                                        .ifBlank { null },
+                                    // category НЕ обновляем — она из JSON, наша чистая.
+                                    // Из API приходит мусор ("Телепередачи" и т.п.).
                                     avatar = info.avatar.ifBlank { it.avatar }
                                 ) else it
                             }
