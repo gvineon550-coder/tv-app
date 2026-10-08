@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -81,7 +82,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val activity = context as? Activity
     val view = LocalView.current
 
-    // ---------- ЭКРАН АКТИВАЦИИ ----------
+    // ---------- ПРОВЕРКА ЛИЦЕНЗИИ ----------
     when (state.licenseState) {
         LicenseState.Checking -> {
             LicenseCheckingScreen()
@@ -96,9 +97,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
             )
             return
         }
-        LicenseState.Allowed -> {
-            // Продолжаем обычный HomeScreen
-        }
+        LicenseState.Allowed -> { /* продолжаем */ }
     }
 
     LaunchedEffect(state.isPlaying) {
@@ -189,13 +188,17 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
         vm.closeSettings()
     }
 
-    // ---------- ТАЙМЕР СНА (расширенный) ----------
+    // ---------- ТАЙМЕР СНА (расширенный + скролл) ----------
     if (showSleepDialog) {
         AlertDialog(
             onDismissRequest = { showSleepDialog = false },
             title = { Text("Таймер сна") },
             text = {
-                Column {
+                Column(
+                    modifier = Modifier
+                        .heightIn(max = 400.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
                     listOf(
                         0 to "Выключить",
                         15 to "15 минут",
@@ -587,7 +590,7 @@ private fun LicenseCheckingScreen() {
 }
 
 // ============================================================
-// ЭКРАН АКТИВАЦИИ
+// ЭКРАН АКТИВАЦИИ (с автофокусом)
 // ============================================================
 
 @Composable
@@ -597,6 +600,13 @@ private fun LicenseActivationScreen(
     onRecheck: () -> Unit,
     onExit: () -> Unit
 ) {
+    val recheckFocus = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        delay(300)
+        runCatching { recheckFocus.requestFocus() }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -651,7 +661,9 @@ private fun LicenseActivationScreen(
 
             Button(
                 onClick = onRecheck,
-                modifier = Modifier.width(280.dp)
+                modifier = Modifier
+                    .width(280.dp)
+                    .focusRequester(recheckFocus)
             ) {
                 Text("Проверить ещё раз", style = MaterialTheme.typography.titleMedium)
             }
