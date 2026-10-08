@@ -75,7 +75,6 @@ fun PlayerScreen(
             var retryCount by remember(streamUrl) { mutableIntStateOf(0) }
             val diagnostics = remember { mutableStateOf(PlayerDiagnostics(streamUrl = streamUrl)) }
             var playStartTime by remember(streamUrl) { mutableLongStateOf(0L) }
-            var droppedFrames by remember(streamUrl) { mutableIntStateOf(0) }
             var audioCodecName by remember(streamUrl) { mutableStateOf("—") }
             var videoCodecName by remember(streamUrl) { mutableStateOf("—") }
             var frameRate by remember(streamUrl) { mutableStateOf(0f) }
@@ -120,7 +119,6 @@ fun PlayerScreen(
                             bufferedMs = if (buffer > 0) buffer else 0,
                             currentPositionMs = player.currentPosition,
                             uptimeMs = elapsed,
-                            droppedFrames = droppedFrames,
                             playbackSpeed = player.playbackParameters.speed
                         )
                     }
@@ -216,14 +214,6 @@ fun PlayerScreen(
                         }
                     }
 
-                    override fun onDroppedVideoFrames(droppedFramesCount: Int, elapsedMs: Long) {
-                        droppedFrames += droppedFramesCount
-                        diagnostics.value = diagnostics.value.copy(
-                            droppedFrames = droppedFrames,
-                            lastEvent = "dropped +$droppedFramesCount"
-                        )
-                    }
-
                     override fun onPlayerError(error: PlaybackException) {
                         val name = errorCodeName(error.errorCode)
                         diagnostics.value = diagnostics.value.copy(
@@ -297,7 +287,7 @@ fun PlayerScreen(
 
 /**
  * Расширенный диагностический оверлей.
- * Показывает три блока: STREAM, STATS, EVENT.
+ * Три блока: STREAM, STATS, EVENT.
  */
 @Composable
 private fun DiagnosticsOverlay(
@@ -322,7 +312,6 @@ private fun DiagnosticsOverlay(
                 appendLine()
                 appendLine("── STATS ──")
                 appendLine("Speed:   ${"%.2f".format(d.playbackSpeed)}x")
-                appendLine("Dropped: ${d.droppedFrames} frames")
                 appendLine("Uptime:  ${formatUptime(d.uptimeMs)}")
                 appendLine("Errors:  ${d.errorName}")
                 if (d.errorMessage.isNotBlank())
