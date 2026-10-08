@@ -343,19 +343,34 @@ class HomeViewModel @Inject constructor(
             _state.value = _state.value.copy(loading = true, status = "Загрузка каналов...")
             val ch = runCatching { repo.fetchChannels() }.getOrDefault(emptyList())
             val filtered = ch.filterNot { it.id in _state.value.blockedIds }
+
+            // Мерджим свежий JSON с кэшем:
+            // если в JSON аватар/описание пустые, а в кэше заполнены — берём из кэша.
+            // Благодаря этому запросы к API идут только когда данных реально нет.
+            val currentById = _state.value.channels.associateBy { it.id }
+            val merged = filtered.map { fresh ->
+                val cached = currentById[fresh.id]
+                if (cached == null) fresh
+                else fresh.copy(
+                    avatar = if (fresh.avatar.isBlank()) cached.avatar else fresh.avatar,
+                    description = if (fresh.description.isBlank()) cached.description
+                                  else fresh.description,
+                    category = fresh.category ?: cached.category
+                )
+            }
+
             _state.value = _state.value.copy(
                 loading = false,
-                channels = filtered,
-                status = if (filtered.isEmpty()) "Каналы не найдены" else "Каналов: ${filtered.size}"
+                channels = merged,
+                status = if (merged.isEmpty()) "Каналы не найдены" else "Каналов: ${merged.size}"
             )
-            if (filtered.isNotEmpty()) {
+
+            if (merged.isNotEmpty()) {
                 saveCache()
                 prefs.setLastParse(System.currentTimeMillis())
 
-                // Префетч для каналов, где не хватает данных.
-                // С исправленным fetchChannelInfo — идёт в API
-                // даже при загруженном JSON, если аватар пустой.
-                val needPrefetch = filtered.filter {
+                // Префетч только для тех, где ВСЁ ЕЩЁ нет аватара/описания.
+                val needPrefetch = merged.filter {
                     it.avatar.isBlank() || it.description.isBlank()
                 }
                 if (needPrefetch.isNotEmpty()) {
