@@ -2,9 +2,6 @@ package com.tv.player.ui
 
 import androidx.media3.common.PlaybackException
 
-/**
- * Снимок состояния плеера для диагностического оверлея.
- */
 data class PlayerDiagnostics(
     val streamUrl: String = "—",
     val playbackState: String = "—",
@@ -16,7 +13,6 @@ data class PlayerDiagnostics(
     val audioCodec: String = "—",
     val bufferedMs: Long = 0,
     val currentPositionMs: Long = 0,
-    val droppedFrames: Int = 0,
     val playbackSpeed: Float = 1f,
     val uptimeMs: Long = 0,
     val errorCode: Int = 0,
