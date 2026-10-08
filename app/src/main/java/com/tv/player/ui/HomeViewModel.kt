@@ -82,10 +82,8 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            // ---------- 1. Проверка лицензии ПЕРВЫМ ДЕЛОМ ----------
+            // ---------- 1. Проверка лицензии ----------
             checkLicense()
-
-            // Если лицензия не разрешена — не загружаем ничего
             if (_state.value.licenseState != LicenseState.Allowed) {
                 return@launch
             }
@@ -126,7 +124,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    // ---------- Проверка лицензии ----------
+    // ---------- Лицензия ----------
 
     private suspend fun checkLicense() {
         _state.value = _state.value.copy(
@@ -154,7 +152,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    /** Кнопка «Проверить ещё раз» на экране активации. */
     fun recheckLicense() {
         viewModelScope.launch {
             LicenseManager.clearCache(appContext)
@@ -264,6 +261,8 @@ class HomeViewModel @Inject constructor(
         )
     }
 
+    // ---------- Общая логика ----------
+
     fun registerActivity() {
         _state.value = _state.value.copy(lastActivity = System.currentTimeMillis())
     }
@@ -354,16 +353,35 @@ class HomeViewModel @Inject constructor(
             _state.value = _state.value.copy(loading = true, status = "Загрузка каналов...")
             val ch = runCatching { repo.fetchChannels() }.getOrDefault(emptyList())
             val filtered = ch.filterNot { it.id in _state.value.blockedIds }
+
+            // Мерджим с текущим списком (из кэша):
+            // если в JSON у канала пустой avatar, а в кэше он есть — берём из кэша.
+            // Так логотипы не теряются при каждом старте.
+            val currentById = _state.value.channels.associateBy { it.id }
+            val merged = filtered.map { fresh ->
+                val cached = currentById[fresh.id]
+                if (cached != null && fresh.avatar.isBlank() && cached.avatar.isNotBlank()) {
+                    fresh.copy(avatar = cached.avatar)
+                } else fresh
+            }
+
             _state.value = _state.value.copy(
                 loading = false,
-                channels = filtered,
-                status = if (filtered.isEmpty()) "Каналы не найдены" else "Каналов: ${filtered.size}"
+                channels = merged,
+                status = if (merged.isEmpty()) "Каналы не найдены" else "Каналов: ${merged.size}"
             )
-            if (filtered.isNotEmpty()) {
+
+            if (merged.isNotEmpty()) {
                 saveCache()
                 prefs.setLastParse(System.currentTimeMillis())
-                if (!repo.isJsonLoaded()) {
-                    prefetchInfo(filtered)
+
+                // Префетчим только те, у кого всё ещё нет логотипа/описания.
+                // При первом запуске — ~117. При следующих — 0.
+                val needPrefetch = merged.filter {
+                    it.avatar.isBlank() || it.description.isBlank()
+                }
+                if (needPrefetch.isNotEmpty()) {
+                    prefetchInfo(needPrefetch)
                 }
             }
         }
