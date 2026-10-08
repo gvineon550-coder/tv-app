@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,6 +28,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -55,9 +57,12 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.delay
 
@@ -74,6 +79,26 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val activity = context as? Activity
     val view = LocalView.current
 
+    // ---------- ЭКРАН АКТИВАЦИИ (если лицензия не разрешена) ----------
+    when (state.licenseState) {
+        LicenseState.Checking -> {
+            LicenseCheckingScreen()
+            return
+        }
+        LicenseState.Denied, LicenseState.Unknown -> {
+            LicenseActivationScreen(
+                deviceId = state.deviceId,
+                reason = state.licenseReason,
+                onRecheck = { vm.recheckLicense() },
+                onExit = { activity?.finishAffinity() }
+            )
+            return
+        }
+        LicenseState.Allowed -> {
+            // Продолжаем обычный HomeScreen
+        }
+    }
+
     LaunchedEffect(state.isPlaying) {
         view.keepScreenOn = state.isPlaying
     }
@@ -89,7 +114,7 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
     val fullscreenBox = remember { FocusRequester() }
     val firstChannelFocus = remember { FocusRequester() }
 
-    // ---------- PIN-диалог (поверх всего) ----------
+    // ---------- PIN-диалог ----------
     if (state.showPinDialog) {
         PinDialog(
             mode = state.pinDialogMode,
@@ -519,6 +544,109 @@ fun HomeScreen(vm: HomeViewModel = hiltViewModel()) {
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary
                 )
+            }
+        }
+    }
+}
+
+// ============================================================
+// ЭКРАН ПРОВЕРКИ ЛИЦЕНЗИИ
+// ============================================================
+
+@Composable
+private fun LicenseCheckingScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+            Text(
+                "Проверка лицензии…",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        }
+    }
+}
+
+// ============================================================
+// ЭКРАН АКТИВАЦИИ
+// ============================================================
+
+@Composable
+private fun LicenseActivationScreen(
+    deviceId: String,
+    reason: String,
+    onRecheck: () -> Unit,
+    onExit: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(32.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                "🔒 Устройство не активировано",
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.onBackground,
+                textAlign = TextAlign.Center
+            )
+
+            Text(
+                "Попросите владельца добавить этот ID\nв список разрешённых устройств:",
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+
+            // Крупный ID устройства
+            Surface(
+                color = MaterialTheme.colorScheme.primaryContainer,
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = deviceId.ifBlank { "----" },
+                    fontSize = 64.sp,
+                    fontFamily = FontFamily.Monospace,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.padding(horizontal = 32.dp, vertical = 16.dp)
+                )
+            }
+
+            if (reason.isNotBlank()) {
+                Text(
+                    reason,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            Button(
+                onClick = onRecheck,
+                modifier = Modifier.width(280.dp)
+            ) {
+                Text("Проверить ещё раз", style = MaterialTheme.typography.titleMedium)
+            }
+
+            TextButton(onClick = onExit) {
+                Text("Выйти")
             }
         }
     }
