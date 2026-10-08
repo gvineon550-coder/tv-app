@@ -4,14 +4,17 @@ import android.content.Context
 import android.os.PowerManager
 import android.view.ViewGroup
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -70,9 +73,13 @@ fun PlayerScreen(
             val scope = rememberCoroutineScope()
 
             var retryCount by remember(streamUrl) { mutableIntStateOf(0) }
-            val diagnostics = remember {
-                mutableStateOf(PlayerDiagnostics(streamUrl = streamUrl))
-            }
+            val diagnostics = remember { mutableStateOf(PlayerDiagnostics(streamUrl = streamUrl)) }
+            var playStartTime by remember(streamUrl) { mutableLongStateOf(0L) }
+            var droppedFrames by remember(streamUrl) { mutableIntStateOf(0) }
+            var audioCodecName by remember(streamUrl) { mutableStateOf("—") }
+            var videoCodecName by remember(streamUrl) { mutableStateOf("—") }
+            var frameRate by remember(streamUrl) { mutableStateOf(0f) }
+            var currentBitrate by remember(streamUrl) { mutableIntStateOf(0) }
 
             val wakeLock = remember {
                 val pm = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -102,6 +109,25 @@ fun PlayerScreen(
                 }
             }
 
+            // Раз в секунду обновляем "живые" показатели
+            LaunchedEffect(player) {
+                while (true) {
+                    if (player.isPlaying) {
+                        if (playStartTime == 0L) playStartTime = System.currentTimeMillis()
+                        val elapsed = System.currentTimeMillis() - playStartTime
+                        val buffer = player.bufferedPosition - player.currentPosition
+                        diagnostics.value = diagnostics.value.copy(
+                            bufferedMs = if (buffer > 0) buffer else 0,
+                            currentPositionMs = player.currentPosition,
+                            uptimeMs = elapsed,
+                            droppedFrames = droppedFrames,
+                            playbackSpeed = player.playbackParameters.speed
+                        )
+                    }
+                    delay(1000)
+                }
+            }
+
             DisposableEffect(streamUrl, player, lifecycleOwner) {
                 runCatching { PlayerService.start(ctx) }
 
@@ -126,8 +152,15 @@ fun PlayerScreen(
                         if (videoSize.width > 0 && videoSize.height > 0) {
                             val res = "${videoSize.width}x${videoSize.height}"
                             onResolutionChanged(res)
+                            val fmt = player.videoFormat
+                            val codec = codecShortName(fmt?.codecs ?: fmt?.sampleMimeType)
+                            videoCodecName = codec
+                            frameRate = fmt?.frameRate ?: 0f
                             diagnostics.value = diagnostics.value.copy(
                                 videoSize = res,
+                                videoCodec = codec,
+                                frameRate = fmt?.frameRate ?: 0f,
+                                bitrate = fmt?.bitrate ?: diagnostics.value.bitrate,
                                 lastEvent = "videoSize=$res"
                             )
                         }
@@ -140,6 +173,7 @@ fun PlayerScreen(
                             lastEvent = if (isPlaying) "playing" else "paused"
                         )
                         if (isPlaying) {
+                            if (playStartTime == 0L) playStartTime = System.currentTimeMillis()
                             if (!wakeLock.isHeld) {
                                 runCatching { wakeLock.acquire(6 * 60 * 60 * 1000L) }
                             }
@@ -157,12 +191,22 @@ fun PlayerScreen(
 
                         if (playbackState == Player.STATE_READY) {
                             retryCount = 0
+                            val vFmt = player.videoFormat
+                            val aFmt = player.audioFormat
+                            val vCodec = codecShortName(vFmt?.codecs ?: vFmt?.sampleMimeType)
+                            val aCodec = codecShortName(aFmt?.codecs ?: aFmt?.sampleMimeType)
+                            if (vCodec != "—") videoCodecName = vCodec
+                            if (aCodec != "—") audioCodecName = aCodec
+                            frameRate = vFmt?.frameRate ?: 0f
+                            currentBitrate = vFmt?.bitrate ?: 0
                         }
 
                         diagnostics.value = diagnostics.value.copy(
                             playbackState = playbackStateName(playbackState),
-                            bitrate = player.videoFormat?.bitrate ?: 0,
-                            bufferedMs = player.bufferedPosition,
+                            bitrate = currentBitrate,
+                            videoCodec = videoCodecName,
+                            audioCodec = audioCodecName,
+                            frameRate = frameRate,
                             retryCount = retryCount,
                             lastEvent = "state=${playbackStateName(playbackState)}"
                         )
@@ -170,6 +214,14 @@ fun PlayerScreen(
                         if (!playing && wakeLock.isHeld) {
                             runCatching { wakeLock.release() }
                         }
+                    }
+
+                    override fun onDroppedVideoFrames(droppedFramesCount: Int, elapsedMs: Long) {
+                        droppedFrames += droppedFramesCount
+                        diagnostics.value = diagnostics.value.copy(
+                            droppedFrames = droppedFrames,
+                            lastEvent = "dropped +$droppedFramesCount"
+                        )
                     }
 
                     override fun onPlayerError(error: PlaybackException) {
@@ -244,8 +296,8 @@ fun PlayerScreen(
 }
 
 /**
- * Диагностический оверлей — плашка в левом верхнем углу.
- * Видна только при showDiagnostics = true.
+ * Расширенный диагностический оверлей.
+ * Показывает три блока: STREAM, STATS, EVENT.
  */
 @Composable
 private fun DiagnosticsOverlay(
@@ -255,19 +307,30 @@ private fun DiagnosticsOverlay(
     Box(
         modifier = modifier
             .background(Color(0xCC000000), RoundedCornerShape(8.dp))
-            .padding(10.dp)
+            .border(1.dp, Color(0x557CFF7C), RoundedCornerShape(8.dp))
+            .padding(12.dp)
     ) {
         Text(
             text = buildString {
-                appendLine("URL: …${d.streamUrl.takeLast(50)}")
-                appendLine("state: ${d.playbackState}  play=${d.isPlaying}")
-                appendLine("video: ${d.videoSize}  br=${formatBitrate(d.bitrate)}")
-                appendLine("buffer: ${formatBuffer(d.bufferedMs)}")
-                appendLine("error: ${d.errorName}")
+                appendLine("── STREAM ──")
+                appendLine("URL:     …${d.streamUrl.takeLast(48)}")
+                appendLine("State:   ${d.playbackState}  play=${d.isPlaying}")
+                appendLine("Video:   ${d.videoSize}  ${if (d.frameRate > 0) "%.0f fps".format(d.frameRate) else "— fps"}  ${d.videoCodec}")
+                appendLine("Bitrate: ${formatBitrate(d.bitrate)}")
+                appendLine("Audio:   ${d.audioCodec}")
+                appendLine("Buffer:  ${formatBuffer(d.bufferedMs)}  pos ${formatBuffer(d.currentPositionMs)}")
+                appendLine()
+                appendLine("── STATS ──")
+                appendLine("Speed:   ${"%.2f".format(d.playbackSpeed)}x")
+                appendLine("Dropped: ${d.droppedFrames} frames")
+                appendLine("Uptime:  ${formatUptime(d.uptimeMs)}")
+                appendLine("Errors:  ${d.errorName}")
                 if (d.errorMessage.isNotBlank())
-                    appendLine("msg: ${d.errorMessage.take(80)}")
-                appendLine("retry: ${d.retryCount}/$MAX_RETRIES")
-                append("last: ${d.lastEvent}")
+                    appendLine("Msg:     ${d.errorMessage.take(70)}")
+                appendLine("Retry:   ${d.retryCount}/$MAX_RETRIES")
+                appendLine()
+                append("── EVENT ──\n")
+                append("last:    ${d.lastEvent}")
             },
             color = Color(0xFF7CFF7C),
             fontFamily = FontFamily.Monospace,
