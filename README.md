@@ -97,7 +97,10 @@ APK собирается автоматически через GitHub Actions п
 
 ## 📄 Лицензия
 
-MIT License — см. файл [LICENSE](LICENSE).
+Copyright (c) 2025 gvineon550-coder.
+All rights reserved.
+
+См. файл [LICENSE](LICENSE).
 
 **Дополнительное условие:** готовые сборки APK предназначены
 исключительно для личного использования автором и ограниченным
