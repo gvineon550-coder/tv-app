@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-08T07:56:05.606012+00:00",
+  "updated": "2026-10-09T08:21:29.913387+00:00",
   "total": 252,
-  "with_url": 140,
-  "no_url": 112,
+  "with_url": 136,
+  "no_url": 116,
   "channels": [
     {
       "id": "c58f502c7bb34a8fcdd976b221fca292",
@@ -20,11 +20,11 @@
       "title": "Россия 1",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-02-24/59/f2/59f297ee687a9efe83c248bb2cf17911.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2742a3c42be661ea732705f80adb7bdd/index.m3u8?s=rM0Vt33fTq1byCWV4auZbA&e=2091445944&scheme=https",
+      "avatar": "",
+      "stream_url": null,
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": false
+      "unavailable": true
     },
     {
       "id": "11bbbec75a2ceb8cf446ad16813c6eec",
@@ -43,7 +43,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/1f/ec/1fec36d83dfaabbf819c84a5cb044858.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=4TzUCxe5EfAiUlVSC6zdgA&e=2091445946&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=sKr0vl5wgP955k9BI2dxvw&e=2091533874&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -65,7 +65,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-02-24/92/f4/92f4d552d5bba89a37690873515d4211.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d0c0d69362edfbe706cb82d973439bb5/index.m3u8?s=uYfFrtJLrprwT32dv87ZOg&e=2091445949&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/d0c0d69362edfbe706cb82d973439bb5/index.m3u8?s=NNtLwO7OxJP1qhbHd5vWbA&e=2091533878&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -87,7 +87,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-16/28/9e/289eb073bc7ac621aa65f50fd016f5f7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/faa934385b83f9e8a92f5484defae5fa/index.m3u8?s=wPU1BrTnLT8EWQYOPnlwQQ&e=2091445952&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/faa934385b83f9e8a92f5484defae5fa/index.m3u8?s=to7zq2PA_5pwc93ME7H5wg&e=2091533879&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -120,7 +120,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-08-26/9b/d9/9bd9372e6d0f3a93cc41df3660133ad2.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=b6S7nozbRn7IA5IPFmJnxA&e=2091445955&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=xoCQGZbD1WbayAnVCNPwEw&e=2091533882&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -175,7 +175,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/b1/98/b1983851416b1ac8d09cb5f82fd0e0cc.jpeg",
-      "stream_url": "https://bl.rutube.ru/livestream/5ab908fccfac5bb43ef2b1e4182256b0/index.m3u8?s=2uJJMPlVrcC6MTYkty3O7w&e=2091445960&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5ab908fccfac5bb43ef2b1e4182256b0/index.m3u8?s=how4JxZZ9HK0R2CBy8GI_g&e=2091533886&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -241,7 +241,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-09/77/e7/77e7a7d4b4bd430ae5c0af4a3e18d98c.png",
-      "stream_url": "https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=TvEr4jtuaWGY-Z2gb8fJ1A&e=2091445965&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=qCWKLJqeT4vkpGFI49fczw&e=2091533893&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -274,7 +274,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/dd/0e/dd0e078410ed58d778b38164b3ccdc0d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=0zjjwSRL9QsszbOaJ6m-rA&e=2091445968&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=ptiYNcp1cHrFf1ALq2nWGw&e=2091533896&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -285,7 +285,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-27/1f/14/1f14ec373b8c3eeebb7aad3e34d3bb74.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5a294ae1ed12c44c7053301fb5fa9ba0/index.m3u8?s=xzPrU7_p5nQg4LPaG0lzyw&e=2091445970&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5a294ae1ed12c44c7053301fb5fa9ba0/index.m3u8?s=aA2Z7jQSEIZ7TI_4RIYFuA&e=2091533897&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -307,7 +307,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/20/3e/203ef161e2de9cabf72fffc5d8621058.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cf958b6c9ae4504be5fc2c1de358a017/index.m3u8?s=IsfeOUHfE-Ofa00gaaC8bA&e=2091445971&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cf958b6c9ae4504be5fc2c1de358a017/index.m3u8?s=J3civ-5HOOLWcOF6phvJ_g&e=2091533898&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -318,7 +318,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/54/a8/54a86820effd8d892fed9c140afbda68.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5e5c002f266cbb781058c145b0522b5c/index.m3u8?s=cPeKfpAEBfz_N7DWq6V1nw&e=2091445972&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5e5c002f266cbb781058c145b0522b5c/index.m3u8?s=UCAx5uvqCouQ-LgxCPaAFw&e=2091533899&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -329,7 +329,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/8a/a3/8aa37c7091556944ca25429e5b3bb7f1.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f6a6d5c955180d0d0f80c66d0b6150d3/index.m3u8?s=lGAdWYCYzov_NS8OSb1s_Q&e=2091445973&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f6a6d5c955180d0d0f80c66d0b6150d3/index.m3u8?s=zX87iFoA1gSjqGGH_OD6KA&e=2091533900&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -340,7 +340,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-09-03/a3/3c/a33cd3c9ae10333ee84e6eebd1d5cd8f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/aff0a2b356d2e1eef55bdb868be4dcc3/index.m3u8?s=opjE1-4QErTfXr3NRAiPOQ&e=2091445974&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/aff0a2b356d2e1eef55bdb868be4dcc3/index.m3u8?s=_BdKcj6l0_Yd4K1yW22YtQ&e=2091533901&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -351,7 +351,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-06-17/29/a8/29a853fad5f91e88e4a000794a6ece44.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5835cd10c04311e400f2ed19b1b2fe8b/index.m3u8?s=deLEOuPVgRqdM66b7B3gaQ&e=2091445975&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5835cd10c04311e400f2ed19b1b2fe8b/index.m3u8?s=1Hxm4qCCAx4miQe9u_nHbQ&e=2091533902&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -362,7 +362,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/83/9f/839f369c0150480b218694039537a7d4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/92aa15b4975d9f63c4e0b82e3b7af463/index.m3u8?s=zm-z-PmozlAth9OLfx9iCg&e=2091445976&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/92aa15b4975d9f63c4e0b82e3b7af463/index.m3u8?s=lhNI2w1uvn_LEVkGFBdv_g&e=2091533902&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -373,7 +373,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/70/01/7001e77699e45cc07a6a8d53cd368f7a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ce34005d3db841e15eecb7e31749adf6/index.m3u8?s=X-EM1jTHmqQ5AniVWGC06g&e=2091445977&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ce34005d3db841e15eecb7e31749adf6/index.m3u8?s=wFGWssiim0O7OlB2MhXJ4g&e=2091533903&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -384,7 +384,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-29/d1/ce/d1ced5bc3e58a1f7d474758bbeba1bee.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f79ff24ad16cf5f5eb52994647596d13/index.m3u8?s=gixuNqwMf3kjiw6lOgnBig&e=2091445978&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f79ff24ad16cf5f5eb52994647596d13/index.m3u8?s=P15Z5BJ62P7TSkFowfzTXA&e=2091533904&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -395,7 +395,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/4f/4e/4f4e78cdec3741a959889eea37a254ca.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/57486bf8e1c01d16a5a939c463867fab/index.m3u8?s=c5Cp-geuq_w_qswXv_eHXw&e=2091445979&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/57486bf8e1c01d16a5a939c463867fab/index.m3u8?s=fhIPQ-6kJvALyZ6HY9xfJw&e=2091533905&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -406,7 +406,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-03-25/18/af/18af22d0274443fc48cf675e128bb2d7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e07fffc5eb21f98a5ade09e825d7095a/index.m3u8?s=eLHhKxfL-_KwCbedqWnN6Q&e=2091445980&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/e07fffc5eb21f98a5ade09e825d7095a/index.m3u8?s=HbYHnsGjOGr__HcUyf6U2Q&e=2091533906&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -417,7 +417,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c1/67/c16747e3dd0f24a315d3d8fbafeebfaf.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9b482361d6c845f7d70eafc98356d8bf/index.m3u8?s=Myjy47UTbaOIIFLlmTSBIg&e=2091445980&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9b482361d6c845f7d70eafc98356d8bf/index.m3u8?s=SsQIad5wF8ww9ZqYZqb7kA&e=2091533906&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -428,7 +428,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/1b/9e/1b9e00ecb55da6fdd05392a93ba30a3e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1839496ed8242ed47f5c540e25d4ba3f/index.m3u8?s=D1ZA5En3w8cn_olUa5EXNw&e=2091445981&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1839496ed8242ed47f5c540e25d4ba3f/index.m3u8?s=EGoIFMWhLq_5pnAEFTxyaw&e=2091533907&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -450,7 +450,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/6b/39/6b3999e6bb4659af19da9b38e5f28552.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9927a61345cbec5aac6558f6c5454d61/index.m3u8?s=ju3M9dp6O915CmiozH3-pQ&e=2091445983&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9927a61345cbec5aac6558f6c5454d61/index.m3u8?s=p2NtpAhWwhW3X143PcDazQ&e=2091533909&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -472,7 +472,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/8a/63/8a63f9316e1d8cc618e79963d7c93a2f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b4c501ea4129408a3c195f9ae4359c0e/index.m3u8?s=wwsj231G2t8n4K2ibMXJAw&e=2091445985&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b4c501ea4129408a3c195f9ae4359c0e/index.m3u8?s=YkGvYmTpOHFUx1yKUz_tbg&e=2091533910&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -483,7 +483,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/f1/9e/f19e2b95269809d07c7e415adb3912a8.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0115cdc35fb5234242a89de98137dca9/index.m3u8?s=AK8CCS_h77OCHq7iNVaJXA&e=2091445985&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/0115cdc35fb5234242a89de98137dca9/index.m3u8?s=VFbP5lOuv0SB5nDytJ9FFg&e=2091533911&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -494,7 +494,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/1d/0d/1d0d587513e0f0104713eb64091db824.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/813dc0c5a944559e7e52b840d09a84f6/index.m3u8?s=363Rz0qfdVbkavivFoVwpg&e=2091445986&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/813dc0c5a944559e7e52b840d09a84f6/index.m3u8?s=1RrEHT3zMSXcwLw8ISQUGg&e=2091533912&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -505,7 +505,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/f4/39/f439e4e76a407af5820d19edd46867fc.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7a35d5186515db85144d86900ebe1daf/index.m3u8?s=jLERbtbo6cZOJRGHZqVpcA&e=2091445987&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/7a35d5186515db85144d86900ebe1daf/index.m3u8?s=8UChbnBi21Li6gJwU9eddA&e=2091533913&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -516,7 +516,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-06-02/f8/a1/f8a1141d58c0fa423eddd588cabc33e3.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/55fec7f2c11f4decc66568fca39f26b2/index.m3u8?s=QeY9SmimGfqG4AutlVJyrg&e=2091445988&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/55fec7f2c11f4decc66568fca39f26b2/index.m3u8?s=-lrDxrM2WRBrbSw99hXW2w&e=2091533914&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -527,7 +527,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/39/09/3909bf8eca27c48ed07beb7b97f7f4d3.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3053eeaecc60e0adef57b81d3498fdd0/index.m3u8?s=WDETuN-15HEvpqa6ZpbLXA&e=2091445989&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3053eeaecc60e0adef57b81d3498fdd0/index.m3u8?s=MPVpR0Jr3xNbio-YyolIwg&e=2091533914&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -538,7 +538,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/96/5e/965e9455f53866b02c8bcaa9f52c185c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/671239d68ada3000a154a68efa0c7813/index.m3u8?s=b2YatvbV_7um-_6IbT6g_A&e=2091445989&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/671239d68ada3000a154a68efa0c7813/index.m3u8?s=Brw4iiGa3D01I2jF2_1YLw&e=2091533915&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -549,7 +549,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/18/0c/180ca526474da79153642b5e72d2fd7f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3fd26103b82508289ef7b7f60c77d9c8/index.m3u8?s=jwW1WWmeiPzz07RFE0V83g&e=2091445990&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3fd26103b82508289ef7b7f60c77d9c8/index.m3u8?s=sZ0FlMApIYqODgIwLjAohw&e=2091533916&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -560,7 +560,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-13/77/bf/77bf1f28278f478dcbce7ce0b826e4de.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5d9273a93631b87a3bbdc883bb3a58cb/index.m3u8?s=6Kxu_4viUaEGuosI2nuFYg&e=2091445991&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5d9273a93631b87a3bbdc883bb3a58cb/index.m3u8?s=WnUr1cY-S8mimDPBEkTLWg&e=2091533917&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -571,7 +571,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-14/2d/12/2d12d05c16f66f4726f6bdace584023f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/601ca3d760de90391c18772e43d5190e/index.m3u8?s=esQVPy1W5UA0v_qBxkTn9A&e=2091445992&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/601ca3d760de90391c18772e43d5190e/index.m3u8?s=Wp3W08a9eqce1hEiwBHOoQ&e=2091533918&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -582,7 +582,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ac/5f/ac5f56a00df9d1b298d310a79d316056.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/13b0320238d7938a2deffb4065068986/index.m3u8?s=aQfaF1qQuw5wwscWyPecYA&e=2091445993&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/13b0320238d7938a2deffb4065068986/index.m3u8?s=QmutCmtCOV1li0kCdjSOIA&e=2091533919&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -593,7 +593,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/32/80/3280c7fd0d89a677a5ff200beadf7737.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b04fc212802bbf7ec94768c029e54aa9/index.m3u8?s=uBAiwhnYP7ku2qrZ1figdA&e=2091445993&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b04fc212802bbf7ec94768c029e54aa9/index.m3u8?s=m9q38quHI76YKC4wZ7RKBA&e=2091533920&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -604,7 +604,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ea/16/ea160ce3e56ca80dee78accc3d2545d9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/df0faa92ca3f1d7df057c202fd4b21c4/index.m3u8?s=camu0QliA3dscId8-gR4kA&e=2091445994&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/df0faa92ca3f1d7df057c202fd4b21c4/index.m3u8?s=iQyUu-7GrnkULLUYc3wNSA&e=2091533920&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -615,7 +615,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/1f/79/1f7921d6d623ef9459152aefef2dd3e7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/88f6485ee28d56daf13302ac6fe3d931/index.m3u8?s=VIlt0VcH3f76M0V9ITshbA&e=2091445995&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/88f6485ee28d56daf13302ac6fe3d931/index.m3u8?s=ceSe67Y23e8o7-B2BAsMUg&e=2091533921&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -626,7 +626,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-03-12/42/86/4286ad439a1a86665c14ab3756eeb612.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/406973c72e9d0449feef05ef7811ad01/index.m3u8?s=ytYns2ykHD9B15JypW3hkA&e=2091445996&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/406973c72e9d0449feef05ef7811ad01/index.m3u8?s=ZLPtm_VMMdOWbPOxdYwINw&e=2091533922&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -637,7 +637,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/76/2f/762fb9cfa7b344bb881cc2858c227f67.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c93be53cba8a4ba6ac311b395a00f4d5/index.m3u8?s=lePamyF9EULnPx2dsEYy7A&e=2091445997&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c93be53cba8a4ba6ac311b395a00f4d5/index.m3u8?s=CIhaDHXg3Dbj7CEiDHhQvQ&e=2091533923&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -648,7 +648,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/fa/2f/fa2f824cc1998515bcc9ef37c9c808cd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/360eabf2bf139f0a97b971c4b92d09b6/index.m3u8?s=PrIxLIWwGa1tANA0p9d9ew&e=2091445998&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/360eabf2bf139f0a97b971c4b92d09b6/index.m3u8?s=h-y4kZK9cCLf-4G4gWbGig&e=2091533924&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -659,7 +659,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/0b/a2/0ba2449bee7bdf139981139420388744.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f0c302d2736a4066564b9b929b69507c/index.m3u8?s=4zpaKIuSeRVQuvyG4ADSSg&e=2091445998&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f0c302d2736a4066564b9b929b69507c/index.m3u8?s=0eJDfKYBHgDAg4eOZlpqyQ&e=2091533925&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -670,7 +670,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/f4/6b/f46ba07a0ce63afb69a982f219d25622.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9ad2099eed71b4a0e577292c3bfd0708/index.m3u8?s=5XteoQrwW4jOTWoxtyjUTQ&e=2091445999&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9ad2099eed71b4a0e577292c3bfd0708/index.m3u8?s=jKfuDoplKGSi45-hdjySdQ&e=2091533926&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -681,7 +681,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/21/4c/214c7027020023629a813bfad51df48e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/333f94ef9af118c0ac51006243053e07/index.m3u8?s=xaJPXAGI1rLRKeLr95dBnQ&e=2091446000&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/333f94ef9af118c0ac51006243053e07/index.m3u8?s=ZNCxYjZLbVCMxr0dbpXtwg&e=2091533926&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -692,7 +692,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/be/79/be79053ca037a7ce8f55e9416749d305.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e30732c0045af997cb7312822534522f/index.m3u8?s=j_uq5WrZBwLUnUpNAblmCA&e=2091446001&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/e30732c0045af997cb7312822534522f/index.m3u8?s=CUgfGwRoDs99o8IA1GR5nA&e=2091533927&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -703,7 +703,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/c3/1a/c31ab1e1c27e0a8acad1217099e1c400.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bed2dcda74004e4e9a61966d2848c027/index.m3u8?s=tLLaMkJIbgmgcZ0hmnrnzQ&e=2091446002&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/bed2dcda74004e4e9a61966d2848c027/index.m3u8?s=Ppe_LjXRip9v2T3jC1iCiQ&e=2091533928&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -714,7 +714,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-18/18/92/189287956cb0eba525a18395d1174e48.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/39c5bfe012402990e6402eded8bdc761/index.m3u8?s=GlZVvbiryD3zRDGTqByFYw&e=2091446004&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/39c5bfe012402990e6402eded8bdc761/index.m3u8?s=vjTUiMpi5jbD40lbEtvXrw&e=2091533929&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -725,7 +725,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/f6/30/f630fe805701443570600a89a1170e2e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f372aa2aff09518d050ecdf70956012c/index.m3u8?s=oIlxpQQ1Y6SXI9nMxm2C8Q&e=2091446005&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f372aa2aff09518d050ecdf70956012c/index.m3u8?s=UYeyLm4h8pqHuXXPn6d4BA&e=2091533930&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -736,7 +736,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-07-21/78/c0/78c085c5a677fb251555aec33d0e15fc.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/342a3e4f3c9bb0d7830a52af0d956c44/index.m3u8?s=EFhXajVNi8-a4sM2Rjycbw&e=2091446006&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/342a3e4f3c9bb0d7830a52af0d956c44/index.m3u8?s=p89GvZPk8a9K0S0WcdFROQ&e=2091533931&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -747,7 +747,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-21/f8/f4/f8f450a2282ff719e336a0d4766343a4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c0de1d61969a7fbdf6c68ca0b8a67769/index.m3u8?s=6EMF92ntrURukjN121p2Ew&e=2091446007&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c0de1d61969a7fbdf6c68ca0b8a67769/index.m3u8?s=DBfUcghN1gvReJyYyRm6aA&e=2091533932&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -780,7 +780,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-04-05/ed/9d/ed9d7d729fd7ab69e3d1c48a49c3eb54.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/965a025e4ebbaf0957415f80c6de8534/index.m3u8?s=jC1mR7wCdMvniNJwnhwxew&e=2091446010&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/965a025e4ebbaf0957415f80c6de8534/index.m3u8?s=om4deatPSRY8ITyD2Rauxg&e=2091533934&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -791,7 +791,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/9a/c5/9ac56bc4d78e1e0686ab531c51ee07ed.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=xYzv3RcI_vDby6vUnzZ_AA&e=2091446010&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=Li63bpFCXSRhIfXs34Yjfw&e=2091533935&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -802,7 +802,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7f/0c/7f0cfa64ff5fea6e1086012672331f9e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bbf23277dbd0dd0e6a623526d4c3f8c9/index.m3u8?s=_BqLNaxpqRbp-SAczVceww&e=2091446011&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/bbf23277dbd0dd0e6a623526d4c3f8c9/index.m3u8?s=fQUN5WRPBtVVIngXZoD4hg&e=2091533936&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1099,7 +1099,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/8a/d9/8ad96371c04089c54516df2e62e8cce9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2f052691c75d72b3ed7f3c33ea956a41/index.m3u8?s=BUsn-g9pgGX5AUDfcc0Dnw&e=2091446034&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2f052691c75d72b3ed7f3c33ea956a41/index.m3u8?s=CDE8nIKNAxgPu4XA-z53jw&e=2091533956&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1110,7 +1110,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-03-04/44/95/44952f499efa53d15cc60f8b38fee018.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3c86a67da5919dde328f95c7da0f6a31/index.m3u8?s=ypzUwPWh74L6sZqvn31MSg&e=2091446035&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3c86a67da5919dde328f95c7da0f6a31/index.m3u8?s=jGcYcEZKBgtkncTf6vHV7Q&e=2091533957&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1121,7 +1121,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/5f/25/5f2509310f1e61b3e0ed1ccfbb2b5408.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/15bb032337c7425983757d211713eb7d/index.m3u8?s=4B0DMQ-Qgnjm5n0dXo2-XA&e=2091446036&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/15bb032337c7425983757d211713eb7d/index.m3u8?s=qQiSlLEk_mZHurWKy3GtgQ&e=2091533958&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1132,7 +1132,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/fa/31/fa311e7f66372a1e399d05259a82b24f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/695f0fdefc96b6f7f2b4a311b71f596b/index.m3u8?s=bqY2e8kPBfdofiITA0JHPw&e=2091446037&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/695f0fdefc96b6f7f2b4a311b71f596b/index.m3u8?s=6081WrTUD7vXLhLaVK-stQ&e=2091533959&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1143,7 +1143,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/04/9c/049cd61894c67f9168dfafb8e9a8e7a9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/503a8ac5ca6d738f05a147764f70215b/index.m3u8?s=dZ-tlFaZDLiPubl8ANc8Ow&e=2091446038&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/503a8ac5ca6d738f05a147764f70215b/index.m3u8?s=wnDAR2Vqjm2avAoRyveXsA&e=2091533960&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1154,7 +1154,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-19/a6/a6/a6a686437113bd61d656193eea1d5d53.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1f550a23c44ec7f287324b0b3e4f5a29/index.m3u8?s=HaNkVda50ekvEh_71LVgnw&e=2091446039&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1f550a23c44ec7f287324b0b3e4f5a29/index.m3u8?s=O5fQpNLOTcIN_9GJ0HUp9g&e=2091533961&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1165,7 +1165,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-02-18/65/3d/653de6127fec6bb8006e1fdc3c303aea.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/68b2533a29f7de163842baf1b9dfc17e/index.m3u8?s=sG6IMtxioGFqRSsgRaSEFQ&e=2091446039&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/68b2533a29f7de163842baf1b9dfc17e/index.m3u8?s=R4uSpfOGdvNarR1JRjbQHQ&e=2091533961&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1176,7 +1176,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/a1/00/a100410b4001d3d8f6db1695943bb702.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7c5ae60686a94e04691f6917e1dec066/index.m3u8?s=TCLb99K1GTA0mEV6qcmnlw&e=2091446040&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/7c5ae60686a94e04691f6917e1dec066/index.m3u8?s=IqJEjoOSOcKBzHXooiA_xw&e=2091533962&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1198,7 +1198,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/c4/b1/c4b15210e7d604c9a62b5f9dc16ac528.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b7d879feefadde4e04e516dde89012cd/index.m3u8?s=jKXroTCww-KW57zXqLME0A&e=2091446042&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b7d879feefadde4e04e516dde89012cd/index.m3u8?s=u4RfCX-T2C1T0EnfcG8CIw&e=2091533964&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1209,7 +1209,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/38/5c/385ccd850d0053603ffc0b99d3d38c74.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cc1b56aa4955a144f324ad58998513bb/index.m3u8?s=m7L_CcJzdFrDEWbl0Y8tnA&e=2091446043&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cc1b56aa4955a144f324ad58998513bb/index.m3u8?s=nWOGGetYwumQevKApoygVQ&e=2091533965&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1220,7 +1220,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/fd/96/fd9659d674f43b2fe8db7dd110d62975.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/75957f55ed1e9b4e0ec00f8dd9594fcc/index.m3u8?s=fnD0sbCLJKtBjzQ0bZWBRQ&e=2091446043&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/75957f55ed1e9b4e0ec00f8dd9594fcc/index.m3u8?s=dfMEI859z-hMO9wIC-bx6Q&e=2091533966&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1253,7 +1253,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2024-09-30/f2/32/f232a591ab71574812a434bd4eff7509.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a11c890a0ec0730ad33bdaaf2d244e1a/index.m3u8?s=PpCv-XToyvbxxxLw7ZhjyQ&e=2091446047&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/a11c890a0ec0730ad33bdaaf2d244e1a/index.m3u8?s=DQFBuXS6GBBX5cc-4N7NNw&e=2091533968&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1264,7 +1264,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/50/92/5092801cdbcd84e8513017394a223638.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1da5d92af8c55b16241f1eb12a27f00c/index.m3u8?s=yAiFugNNALnCOcbIpGn7Aw&e=2091446049&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1da5d92af8c55b16241f1eb12a27f00c/index.m3u8?s=x_9MGPALKl0vq6BWT6llNw&e=2091533969&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1308,7 +1308,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7b/63/7b633f718173ae4995f089750382a40d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/59e0373a9aa587e06aeaf9009f86ded1/index.m3u8?s=xcWcbnPmALbVBA8wTll7CQ&e=2091446052&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/59e0373a9aa587e06aeaf9009f86ded1/index.m3u8?s=hOg4qnZEhlaEerYgtrbe4Q&e=2091533973&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1319,7 +1319,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-05/c2/74/c274dbb7e11f1cb19bf476ef41c9c688.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/52a1592710d8803b0570bfef9d2fbeff/index.m3u8?s=wc_ZEgM3fD9hvgKgTjDLYg&e=2091446053&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/52a1592710d8803b0570bfef9d2fbeff/index.m3u8?s=MtNo_-FiY32BTCx92UwuJA&e=2091533974&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1352,7 +1352,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d1dff14680d4c84e27908983375f7e89/index.m3u8?s=jjPWKvG6vJZESVkNsS3ZEg&e=2091446055&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/d1dff14680d4c84e27908983375f7e89/index.m3u8?s=9UjHEiUaHhmtt4dZK0RTEQ&e=2091533977&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1363,7 +1363,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/80b308e455f2aceb498e5dccd58ca050/index.m3u8?s=DJRfIZyCEnH5hFK3mhnk2Q&e=2091446056&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/80b308e455f2aceb498e5dccd58ca050/index.m3u8?s=Qf6iYfPM5w3le__I00Z0HA&e=2091533977&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1385,7 +1385,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-03-03/5d/fd/5dfd72f695d3562d42363a682c50038a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ff5c11c9a51750f5d33427762abc315c/index.m3u8?s=m4ylawSGW4ry78Hjp9_jJA&e=2091446059&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ff5c11c9a51750f5d33427762abc315c/index.m3u8?s=z49aixqRbdEgwz3BpiW6sA&e=2091533979&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1462,7 +1462,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/9a/6d/9a6d0d19ededc859c3b118815e5809ce.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/fc2476d9dea912529d8b996f6d330202/index.m3u8?s=sfwmqt1PzPBknVi2HD7IxQ&e=2091446066&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/fc2476d9dea912529d8b996f6d330202/index.m3u8?s=GkC8g__dt_BTQb-3Iktzsw&e=2091533985&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1484,7 +1484,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-01-08/08/70/087056ebba5ba7527ec97f4ba5ccf174.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/69c54c756c1d5e789c489398a8725835/index.m3u8?s=vmiT-YC6BbhXq2D_IVu1bg&e=2091446067&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/69c54c756c1d5e789c489398a8725835/index.m3u8?s=NglRFTrtmgRmFpUilXnixw&e=2091533986&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1495,7 +1495,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/25/88/258893ee8d31edced979f766f06b1c53.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f785d738a845cc80658e887843a18ed9/index.m3u8?s=jP74Vcu-lqx-SqiDefkK1A&e=2091446068&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f785d738a845cc80658e887843a18ed9/index.m3u8?s=UJZa_92MhLM4sdI6ajnN2g&e=2091533987&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1506,7 +1506,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2024-11-22/31/1f/311f6353f8d5d040cb81fd8ceb291114.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c6f66b644424c117f41e48062719ceed/index.m3u8?s=W10kmU0cQAvb0O9KqMGQmw&e=2091446069&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c6f66b644424c117f41e48062719ceed/index.m3u8?s=JSNF2drhmS8NGtQydNiOOg&e=2091533988&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1517,7 +1517,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/73/5e/735e97d7e2de44d4d19c2d7e7ca7a66e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/fcafa0d358df671e4f7c61ca54c79bea/index.m3u8?s=8SSMbVH536srBIwmVVeZWA&e=2091446070&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/fcafa0d358df671e4f7c61ca54c79bea/index.m3u8?s=qj3OqWSqOMuGdye-p53nlw&e=2091533989&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1528,7 +1528,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-10-27/91/13/9113828e60a260e05c3c2a189ac74f1c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f6160b4e48cb32b4d5438c66c83b69dc/index.m3u8?s=ttg30t4ncBY9SKtcs-i45Q&e=2091446071&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f6160b4e48cb32b4d5438c66c83b69dc/index.m3u8?s=0qI27tlxDyWCvGLAdHEqfg&e=2091533990&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1539,7 +1539,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/31/98/3198c45aa9aa9d4248774d6fd462e854.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/37d722b7752cd193a3f94d71cc9d60f5/index.m3u8?s=5q30yf9IoqJjbT6g7CQBMw&e=2091446072&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/37d722b7752cd193a3f94d71cc9d60f5/index.m3u8?s=IuOWVekGRG8GR_QCnbSj0Q&e=2091533990&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1550,7 +1550,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-15/34/e1/34e1639bd740177b7c14943c1bc26a9d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cf7e6ad2c24ce743b5b60478c176037b/index.m3u8?s=uDWgV93OL939gAs98B4ZAw&e=2091446073&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cf7e6ad2c24ce743b5b60478c176037b/index.m3u8?s=NxyAOhgCdedt5LQTSQV8iA&e=2091533991&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1561,7 +1561,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-05-27/d6/45/d6454d97d90eba314a637c99ca37274b.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5a88a8d75565c5cdebeb11d87bfc61e9/index.m3u8?s=qSeC3j2hSeWt-ZsjBQB_1w&e=2091446074&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5a88a8d75565c5cdebeb11d87bfc61e9/index.m3u8?s=BaeMXMz2qlFz4OcDKRb7ow&e=2091533992&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1572,7 +1572,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/02/fa/02fa06289f66b1fff39ab2c56769203d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/6cf7ef6babbb4bb2e9b97961f831034c/index.m3u8?s=CDDfCDSuWCo9cpohwhsP8A&e=2091446075&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/6cf7ef6babbb4bb2e9b97961f831034c/index.m3u8?s=iS6l3fglqGsSIHdAjgbwuQ&e=2091533993&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1583,7 +1583,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-09/73/db/73dba392169cd02352a049d1060332fb.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ca70d39eba2e8771358bbcb4bfbad860/index.m3u8?s=kD1RFUGu1kJVV_D1JXEGoQ&e=2091446076&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ca70d39eba2e8771358bbcb4bfbad860/index.m3u8?s=tQlmy4QmYYv8EFGfJ7aKXw&e=2091533994&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1594,7 +1594,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-07-02/84/9d/849d75d3bc12374fb7982e6a72a7fa51.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c9b87c0b00cfff9b37f95b9c8e4eed42/index.m3u8?s=nGRDq8OOlwjgHgDWU1Mzew&e=2091446077&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c9b87c0b00cfff9b37f95b9c8e4eed42/index.m3u8?s=fuiWAllAn2sDhc0YfO14rg&e=2091533995&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1605,7 +1605,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-11/1b/d4/1bd48dac384370cc412cd14e40af866f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/dd022de9cc6c8af89409513fa0a6117a/index.m3u8?s=AmbS1ii-0c3RrdltjZuK7Q&e=2091446078&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/dd022de9cc6c8af89409513fa0a6117a/index.m3u8?s=AtuEatM4fqthWQmVZSP2mg&e=2091533996&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1616,7 +1616,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-30/36/24/3624a2fec27863de073cac2ed693181e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/31bd9a668e5dfe5feddb988c96c0998c/index.m3u8?s=kdCSCRddXZ7gZsTV6BQ2NQ&e=2091446078&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/31bd9a668e5dfe5feddb988c96c0998c/index.m3u8?s=k5BviZptNC9_15m7uTaEtQ&e=2091533997&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1627,7 +1627,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/83/d2/83d2906ba4297127d3009cb8aa39c2d0.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/673b559e08f8b99d65a4e8fbbceb911b/index.m3u8?s=rUfChs1QDFGyUdGBlCkHTg&e=2091446079&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/673b559e08f8b99d65a4e8fbbceb911b/index.m3u8?s=gL9BpnmLrbgo_96GFRryag&e=2091533997&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1638,7 +1638,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-11-21/87/99/8799e1636f2ec6e3c4ec13e08499bcb2.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/067561b5754d0b7844762fa92939716b/index.m3u8?s=-t8qqIXd0Lfvryh6WWkpSA&e=2091446080&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/067561b5754d0b7844762fa92939716b/index.m3u8?s=1-caPnWa0i1B2lPEsKTfRg&e=2091533999&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1649,7 +1649,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-04-27/35/65/3565e83a76dafafc1ff2d981290511a1.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?s=JvKwvhZzkp8-UysIw7E0Cw&e=2091446081&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?s=GU2N82WRq7Z1wp1ny6EKfQ&e=2091534000&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1660,7 +1660,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-28/9f/de/9fde175e89da058f63b3f1d48f74aca7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0064bd09060c8b8469fef19f269e8a8a/index.m3u8?s=1AMoJv2cnAUygrAp5HAnJw&e=2091446082&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/0064bd09060c8b8469fef19f269e8a8a/index.m3u8?s=dN7NQ8XpUHtaPWz7BIdG-w&e=2091534001&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1671,7 +1671,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/76/c1/76c1591faf082bb6a536d5cf36dfde25.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3c47861a8b4b51639e41be092053b966/index.m3u8?s=91Ew6VbTGRt6vw8Ck24wZw&e=2091446083&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3c47861a8b4b51639e41be092053b966/index.m3u8?s=VRMkOPBw7RQ7iJyc29nPMw&e=2091534001&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1682,7 +1682,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/9f/6c/9f6ce6521ba7b5cc82aa668c5feb9544.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5bbff90167d1b1d88fda92376ec7a651/index.m3u8?s=QNSA7aPk2J_136mJAjEPxQ&e=2091446083&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5bbff90167d1b1d88fda92376ec7a651/index.m3u8?s=ftjfictI83bK7vcli8TtWQ&e=2091534002&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1693,7 +1693,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c2/f3/c2f3b025b6b81c32b24460d77c08c51d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/32dc45cf878497abe1c9695e228f039b/index.m3u8?s=M4X-9ARIau0IPgo9RC4GIg&e=2091446084&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/32dc45cf878497abe1c9695e228f039b/index.m3u8?s=mcwECNhLcYAznL9YUHXltw&e=2091534003&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1704,7 +1704,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c3/a4/c3a4ad05703c7c982d567fb31ae348fd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=4QqmNCJ-aImDQBL2ixOeuQ&e=2091446085&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=OBO0wIp8JPEkZIdvWD0KBQ&e=2091534004&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1715,7 +1715,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ef/1e/ef1e6d84b7c04f92ed0ff02bd6668328.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2d7fa51716500fba52586d594201777f/index.m3u8?s=WgUQMpiwxX2uWikw7t55wg&e=2091446086&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2d7fa51716500fba52586d594201777f/index.m3u8?s=uRzmZqhHsv8Ja6vjcnRr7Q&e=2091534005&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1726,7 +1726,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-19/5c/7a/5c7af6725cd62bb8cf13aa84b21fda1f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/740503607d216b5d467694a1e8fb39a8/index.m3u8?s=nc4svJjwcSBb91TxJhVWwA&e=2091446087&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/740503607d216b5d467694a1e8fb39a8/index.m3u8?s=qCwf9bGUi-MgGtsx2UAz5A&e=2091534005&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1737,7 +1737,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/28/6d/286dfc93161e142c224a76076ba70e36.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7d6d8c8fc5c6e02d9c0b78eb451f3bd0/index.m3u8?s=U98j-95OPQMn7p8EqxOEcw&e=2091446087&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/7d6d8c8fc5c6e02d9c0b78eb451f3bd0/index.m3u8?s=-VFDakipdVYgkDsfoWZ__w&e=2091534006&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1748,7 +1748,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-06-21/e8/99/e8994b6a1f529ba8b1d6190d2b05d416.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ca9d955460e0ba17a5a4b3a9b99bb8d2/index.m3u8?s=thxvXXHDvXpYHZmhxtAB1A&e=2091446088&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ca9d955460e0ba17a5a4b3a9b99bb8d2/index.m3u8?s=lde95h8Wk5STqdv0fT0gKA&e=2091534007&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1759,7 +1759,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/0a/ce/0ace41698aaf61620c6092a451750ea6.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2d65c260e4b73ef162aca5df132e5147/index.m3u8?s=gz5_31JtaCQQvOevJgRwbw&e=2091446089&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2d65c260e4b73ef162aca5df132e5147/index.m3u8?s=6t-7v8CXFawxi8T6iBELgg&e=2091534008&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1770,7 +1770,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-17/d8/cd/d8cdd6a02260b3f2fca299970ba2812c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c5a272dc23ad505667bc2b54f98a3241/index.m3u8?s=jlAgn52WJ36hwLwK1ngJAA&e=2091446090&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c5a272dc23ad505667bc2b54f98a3241/index.m3u8?s=hQ3DTns0hBDj7gJItWMkuw&e=2091534009&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1781,7 +1781,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/9a/c5/9ac56bc4d78e1e0686ab531c51ee07ed.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d14fcf59cb7d07a26c48ebc8c6565f44/index.m3u8?s=q9sLUn4PC8UnEheSUfjnSg&e=2091446091&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/d14fcf59cb7d07a26c48ebc8c6565f44/index.m3u8?s=6sOiqsLzqIKtWVtmK54WvQ&e=2091534009&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1792,7 +1792,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/96/00/96002d88d3220e0d20f6f15e07d48cf9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1932f750f00f3a742a1d90c62d0076ad/index.m3u8?s=OGJlnWhnOKM-ibQevUiteg&e=2091446092&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1932f750f00f3a742a1d90c62d0076ad/index.m3u8?s=c9eCwjwRhfH2zYP3dQFP9A&e=2091534011&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1803,7 +1803,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-03-26/2f/57/2f577de24b56acaedd9307b427bc596f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/46c03b7f1a7255326900f4a60a9b44e0/index.m3u8?s=m8J6X1RxVAutLUDedWoLbA&e=2091446092&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/46c03b7f1a7255326900f4a60a9b44e0/index.m3u8?s=VaMPOaoI2NaywuALYCtFXQ&e=2091534012&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1814,7 +1814,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/13/b3/13b3394393a5b77ebe72aa18505498ca.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/75d440a39a0aa9b71f55a71341bebe1e/index.m3u8?s=r7hWKXT5zHr1kxSFbL-org&e=2091446093&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/75d440a39a0aa9b71f55a71341bebe1e/index.m3u8?s=LMuqVBNQ6PTVIW_f2_llnw&e=2091534013&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1825,7 +1825,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ae/03/ae03068c634d160a5db1b1090ecb91ae.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3bbbfe178e58ca0830a701e0624f20d8/index.m3u8?s=V7L5_JiCYUOxGeUAXevYGA&e=2091446094&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3bbbfe178e58ca0830a701e0624f20d8/index.m3u8?s=8cbkx7b8iUSouJHnTiKKfg&e=2091534014&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1836,7 +1836,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/7e/4d/7e4d80a15d802b6fd83601ddcdda7803.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ee431650738a594119c3516ceda72775/index.m3u8?s=sASpeKkmo-g_2BV6zKD0nA&e=2091446095&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ee431650738a594119c3516ceda72775/index.m3u8?s=sW3MiltE8VmqhD2DQrIYhg&e=2091534016&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1847,7 +1847,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/55/58/5558ca50dc1a89b6ee647f8d1fa7d0c4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f520a781e91c3aa90fec5790cebd3fdb/index.m3u8?s=GKfEHoamU3V_hPDJRcOl3A&e=2091446095&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f520a781e91c3aa90fec5790cebd3fdb/index.m3u8?s=BpIgmZJYoPRwVY9V1XmokA&e=2091534017&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1858,7 +1858,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-18/22/91/2291c03374f0d617f845b669d2db7b26.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b68e4526d60f0945b36853edee93aca8/index.m3u8?s=HFgUUhMacouOH9rRQnhoSA&e=2091446096&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b68e4526d60f0945b36853edee93aca8/index.m3u8?s=_Qyhz_jG1uR1hlyhaYfaPQ&e=2091534018&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1880,7 +1880,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/09/bc/09bcceba88686a831e4a47ee0585d335.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5fa486bf465c8735fff9f41b372610cc/index.m3u8?s=zk4WURLGEk3ha5e0fFAWfQ&e=2091446098&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5fa486bf465c8735fff9f41b372610cc/index.m3u8?s=dR5wGIWNBJkiFCbbp1DlHw&e=2091534020&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1891,7 +1891,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0ed0696149c131d3a7349372d730d4e6/index.m3u8?s=dKXSsBCQTuosAPTDDZxQsg&e=2091446099&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/0ed0696149c131d3a7349372d730d4e6/index.m3u8?s=TmBGUVbxM1GPyaDfOJcO2g&e=2091534021&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1935,18 +1935,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/37/3f/373f70315f6c630eb0661f0c3deba944.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/09e51eefa939595a4ac67182c6fb3e4e/index.m3u8?s=siElwjwBOnDBVWZStHrvMQ&e=2091446102&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/09e51eefa939595a4ac67182c6fb3e4e/index.m3u8?s=EYEsukwTdPVmK20YbGgX9A&e=2091534025&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
       "id": "e00423314d16d4696640a39963cc8be3",
-      "title": "Марек и Кариба: наблюдаем за выдрами",
+      "title": "Наблюдаем за выдрами",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e00423314d16d4696640a39963cc8be3/index.m3u8?s=wPE7grF8-73DbfGtxhaRBQ&e=2091446103&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/e00423314d16d4696640a39963cc8be3/index.m3u8?s=8ta2FRre9zrOKKjPrvdP7Q&e=2091534026&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1957,7 +1957,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/99e5a191615a398b5fd3c1d6020c07f1/index.m3u8?s=YoWFVibMhCUf7vKMCBHNqQ&e=2091446104&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/99e5a191615a398b5fd3c1d6020c07f1/index.m3u8?s=5TOK-zLmH4myUAWUzs3O1Q&e=2091534027&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1968,7 +1968,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2b/d2/2bd2df59a255faac26fab55c22304730.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cb2f1d99b88c9b4d38df05cd7fa0a6c2/index.m3u8?s=9qSBIflZOy96di_BD73WjA&e=2091446105&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cb2f1d99b88c9b4d38df05cd7fa0a6c2/index.m3u8?s=7EohefWyS92VqsmASX-edA&e=2091534028&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1979,7 +1979,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/746aa7922a210086f18daff094a5e63d/index.m3u8?s=5-6z2SsTECAeN-JUrYc_QQ&e=2091446105&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/746aa7922a210086f18daff094a5e63d/index.m3u8?s=_aeJ1eR4IY1gAIqe5CJQNA&e=2091534028&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1990,7 +1990,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-09-02/7a/0f/7a0f29caa17230362b67f520f81a44a8.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/eda2da42eea89951e4135141a30915f7/index.m3u8?s=JHAEW-vl27EqaO6YxX7iTw&e=2091446106&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/eda2da42eea89951e4135141a30915f7/index.m3u8?s=GWGGj8H1xRH9gKNyW0-Cmg&e=2091534029&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2001,7 +2001,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-02-03/d1/3a/d13a5ebc5a2d8e903625ba1aa4220bd5.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/dce1080977de5e89dcbd1dd24d014b4e/index.m3u8?s=UoMlLRrH_lT66lm4GA__Vg&e=2091446107&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/dce1080977de5e89dcbd1dd24d014b4e/index.m3u8?s=nFvvHyKh0KK1UWO3BVW7iw&e=2091534030&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2012,7 +2012,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a996e6508b2ff81cd523dae2d14f7bf6/index.m3u8?s=DTf-31JcU1X8Io3z0nTFIg&e=2091446108&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/a996e6508b2ff81cd523dae2d14f7bf6/index.m3u8?s=Dp6TBqqtk5VQ8GHbpN5gJQ&e=2091534031&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2023,7 +2023,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/32/90/32908a77491bc2271818b863f9587c3b.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/23afd7debed1cfc7a8efa0827c24d836/index.m3u8?s=iGBWWtG0jcTik_1PgakjZA&e=2091446108&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/23afd7debed1cfc7a8efa0827c24d836/index.m3u8?s=PBDMJtiDZjZV9rhTvxkdAQ&e=2091534032&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2034,7 +2034,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-18/f0/96/f096244d46edc993f78e5f67457ca250.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/da760ca73396be9f7bc1589dba81036b/index.m3u8?s=G3seMpyAZ27v6Xm4_J5EEw&e=2091446109&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/da760ca73396be9f7bc1589dba81036b/index.m3u8?s=dPcLjuwhgbEvO1k3FVXMVw&e=2091534032&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2045,7 +2045,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/92e79cc0d122fb94647b79d4e7778773/index.m3u8?s=Kehf4gqR4cjyfil60uCk4A&e=2091446110&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/92e79cc0d122fb94647b79d4e7778773/index.m3u8?s=CM7HGSrhpjlvBoItDY6fCw&e=2091534033&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2056,7 +2056,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/4f/c4/4fc482cae88d5573dfd798f6f278b27e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7748a2530116682fa185a156ce1d09a3/index.m3u8?s=zQ7wnAVjm55GtJ8tTSLc-Q&e=2091446111&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/7748a2530116682fa185a156ce1d09a3/index.m3u8?s=nURpHjoQY9cD4nRVj0cTzA&e=2091534034&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2067,7 +2067,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/86e2f45785378c866d212e7f5f5447b0/index.m3u8?s=cFeGHEfuVkqbjuTzPf9N7Q&e=2091446112&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/86e2f45785378c866d212e7f5f5447b0/index.m3u8?s=2ZnImUKxAdfKti4w6_QG0A&e=2091534035&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2078,7 +2078,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ca/d6/cad6a9227adfaf58fddf75ef36ef7e43.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ed40abd9d832e9f91ea0e0b0fde36e44/index.m3u8?s=lJJhZ_GhNx4K_TStpemb4Q&e=2091446113&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ed40abd9d832e9f91ea0e0b0fde36e44/index.m3u8?s=c9nvwcSLT8ZETb206wiqQw&e=2091534036&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2089,7 +2089,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2c5000420be8aa08a969a21614e2d33e/index.m3u8?s=4bdcrZ5xfSLT_mpGNYpKjg&e=2091446114&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2c5000420be8aa08a969a21614e2d33e/index.m3u8?s=FSsKbMR4tokWoHLrQWVUSQ&e=2091534037&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2100,7 +2100,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c6/08/c6089e30b02be9a5a66fd8a01f1f9810.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a0e83fe5c23fc219886f7d7f084a8cb4/index.m3u8?s=708LBQ7bscCXAbzr2cfO0g&e=2091446115&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/a0e83fe5c23fc219886f7d7f084a8cb4/index.m3u8?s=FQOwpYzR9a5FnXc0Ry4MJA&e=2091534038&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2111,7 +2111,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/55/49/55493056d27b3a749bcabff6db31c996.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b8079a6e1e184643d9a17c42469a1f30/index.m3u8?s=X9GliO2ciNoTnXwsF1K71w&e=2091446115&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b8079a6e1e184643d9a17c42469a1f30/index.m3u8?s=8zl02XQS2CZFak9sN3_0Rg&e=2091534039&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2144,7 +2144,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-10/42/41/4241231c7b493c7f5e30cc7e90c01f03.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/047d8b76295c88df33da226a057f2492/index.m3u8?s=a9iC6noiuOgtsOshhvZOww&e=2091446118&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/047d8b76295c88df33da226a057f2492/index.m3u8?s=9AYsAtxmXwzUWWOaseqCXg&e=2091534041&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2155,7 +2155,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/21f3993ed8291b70208aa06c982c731f/index.m3u8?s=FvTEMec_30qAxiDcsCe8rg&e=2091446119&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/21f3993ed8291b70208aa06c982c731f/index.m3u8?s=RG9tCN2nSLFzYj-2bulSmQ&e=2091534042&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2166,7 +2166,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-28/33/47/33473a0cbc6c0d089d64539de9029b1f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/99d4597cea881a27cf7dd6e65a74dade/index.m3u8?s=-apKdMRGpJeAPZgT5lf26A&e=2091446119&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/99d4597cea881a27cf7dd6e65a74dade/index.m3u8?s=AaSI-ySCNRFB9h6Y_LFnrQ&e=2091534043&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2287,7 +2287,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ed497bdb28846536f3928849f8f7e469/index.m3u8?s=vCI5t-lyT_g0oGL3x3oMKA&e=2091446128&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ed497bdb28846536f3928849f8f7e469/index.m3u8?s=JM3o9WDmMoMSoRKOUUJuXw&e=2091534053&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2298,7 +2298,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3b7d1499da9396462bfd17282d758d30/index.m3u8?s=Gi6XreJnUVNzhXbTH7BOLQ&e=2091446129&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3b7d1499da9396462bfd17282d758d30/index.m3u8?s=dm8YKc-TcY7Bd2EgOrIjEQ&e=2091534054&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2309,7 +2309,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/4965b7b928c4a143d708ab424be01d37/index.m3u8?s=nXaDSCwwI9ommqQqYIK93w&e=2091446130&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/4965b7b928c4a143d708ab424be01d37/index.m3u8?s=igwPUK6ndWiQ5Ms_Z8e5dg&e=2091534055&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2320,7 +2320,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/988ec7330fa38c8a1e5980ba7d02dbbe/index.m3u8?s=Tl7vLjBMr1OLBV-YNYX7dw&e=2091446130&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/988ec7330fa38c8a1e5980ba7d02dbbe/index.m3u8?s=uI0MH6qGGI8AILyzpSH1rw&e=2091534056&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2375,7 +2375,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/5a/0a/5a0a80014f20a20ef9868fa3ab9eb751.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bf296006751f4344e359b3b5dc70be25/index.m3u8?s=jvp8UeQAU6-TVf6Wd9kGTQ&e=2091446134&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/bf296006751f4344e359b3b5dc70be25/index.m3u8?s=TnDPxC2-p4gh-dBsyTXreg&e=2091534060&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2463,7 +2463,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1217bd14907ff59c5c64bcc4cbe1af41/index.m3u8?s=m-6dKjMDZG60_kkWElwRZA&e=2091446141&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1217bd14907ff59c5c64bcc4cbe1af41/index.m3u8?s=8kX0uHGGnTNuWANOcLGaqw&e=2091534066&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2572,11 +2572,11 @@
       "title": "FX НА РУССКОМ ЯЗЫКЕ | FX",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-09-10/f2/05/f2054b3cce30c23670a71b63ec3b353f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bcf8e82a331067e567f765d65ed52b21/index.m3u8?s=oQvQvFUwhOXjRlvUC1fNxw&e=2091446149&scheme=https",
+      "avatar": "",
+      "stream_url": null,
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": false
+      "unavailable": true
     },
     {
       "id": "f27b804a6f805cb66ff83d4930bd17ff",
@@ -2606,7 +2606,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/16/4d/164dbbbcf834b83f3e22841cf36c1670.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/42ed85b003d36b28cd2da077e7ab0ed4/index.m3u8?s=nt2QnCLuXPIG0xqFfB44VA&e=2091446151&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/42ed85b003d36b28cd2da077e7ab0ed4/index.m3u8?s=_1g_oqzetcuL4oAltcRQuw&e=2091534078&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2628,7 +2628,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-10-06/22/56/22565d261e0faa28bf989fe30650bfda.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/58406cad9cc435f48a62209e076e8a9b/index.m3u8?s=GVsD9aDSEbiJifadBuIXPg&e=2091446153&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/58406cad9cc435f48a62209e076e8a9b/index.m3u8?s=Y8zPfD3FamEB8UQ5WB6DMg&e=2091534079&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2660,11 +2660,11 @@
       "title": "Дорамы без перерыва — 24/7",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/33/14/33143d3237db3c1922958bdf4e916add.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5e3edd063411550ed6b67a8c0d7c96ea/index.m3u8?s=UhCp2KNYI3b_edvzt8mzKQ&e=2091446156&scheme=https",
+      "avatar": "",
+      "stream_url": null,
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": false
+      "unavailable": true
     },
     {
       "id": "eddcc86d1dee0b5def546ea388eb38ea",
@@ -2715,11 +2715,11 @@
       "title": "Музыкальные клипы без перерыва — 24/7",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-06-22/8e/f7/8ef753850b7ca56233d19802212137fa.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e7e04192431a24a750fd8704fa221461/index.m3u8?s=s1T4mAN5VAKXOqAHl-rnAQ&e=2091446161&scheme=https",
+      "avatar": "",
+      "stream_url": null,
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": false
+      "unavailable": true
     },
     {
       "id": "6f99d2a36810a41acc8f66af25441ae3",
@@ -2738,7 +2738,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-25/5a/a0/5aa0eed5d8dc6717a6f94eb372c292a6.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/31cd70d4054fbbde3b169d9a6972515c/index.m3u8?s=bhb0s8i2gmysOLFF_VokwA&e=2091446162&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/31cd70d4054fbbde3b169d9a6972515c/index.m3u8?s=jVOrflDPfjG-hIrQPbZFpw&e=2091534087&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2749,7 +2749,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9cb1d5d561ecfa81ec7a98bc6999a6e0/index.m3u8?s=1yNiHrIQIFVi_iuIxkgkMg&e=2091446163&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9cb1d5d561ecfa81ec7a98bc6999a6e0/index.m3u8?s=2DgkMvokad5tJlY5STQ4iw&e=2091534087&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
