@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-02T10:51:20.490329+00:00",
-  "total": 252,
-  "with_url": 136,
-  "no_url": 116,
+  "updated": "2026-11-09T11:16:13.666752+00:00",
+  "total": 245,
+  "with_url": 137,
+  "no_url": 108,
   "channels": [
     {
       "id": "c58f502c7bb34a8fcdd976b221fca292",
@@ -43,7 +43,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/1f/ec/1fec36d83dfaabbf819c84a5cb044858.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=WqlVJSyh76hraxNItNQ07g&e=2093616508&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=zzFKaMSAeSnODa5BL_1pXA&e=2094222752&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -65,7 +65,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-02-24/92/f4/92f4d552d5bba89a37690873515d4211.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d0c0d69362edfbe706cb82d973439bb5/index.m3u8?s=zjVLv3Wfj6GwDEu-mAF-xA&e=2093616510&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/d0c0d69362edfbe706cb82d973439bb5/index.m3u8?s=UrrQRrNBI2l4N9zfXh5RaA&e=2094222754&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -87,7 +87,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-16/28/9e/289eb073bc7ac621aa65f50fd016f5f7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/faa934385b83f9e8a92f5484defae5fa/index.m3u8?s=B-Ds1fsKZwAo0cIP_EyFkg&e=2093616511&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/faa934385b83f9e8a92f5484defae5fa/index.m3u8?s=dfEInC3FY1wOlssIn-WA_A&e=2094222756&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -120,7 +120,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-08-26/9b/d9/9bd9372e6d0f3a93cc41df3660133ad2.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=BI3jK-DxXj-M-u8BqHfSAA&e=2093616514&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=yC2oAIVVKNVvSaz7oFyE6g&e=2094222760&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -175,7 +175,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/b1/98/b1983851416b1ac8d09cb5f82fd0e0cc.jpeg",
-      "stream_url": "https://bl.rutube.ru/livestream/5ab908fccfac5bb43ef2b1e4182256b0/index.m3u8?s=yD39ZvOI5OPQe4d4ikFL7A&e=2093616517&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5ab908fccfac5bb43ef2b1e4182256b0/index.m3u8?s=rqfM3ZnjbdO6S0lFTT0_sg&e=2094222765&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -230,7 +230,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-09/77/e7/77e7a7d4b4bd430ae5c0af4a3e18d98c.png",
-      "stream_url": "https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=EgLo6KcoFqC0uh4ouf8dgA&e=2093616522&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=4uL-NWQpLNnXJVSvzGp3Qg&e=2094222770&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -263,7 +263,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/dd/0e/dd0e078410ed58d778b38164b3ccdc0d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=mTr7-25JkM3bzp13yhniLA&e=2093616524&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=2cq5XJ4wSx2f1Bj75iEehQ&e=2094222773&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -274,25 +274,14 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-07-02/84/9d/849d75d3bc12374fb7982e6a72a7fa51.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c9b87c0b00cfff9b37f95b9c8e4eed42/index.m3u8?s=J3ynsPhJvV4zmp6pRb6y2Q&e=2093616525&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/c9b87c0b00cfff9b37f95b9c8e4eed42/index.m3u8?s=0CO9rHUeZV2_Vl1FaWnQLw&e=2094222774&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "bc2933d28daf33f5a68257ebc72787cd",
-      "title": "МУЛЬТИМЕЙШН | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "3abeb7577fd38ac4b8130bb8e03418f2",
-      "title": "ВСЕЛЕННАЯ MARVEL | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
+      "id": "1786622e52a6864eb3fd66b83733fef5",
+      "title": "ЛУЧШИЕ ЭКШН ФИЛЬМЫ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -318,10 +307,32 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/38/5c/385ccd850d0053603ffc0b99d3d38c74.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cc1b56aa4955a144f324ad58998513bb/index.m3u8?s=vup4kdLSB0FLfxyo10Xl_A&e=2093616527&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cc1b56aa4955a144f324ad58998513bb/index.m3u8?s=HIin5AUyV9I-69sW2QSuQQ&e=2094222776&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
+    },
+    {
+      "id": "3abeb7577fd38ac4b8130bb8e03418f2",
+      "title": "ВСЕЛЕННАЯ MARVEL | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "bc2933d28daf33f5a68257ebc72787cd",
+      "title": "МУЛЬТИМЕЙШН | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
     },
     {
       "id": "e08e513c4e33f52fce3a975b5cb6932c",
@@ -333,39 +344,6 @@
       "blocked": false,
       "blocked_reason": "",
       "unavailable": true
-    },
-    {
-      "id": "f6a3656e5ef574982994ddf2e5003341",
-      "title": "ВСЕЛЕННАЯ ГАРРИ ПОТТЕРА | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "2dba20a8405e57935827cb5721c2b759",
-      "title": "Солнце",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "31cd70d4054fbbde3b169d9a6972515c",
-      "title": "ВСЕЛЕННАЯ DC | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-09-25/5a/a0/5aa0eed5d8dc6717a6f94eb372c292a6.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/31cd70d4054fbbde3b169d9a6972515c/index.m3u8?s=UVcuvQBBp6j8Xx96S8L1aw&e=2093616530&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
     },
     {
       "id": "2619fc295c16585ef018041d88f14db0",
@@ -390,8 +368,8 @@
       "unavailable": true
     },
     {
-      "id": "c11af26c0ab831ce6c37a4888056479b",
-      "title": "National Geographic Wild НА РУССКОМ ЯЗЫКЕ | Nat Geo Wild",
+      "id": "f6a3656e5ef574982994ddf2e5003341",
+      "title": "ВСЕЛЕННАЯ ГАРРИ ПОТТЕРА | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -399,6 +377,50 @@
       "blocked": false,
       "blocked_reason": "",
       "unavailable": true
+    },
+    {
+      "id": "31cd70d4054fbbde3b169d9a6972515c",
+      "title": "ВСЕЛЕННАЯ DC | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-09-25/5a/a0/5aa0eed5d8dc6717a6f94eb372c292a6.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/31cd70d4054fbbde3b169d9a6972515c/index.m3u8?s=znVlVJRVpu-7VFb8GKBDyg&e=2094222782&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "2dba20a8405e57935827cb5721c2b759",
+      "title": "Солнце",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "7758ac4d77fac95e187144ee2c8b368d",
+      "title": "ЛУЧШИЕ КОМЕДИЙНЫЕ ФИЛЬМЫ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "5bbff90167d1b1d88fda92376ec7a651",
+      "title": "ЧЕ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/9f/6c/9f6ce6521ba7b5cc82aa668c5feb9544.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/5bbff90167d1b1d88fda92376ec7a651/index.m3u8?s=BalxOs-RLRVmPP3OPFYWqQ&e=2094222786&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
     },
     {
       "id": "6f99d2a36810a41acc8f66af25441ae3",
@@ -423,17 +445,6 @@
       "unavailable": true
     },
     {
-      "id": "5bbff90167d1b1d88fda92376ec7a651",
-      "title": "ЧЕ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/9f/6c/9f6ce6521ba7b5cc82aa668c5feb9544.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5bbff90167d1b1d88fda92376ec7a651/index.m3u8?s=zk9HtlADkepEY23QZ1VK1g&e=2093616534&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "7c3d1a4cc0b4dff1176aa2dbb0b90000",
       "title": "TLC НА РУССКОМ ЯЗЫКЕ | TLC",
       "description": "",
@@ -445,8 +456,8 @@
       "unavailable": true
     },
     {
-      "id": "e902c1a059034a1537430b2aa5aedece",
-      "title": "Nickelodeon НА РУССКОМ ЯЗЫКЕ | Nick",
+      "id": "680dfe110840cf882437082b948578d6",
+      "title": "ЛУЧШИЕ ДРАМАТИЧЕСКИЕ ФИЛЬМЫ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -467,41 +478,8 @@
       "unavailable": true
     },
     {
-      "id": "7758ac4d77fac95e187144ee2c8b368d",
-      "title": "ЛУЧШИЕ КОМЕДИЙНЫЕ ФИЛЬМЫ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "88f6485ee28d56daf13302ac6fe3d931",
-      "title": "Главные новости России и мира сегодня. Прямой эфир РБК",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/1f/79/1f7921d6d623ef9459152aefef2dd3e7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/88f6485ee28d56daf13302ac6fe3d931/index.m3u8?s=kLq193t2cYZs_-Oxm2i4bg&e=2093616537&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "74bb437ef478a52f42198c50d4241dc7",
       "title": "APPLE TV+ LIVE | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "d2119cfb95146b3983cf05c1fe35e66f",
-      "title": "Cartoon Network НА РУССКОМ ЯЗЫКЕ | Cartoon Network",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -522,37 +500,15 @@
       "unavailable": true
     },
     {
-      "id": "4004c8f6817b9ae1bd0d418905ae2b02",
-      "title": "Animal Planet НА РУССКОМ ЯЗЫКЕ | Animal Planet",
+      "id": "88f6485ee28d56daf13302ac6fe3d931",
+      "title": "Главные новости России и мира сегодня. Прямой эфир РБК",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
+      "avatar": "https://pic.rtbcdn.ru/user/1f/79/1f7921d6d623ef9459152aefef2dd3e7.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/88f6485ee28d56daf13302ac6fe3d931/index.m3u8?s=wwuq3PZL_psVlA4bKN2stA&e=2094222793&scheme=https",
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "680dfe110840cf882437082b948578d6",
-      "title": "ДРАМА | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР | Лучшие драматические фильмы",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "25a96d214a176541fba1d342ac760ee9",
-      "title": "МУЛЬТАТАШЕЧКИ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР С ЛУЧШИМИ МУЛЬТФИЛЬМАМИ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
+      "unavailable": false
     },
     {
       "id": "3c47861a8b4b51639e41be092053b966",
@@ -560,7 +516,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/76/c1/76c1591faf082bb6a536d5cf36dfde25.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3c47861a8b4b51639e41be092053b966/index.m3u8?s=QdWG_k4Id0lBZGNKTCCTVQ&e=2093616541&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3c47861a8b4b51639e41be092053b966/index.m3u8?s=MSbb2He-cZqBrHbIXmjz4w&e=2094222794&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -571,58 +527,14 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/4965b7b928c4a143d708ab424be01d37/index.m3u8?s=SPWrs_NnmSQXqFqoAH88SA&e=2093616542&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/4965b7b928c4a143d708ab424be01d37/index.m3u8?s=ndAq07zI-u_rsLKcnSuVAw&e=2094222795&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "a91d58870b9a0d23b2309d020ac4b354",
-      "title": "ID Xtra НА РУССКОМ ЯЗЫКЕ | ID Xtra",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "4196566bc9c3b7b854074ad1a9a2db36",
-      "title": "Travel Channel HD НА РУССКОМ ЯЗЫКЕ | Travel Channel HD",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "1786622e52a6864eb3fd66b83733fef5",
-      "title": "ЛУЧШИЕ ЭКШН ФИЛЬМЫ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "1da5d92af8c55b16241f1eb12a27f00c",
-      "title": "телеканал «Охотник и рыболов»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/50/92/5092801cdbcd84e8513017394a223638.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1da5d92af8c55b16241f1eb12a27f00c/index.m3u8?s=mnYBiNz1MT9FpJkwkDK-wA&e=2093616544&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "5e3edd063411550ed6b67a8c0d7c96ea",
-      "title": "Дорамы без перерыва — 24/7",
+      "id": "25a96d214a176541fba1d342ac760ee9",
+      "title": "МУЛЬТАТАШЕЧКИ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР С ЛУЧШИМИ МУЛЬТФИЛЬМАМИ",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -637,29 +549,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c2/f3/c2f3b025b6b81c32b24460d77c08c51d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/32dc45cf878497abe1c9695e228f039b/index.m3u8?s=QbutzpCBEfT-jMUKDpdw7Q&e=2093616546&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/32dc45cf878497abe1c9695e228f039b/index.m3u8?s=acye3V7WB2iAzSV3girR9A&e=2094222798&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "b3019a8983105f5e33f038246f860c32",
-      "title": "Аниме без перерыва — 24/7",
+      "id": "1da5d92af8c55b16241f1eb12a27f00c",
+      "title": "телеканал «Охотник и рыболов»",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "0ed0696149c131d3a7349372d730d4e6",
-      "title": "EPIC MEDIA",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0ed0696149c131d3a7349372d730d4e6/index.m3u8?s=Xz962me0QSEQBH3HNne4zw&e=2093616547&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/50/92/5092801cdbcd84e8513017394a223638.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/1da5d92af8c55b16241f1eb12a27f00c/index.m3u8?s=RlbpvgkLWDVOEh63s9ZDNA&e=2094222800&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -676,19 +577,41 @@
       "unavailable": true
     },
     {
+      "id": "5e3edd063411550ed6b67a8c0d7c96ea",
+      "title": "Дорамы без перерыва — 24/7",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
       "id": "3b7d1499da9396462bfd17282d758d30",
       "title": "Кинолаффка. Фильмы и сериалы в эфире",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3b7d1499da9396462bfd17282d758d30/index.m3u8?s=kxf9nHWfE67uHDrERV69zw&e=2093616549&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3b7d1499da9396462bfd17282d758d30/index.m3u8?s=i-L9k9Oh9UyUzfiu2YEH5w&e=2094222803&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "bcf8e82a331067e567f765d65ed52b21",
-      "title": "FX НА РУССКОМ ЯЗЫКЕ | FX",
+      "id": "0ed0696149c131d3a7349372d730d4e6",
+      "title": "EPIC MEDIA",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/0ed0696149c131d3a7349372d730d4e6/index.m3u8?s=wnKj0kCFOd0xzLK3SGzqXQ&e=2094222803&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "b3019a8983105f5e33f038246f860c32",
+      "title": "Аниме без перерыва — 24/7",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -703,51 +626,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/37/3f/373f70315f6c630eb0661f0c3deba944.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/09e51eefa939595a4ac67182c6fb3e4e/index.m3u8?s=jb2zXvK8nc3_nbEXnDYv1g&e=2093616550&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f27b804a6f805cb66ff83d4930bd17ff",
-      "title": "FX Life НА РУССКОМ ЯЗЫКЕ | FX Life",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "73a6a9716be23b7683fb61b94f52729f",
-      "title": "FON TV",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-01-27/1f/14/1f14ec373b8c3eeebb7aad3e34d3bb74.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/73a6a9716be23b7683fb61b94f52729f/index.m3u8?s=VY1oGtsexOMsm_1NQ-zi_w&e=2093616552&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "478a825bfd784e1e9de08ceceb3d2121",
-      "title": "ВСЕЛЕННАЯ РИКА И МОРТИ | ВСЕ СЕРИИ ПОДРЯД В ПРЯМОМ ЭФИРЕ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "21f3993ed8291b70208aa06c982c731f",
-      "title": "EPIC MEDIA Love",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/21f3993ed8291b70208aa06c982c731f/index.m3u8?s=X7xbRfuNl5ZXEqonIZEn9w&e=2093616554&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/09e51eefa939595a4ac67182c6fb3e4e/index.m3u8?s=h0aHKquj3l2atQ-i3hBr5w&e=2094222805&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -764,15 +643,48 @@
       "unavailable": true
     },
     {
-      "id": "2f052691c75d72b3ed7f3c33ea956a41",
-      "title": "телеканала Смайлик ТВ",
+      "id": "73a6a9716be23b7683fb61b94f52729f",
+      "title": "FON TV",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/8a/d9/8ad96371c04089c54516df2e62e8cce9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2f052691c75d72b3ed7f3c33ea956a41/index.m3u8?s=hUtZrpca2P7Zf5dhxh4YfQ&e=2093616555&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-10-26/6b/7f/6b7f910400a4d25451b82c5f3a3b865f.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/73a6a9716be23b7683fb61b94f52729f/index.m3u8?s=K19OdAgPL4OhzIhiYW3frQ&e=2094222807&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
+    },
+    {
+      "id": "52e97970a55edfb13357cdad5e20083c",
+      "title": "МАТЧ ПРЕМЬЕР",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "21f3993ed8291b70208aa06c982c731f",
+      "title": "EPIC MEDIA Love",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/21f3993ed8291b70208aa06c982c731f/index.m3u8?s=X6w_DcGjOqSakMCvRXLlXA&e=2094222808&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "478a825bfd784e1e9de08ceceb3d2121",
+      "title": "ВСЕЛЕННАЯ РИКА И МОРТИ | ВСЕ СЕРИИ ПОДРЯД В ПРЯМОМ ЭФИРЕ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
     },
     {
       "id": "e7e04192431a24a750fd8704fa221461",
@@ -786,6 +698,17 @@
       "unavailable": true
     },
     {
+      "id": "2f052691c75d72b3ed7f3c33ea956a41",
+      "title": "телеканала Смайлик ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/8a/d9/8ad96371c04089c54516df2e62e8cce9.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/2f052691c75d72b3ed7f3c33ea956a41/index.m3u8?s=sVx1eHFFbZLb7WdRgwXFNA&e=2094222812&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
       "id": "2b06a5c4c688fdc05014acb4cba83de0",
       "title": "Moonbug Kids TV",
       "description": "",
@@ -797,23 +720,23 @@
       "unavailable": true
     },
     {
-      "id": "a996e6508b2ff81cd523dae2d14f7bf6",
-      "title": "Невский пр. Аничков дворец онлайн Санкт-Петербург",
+      "id": "ca70d39eba2e8771358bbcb4bfbad860",
+      "title": "Москва 24. Прямой эфир",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a996e6508b2ff81cd523dae2d14f7bf6/index.m3u8?s=QRxWIhocvyUNi0hlcikZyw&e=2093616557&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-09-09/73/db/73dba392169cd02352a049d1060332fb.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/ca70d39eba2e8771358bbcb4bfbad860/index.m3u8?s=a4w5u6WxZTlik6IQOtNpoA&e=2094222813&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "bf296006751f4344e359b3b5dc70be25",
-      "title": "Детское радио. Прямой эфир из студии в Москве",
+      "id": "a996e6508b2ff81cd523dae2d14f7bf6",
+      "title": "Невский пр. Аничков дворец онлайн Санкт-Петербург",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/5a/0a/5a0a80014f20a20ef9868fa3ab9eb751.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bf296006751f4344e359b3b5dc70be25/index.m3u8?s=pniCbtGeT724nck9gX-d1g&e=2093616557&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/a996e6508b2ff81cd523dae2d14f7bf6/index.m3u8?s=MfhV836k2kT8VhokBNwsbw&e=2094222814&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -830,8 +753,19 @@
       "unavailable": true
     },
     {
-      "id": "52e97970a55edfb13357cdad5e20083c",
-      "title": "МАТЧ ПРЕМЬЕР",
+      "id": "ed497bdb28846536f3928849f8f7e469",
+      "title": "Ключайка",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/ed497bdb28846536f3928849f8f7e469/index.m3u8?s=4TZBCXrjHHnDPU_tvAxAzA&e=2094222815&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "2814e12b4ef6c528967736441c2e2803",
+      "title": "Турецкие фильмы и сериалы без перерыва — 24/7",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -841,12 +775,12 @@
       "unavailable": true
     },
     {
-      "id": "ed497bdb28846536f3928849f8f7e469",
-      "title": "Ключайка",
+      "id": "31bd9a668e5dfe5feddb988c96c0998c",
+      "title": "«Мир Белогорья»: прямой эфир",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ed497bdb28846536f3928849f8f7e469/index.m3u8?s=vFQhXc7RXBNKgF_HfEmzPA&e=2093616559&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-01-30/36/24/3624a2fec27863de073cac2ed693181e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/31bd9a668e5dfe5feddb988c96c0998c/index.m3u8?s=_Bdz4eaAicfYft7041kEKg&e=2094222817&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -857,7 +791,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/16/4d/164dbbbcf834b83f3e22841cf36c1670.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/42ed85b003d36b28cd2da077e7ab0ed4/index.m3u8?s=32s6Z4bStoKNjJ2D5NQY6g&e=2093616560&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/42ed85b003d36b28cd2da077e7ab0ed4/index.m3u8?s=cfAUn4oQX_zxEyv2-3fCJw&e=2094222817&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "bf296006751f4344e359b3b5dc70be25",
+      "title": "Детское радио. Прямой эфир из студии в Москве",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/5a/0a/5a0a80014f20a20ef9868fa3ab9eb751.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/bf296006751f4344e359b3b5dc70be25/index.m3u8?s=YzYXhv3lzqOF8hTonNXD-w&e=2094222818&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -865,17 +810,6 @@
     {
       "id": "ec5267347fa50d03edba227906eba679",
       "title": "НАШЕ АНИМЕ | КРУГЛОСУТОЧНЫЙ ПРЯМОЙ ЭФИР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "2814e12b4ef6c528967736441c2e2803",
-      "title": "Турецкие фильмы и сериалы без перерыва — 24/7",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -896,12 +830,23 @@
       "unavailable": true
     },
     {
-      "id": "ca70d39eba2e8771358bbcb4bfbad860",
-      "title": "Москва 24. Прямой эфир",
+      "id": "3aa782bace452e7c4b9f81d767512147",
+      "title": "TNT SPORTS 1 HD",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-09-09/73/db/73dba392169cd02352a049d1060332fb.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ca70d39eba2e8771358bbcb4bfbad860/index.m3u8?s=nQ_6r0dC5t6pFj6HwF_Yaw&e=2093616562&scheme=https",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "a11c890a0ec0730ad33bdaaf2d244e1a",
+      "title": "Телеканал Тайна ТВ - прямой эфир",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2024-09-30/f2/32/f232a591ab71574812a434bd4eff7509.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/a11c890a0ec0730ad33bdaaf2d244e1a/index.m3u8?s=dtQ8Hq7rPQpHMsXLf92VUg&e=2094222821&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -912,18 +857,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-04-27/35/65/3565e83a76dafafc1ff2d981290511a1.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?s=DKkiTmvpI4_MAwR-VtgGXA&e=2093616563&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?s=ND58FUEtFAyV5bCLa4WhXA&e=2094222822&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "9ad2099eed71b4a0e577292c3bfd0708",
-      "title": "телеканал \"Радость Моя\"",
+      "id": "92aa15b4975d9f63c4e0b82e3b7af463",
+      "title": "БСТ",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/f4/6b/f46ba07a0ce63afb69a982f219d25622.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9ad2099eed71b4a0e577292c3bfd0708/index.m3u8?s=ZFHegVYkUpynCJoImn1ybw&e=2093616563&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/83/9f/839f369c0150480b218694039537a7d4.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/92aa15b4975d9f63c4e0b82e3b7af463/index.m3u8?s=fwUlRW27pmjiCKoV0SIHZg&e=2094222823&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -934,7 +879,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-11/1b/d4/1bd48dac384370cc412cd14e40af866f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/dd022de9cc6c8af89409513fa0a6117a/index.m3u8?s=wAa0eM89CZR54A39_0AUEw&e=2093616564&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/dd022de9cc6c8af89409513fa0a6117a/index.m3u8?s=ma4O0OozipKHLcyezj6ebg&e=2094222824&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "746aa7922a210086f18daff094a5e63d",
+      "title": "Невский проспект онлайн веб-камера Санкт-Петербург",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/746aa7922a210086f18daff094a5e63d/index.m3u8?s=36aXdeWiY51sbxlc92AoUQ&e=2094222824&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -945,32 +901,21 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-06-21/e8/99/e8994b6a1f529ba8b1d6190d2b05d416.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ca9d955460e0ba17a5a4b3a9b99bb8d2/index.m3u8?s=Bu9TBd1_JqZY1jnwcd56Mw&e=2093616565&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ca9d955460e0ba17a5a4b3a9b99bb8d2/index.m3u8?s=sj0vQbzZ4BxlxlfKnw06Xw&e=2094222825&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "a11c890a0ec0730ad33bdaaf2d244e1a",
-      "title": "Телеканал Тайна ТВ - прямой эфир",
+      "id": "9ad2099eed71b4a0e577292c3bfd0708",
+      "title": "телеканал \"Радость Моя\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2024-09-30/f2/32/f232a591ab71574812a434bd4eff7509.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a11c890a0ec0730ad33bdaaf2d244e1a/index.m3u8?s=hDPLOcDQQ3t-jcQk6GC6TA&e=2093616566&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/f4/6b/f46ba07a0ce63afb69a982f219d25622.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/9ad2099eed71b4a0e577292c3bfd0708/index.m3u8?s=h1RjBX0SsEh-Q_jXmO8QWw&e=2094222826&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
-    },
-    {
-      "id": "3aa782bace452e7c4b9f81d767512147",
-      "title": "TNT SPORTS 1 HD",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
     },
     {
       "id": "43269ba8fb179e298b1e497f557e8d2d",
@@ -989,7 +934,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/86e2f45785378c866d212e7f5f5447b0/index.m3u8?s=K7Hy_q6-YhsktunVGmRfIA&e=2093616568&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/86e2f45785378c866d212e7f5f5447b0/index.m3u8?s=QbTjiqYbejYukpW5UxvZOg&e=2094222829&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "406973c72e9d0449feef05ef7811ad01",
+      "title": "телеканал «Загородный»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-03-12/42/86/4286ad439a1a86665c14ab3756eeb612.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/406973c72e9d0449feef05ef7811ad01/index.m3u8?s=3J5PkW7NkoAkA42ochBC6w&e=2094222829&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1000,32 +956,21 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-03-26/2f/57/2f577de24b56acaedd9307b427bc596f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/46c03b7f1a7255326900f4a60a9b44e0/index.m3u8?s=XNhyLAPNM9jZ_vSPprttjA&e=2093616569&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/46c03b7f1a7255326900f4a60a9b44e0/index.m3u8?s=jAUGVHXi-aMAcPBJOa0KOg&e=2094222830&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "d14fcf59cb7d07a26c48ebc8c6565f44",
-      "title": "Телеканал 360 Новости",
+      "id": "8ceccbefd972496f7c2dd5a7acc476fc",
+      "title": "Water bear",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/9a/c5/9ac56bc4d78e1e0686ab531c51ee07ed.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d14fcf59cb7d07a26c48ebc8c6565f44/index.m3u8?s=-sXniad4x6zAg6BJ1D23IA&e=2093616569&scheme=https",
+      "avatar": "",
+      "stream_url": null,
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "1f550a23c44ec7f287324b0b3e4f5a29",
-      "title": "ОСН ТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-01-19/a6/a6/a6a686437113bd61d656193eea1d5d53.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1f550a23c44ec7f287324b0b3e4f5a29/index.m3u8?s=3z6f3Lv1umxVxSnAlSA0QA&e=2093616570&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
+      "unavailable": true
     },
     {
       "id": "4d06d4d152d087f3792a5b15dc729562",
@@ -1039,34 +984,12 @@
       "unavailable": true
     },
     {
-      "id": "406973c72e9d0449feef05ef7811ad01",
-      "title": "телеканал «Загородный»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-03-12/42/86/4286ad439a1a86665c14ab3756eeb612.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/406973c72e9d0449feef05ef7811ad01/index.m3u8?s=ra28EO1irx6mqQQySt1jgw&e=2093616571&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "f712ae5ff3db23ec09b3674133d44daa",
       "title": "VIVA Russia HD",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/c3/a4/c3a4ad05703c7c982d567fb31ae348fd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=6fe9S7BnaaPfB6ERypaFow&e=2093616572&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "746aa7922a210086f18daff094a5e63d",
-      "title": "Невский проспект онлайн веб-камера Санкт-Петербург",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/746aa7922a210086f18daff094a5e63d/index.m3u8?s=3le_dBeauVdRQ99tdOUMcQ&e=2093616573&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=FLIgQpRwJFBxd2TxvDsDwQ&e=2094222833&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1083,34 +1006,12 @@
       "unavailable": true
     },
     {
-      "id": "92aa15b4975d9f63c4e0b82e3b7af463",
-      "title": "БСТ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/83/9f/839f369c0150480b218694039537a7d4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/92aa15b4975d9f63c4e0b82e3b7af463/index.m3u8?s=CXULGRUlPhXIMyj1X-iqTg&e=2093616574&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "bbf23277dbd0dd0e6a623526d4c3f8c9",
       "title": "Телеканал 78",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7f/0c/7f0cfa64ff5fea6e1086012672331f9e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bbf23277dbd0dd0e6a623526d4c3f8c9/index.m3u8?s=H5lTKArGUZbYohLWSBzOPg&e=2093616574&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "58406cad9cc435f48a62209e076e8a9b",
-      "title": "Телеканал \"Сейм\" | Курская область",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-10-06/22/56/22565d261e0faa28bf989fe30650bfda.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/58406cad9cc435f48a62209e076e8a9b/index.m3u8?s=7O8S0Sk-l4CHDBUA80N85A&e=2093616575&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/bbf23277dbd0dd0e6a623526d4c3f8c9/index.m3u8?s=RpPIjhQvMsqs6xMxTlqFmQ&e=2094222834&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1121,29 +1022,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-06-17/29/a8/29a853fad5f91e88e4a000794a6ece44.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5835cd10c04311e400f2ed19b1b2fe8b/index.m3u8?s=0eQE_xlXFzKLnalGRtrESw&e=2093616576&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "7a485ef5da9fe50ba939f36ca3e6ed96",
-      "title": "NHL Network",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "988ec7330fa38c8a1e5980ba7d02dbbe",
-      "title": "ВДОХ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/988ec7330fa38c8a1e5980ba7d02dbbe/index.m3u8?s=8bTbVdRxnwNTtoaqriRmyw&e=2093616577&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5835cd10c04311e400f2ed19b1b2fe8b/index.m3u8?s=1-J_zeiKfOjncTEbru3y0A&e=2094222835&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1160,34 +1039,23 @@
       "unavailable": true
     },
     {
-      "id": "39c5bfe012402990e6402eded8bdc761",
-      "title": "Телеканал ОТС",
+      "id": "d14fcf59cb7d07a26c48ebc8c6565f44",
+      "title": "Телеканал 360 Новости",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-18/18/92/189287956cb0eba525a18395d1174e48.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/39c5bfe012402990e6402eded8bdc761/index.m3u8?s=R6c-O4E3b_nFHKOmE_xZew&e=2093616578&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/9a/c5/9ac56bc4d78e1e0686ab531c51ee07ed.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/d14fcf59cb7d07a26c48ebc8c6565f44/index.m3u8?s=hr7-u_GnKOg2arTap4NULQ&e=2094222837&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "da760ca73396be9f7bc1589dba81036b",
-      "title": "Телеканал \"Беларусь 1\"",
+      "id": "988ec7330fa38c8a1e5980ba7d02dbbe",
+      "title": "ВДОХ",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-09-18/f0/96/f096244d46edc993f78e5f67457ca250.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/da760ca73396be9f7bc1589dba81036b/index.m3u8?s=JuUupG_N9x6A0iRTpz_JTg&e=2093616579&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "1217bd14907ff59c5c64bcc4cbe1af41",
-      "title": "Гостиный двор онлайн веб-камера Невский проспект и Садовая улица",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1217bd14907ff59c5c64bcc4cbe1af41/index.m3u8?s=3JjN9VWAO9gYizZ8fXYqJQ&e=2093616580&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/7a/8e/7a8ebf04f384363ea92ab71e18c02020.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/988ec7330fa38c8a1e5980ba7d02dbbe/index.m3u8?s=_fXF8RVn1COam85h83W8bQ&e=2094222837&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1204,8 +1072,30 @@
       "unavailable": true
     },
     {
-      "id": "8ceccbefd972496f7c2dd5a7acc476fc",
-      "title": "Water bear",
+      "id": "1217bd14907ff59c5c64bcc4cbe1af41",
+      "title": "Гостиный двор онлайн веб-камера Невский проспект и Садовая улица",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/1217bd14907ff59c5c64bcc4cbe1af41/index.m3u8?s=KOUhOW0oybukd-Tis1WniA&e=2094222839&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "58406cad9cc435f48a62209e076e8a9b",
+      "title": "Телеканал \"Сейм\" | Курская область",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-10-06/22/56/22565d261e0faa28bf989fe30650bfda.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/58406cad9cc435f48a62209e076e8a9b/index.m3u8?s=IJVAuuNusjKt-i7PyEUmLg&e=2094222839&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "7a485ef5da9fe50ba939f36ca3e6ed96",
+      "title": "NHL Network",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -1226,15 +1116,26 @@
       "unavailable": true
     },
     {
-      "id": "d01241e9fd2bc2d65dbf6d74cca02f89",
-      "title": "NBA TV",
+      "id": "1f550a23c44ec7f287324b0b3e4f5a29",
+      "title": "ОСН ТВ",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
+      "avatar": "https://pic.rtbcdn.ru/user/2026-01-19/a6/a6/a6a686437113bd61d656193eea1d5d53.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/1f550a23c44ec7f287324b0b3e4f5a29/index.m3u8?s=2iAqbya2o1foVOZsD6SSvg&e=2094222842&scheme=https",
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": true
+      "unavailable": false
+    },
+    {
+      "id": "cb2f1d99b88c9b4d38df05cd7fa0a6c2",
+      "title": "Телеканал \"Кубань 24\"",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2b/d2/2bd2df59a255faac26fab55c22304730.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/cb2f1d99b88c9b4d38df05cd7fa0a6c2/index.m3u8?s=0SThT1qJFR7HQThnKpdFLQ&e=2094222842&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
     },
     {
       "id": "45b30eef1b89857182b03db2c25631d9",
@@ -1248,15 +1149,26 @@
       "unavailable": true
     },
     {
-      "id": "cb2f1d99b88c9b4d38df05cd7fa0a6c2",
-      "title": "Телеканал \"Кубань 24\"",
+      "id": "da760ca73396be9f7bc1589dba81036b",
+      "title": "Телеканал \"Беларусь 1\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2b/d2/2bd2df59a255faac26fab55c22304730.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cb2f1d99b88c9b4d38df05cd7fa0a6c2/index.m3u8?s=HUI-E0RHY0WUpBjELOMtvw&e=2093616583&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-11-08/ff/07/ff07c16c89359dd3c1e43027d7876f08.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/da760ca73396be9f7bc1589dba81036b/index.m3u8?s=8fZbPuykW9lqdFqpah-jgQ&e=2094222844&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
+    },
+    {
+      "id": "d01241e9fd2bc2d65dbf6d74cca02f89",
+      "title": "NBA TV",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
     },
     {
       "id": "5fa486bf465c8735fff9f41b372610cc",
@@ -1264,29 +1176,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/09/bc/09bcceba88686a831e4a47ee0585d335.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5fa486bf465c8735fff9f41b372610cc/index.m3u8?s=sBHbRwiyAgmeRmM8kRVhNA&e=2093616584&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "99e5a191615a398b5fd3c1d6020c07f1",
-      "title": "Насыщенная жизнь трубкозуба Теренса",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/99e5a191615a398b5fd3c1d6020c07f1/index.m3u8?s=DUuRigNfxq52YAOtDixB8A&e=2093616585&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "3bbbfe178e58ca0830a701e0624f20d8",
-      "title": "Первый крымский",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/ae/03/ae03068c634d160a5db1b1090ecb91ae.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3bbbfe178e58ca0830a701e0624f20d8/index.m3u8?s=U0AKW63cduZfI3MqC2EhYw&e=2093616585&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5fa486bf465c8735fff9f41b372610cc/index.m3u8?s=BEwGQe33QkhJeVRhsS98aw&e=2094222848&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1297,21 +1187,21 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/92e79cc0d122fb94647b79d4e7778773/index.m3u8?s=n9Qdb_7uObQ8hbAzrTsbrQ&e=2093616586&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/92e79cc0d122fb94647b79d4e7778773/index.m3u8?s=kOzcJxiRS34KytEVhKgQEw&e=2094222861&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "d080f8ee5c63ea2ba83bd6d2969d1e84",
-      "title": "Telemundo TV",
+      "id": "e00423314d16d4696640a39963cc8be3",
+      "title": "Наблюдаем за выдрами",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
+      "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/e00423314d16d4696640a39963cc8be3/index.m3u8?s=wnJSz4owLPM1eKLgR6y7tQ&e=2094222862&scheme=https",
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": true
+      "unavailable": false
     },
     {
       "id": "05550e441b09aeec53e60de66b6c47bf",
@@ -1341,7 +1231,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/f4/39/f439e4e76a407af5820d19edd46867fc.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7a35d5186515db85144d86900ebe1daf/index.m3u8?s=k8BefwgZztc9TRROhXKB6w&e=2093616588&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/7a35d5186515db85144d86900ebe1daf/index.m3u8?s=Esyh23oaA22AdgB5K3nFyA&e=2094222864&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "3bbbfe178e58ca0830a701e0624f20d8",
+      "title": "Первый крымский",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/ae/03/ae03068c634d160a5db1b1090ecb91ae.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/3bbbfe178e58ca0830a701e0624f20d8/index.m3u8?s=-S9d4vN37lzdhXvXcVkfkA&e=2094222865&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1352,10 +1253,21 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-09-03/a3/3c/a33cd3c9ae10333ee84e6eebd1d5cd8f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/aff0a2b356d2e1eef55bdb868be4dcc3/index.m3u8?s=GLrNF5Ttg7ZQe9AcebhPmQ&e=2093616589&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/aff0a2b356d2e1eef55bdb868be4dcc3/index.m3u8?s=yL-iciVg-2FcmUsKTLUfJw&e=2094222866&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
+    },
+    {
+      "id": "d080f8ee5c63ea2ba83bd6d2969d1e84",
+      "title": "Telemundo TV",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
     },
     {
       "id": "99d4597cea881a27cf7dd6e65a74dade",
@@ -1363,7 +1275,29 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2025-04-28/33/47/33473a0cbc6c0d089d64539de9029b1f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/99d4597cea881a27cf7dd6e65a74dade/index.m3u8?s=b_iUBm8zzou8C0dqDpBVfQ&e=2093616590&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/99d4597cea881a27cf7dd6e65a74dade/index.m3u8?s=GQiuw31m_tN019iMUdLyug&e=2094222868&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "efc2833169ec20a3ea61197714bea6ab",
+      "title": "Unbeaten",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "39c5bfe012402990e6402eded8bdc761",
+      "title": "Телеканал ОТС",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-18/18/92/189287956cb0eba525a18395d1174e48.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/39c5bfe012402990e6402eded8bdc761/index.m3u8?s=xp_GyuQun6YhSaTCc34T2g&e=2094222869&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1380,34 +1314,23 @@
       "unavailable": true
     },
     {
-      "id": "efc2833169ec20a3ea61197714bea6ab",
-      "title": "Unbeaten",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "e00423314d16d4696640a39963cc8be3",
-      "title": "Наблюдаем за выдрами",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e00423314d16d4696640a39963cc8be3/index.m3u8?s=_NUNOVaYjGLWroYzbdryeQ&e=2093616592&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "ce34005d3db841e15eecb7e31749adf6",
       "title": "Телеканал Евразия",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/70/01/7001e77699e45cc07a6a8d53cd368f7a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ce34005d3db841e15eecb7e31749adf6/index.m3u8?s=Jqjh--5hNpDDhwNoYGrluA&e=2093616592&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ce34005d3db841e15eecb7e31749adf6/index.m3u8?s=81ldoKwmTN9upGbKzvCEtw&e=2094222871&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "99e5a191615a398b5fd3c1d6020c07f1",
+      "title": "Насыщенная жизнь трубкозуба Теренса",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2024-11-21/ec/a4/eca4cc7ed06ef1bd093060476b495234.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/99e5a191615a398b5fd3c1d6020c07f1/index.m3u8?s=YLF5yNE2P_Se7FbRPFdoSg&e=2094222872&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1418,117 +1341,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/9a/c5/9ac56bc4d78e1e0686ab531c51ee07ed.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=9q1_lfruBJOhWIjlXv20PA&e=2093616593&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "fcafa0d358df671e4f7c61ca54c79bea",
-      "title": "РГВК \"Дагестан\"",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/73/5e/735e97d7e2de44d4d19c2d7e7ca7a66e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/fcafa0d358df671e4f7c61ca54c79bea/index.m3u8?s=MQ_hyqDGPau6z_ubchPhcA&e=2093616594&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "333f94ef9af118c0ac51006243053e07",
-      "title": "телеканала ННТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/21/4c/214c7027020023629a813bfad51df48e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/333f94ef9af118c0ac51006243053e07/index.m3u8?s=faR9vcLKmJGSNW5uYHPU1Q&e=2093616594&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "3d7964a9e8e611c2e9378a079a1bf175",
-      "title": "КИНОМИКС",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "1839496ed8242ed47f5c540e25d4ba3f",
-      "title": "МТВ Волгоград",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/1b/9e/1b9e00ecb55da6fdd05392a93ba30a3e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1839496ed8242ed47f5c540e25d4ba3f/index.m3u8?s=Optj_cDhfiz-xiXwgViJjA&e=2093616595&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "015ef8ab4655a4dee755bb9cb33b56e2",
-      "title": "Наше новое кино",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "7d6d8c8fc5c6e02d9c0b78eb451f3bd0",
-      "title": "Канал 12",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/28/6d/286dfc93161e142c224a76076ba70e36.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7d6d8c8fc5c6e02d9c0b78eb451f3bd0/index.m3u8?s=SCdMaqDYpwLQ2lIeY0VJNg&e=2093616597&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "6a94516dfac869b601251f3a6b8cafbc",
-      "title": "КИНОУЖАС",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "965a025e4ebbaf0957415f80c6de8534",
-      "title": "Музыка Мода ТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-04-05/ed/9d/ed9d7d729fd7ab69e3d1c48a49c3eb54.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/965a025e4ebbaf0957415f80c6de8534/index.m3u8?s=E-lT8cPSiiTERnHjfE4bsg&e=2093616598&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "5a294ae1ed12c44c7053301fb5fa9ba0",
-      "title": "FON MUSIC",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-01-27/1f/14/1f14ec373b8c3eeebb7aad3e34d3bb74.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5a294ae1ed12c44c7053301fb5fa9ba0/index.m3u8?s=CYAmYGt9u3VmIQ_an8OA3A&e=2093616599&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "a0e83fe5c23fc219886f7d7f084a8cb4",
-      "title": "7 канал Красноярск",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/c6/08/c6089e30b02be9a5a66fd8a01f1f9810.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/a0e83fe5c23fc219886f7d7f084a8cb4/index.m3u8?s=R4PmVKfUe96SwLdapJeACQ&e=2093616599&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=Wk6VAe6aqpU8rlP1MEFb_Q&e=2094222872&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1539,7 +1352,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2c5000420be8aa08a969a21614e2d33e/index.m3u8?s=GieeMC9_1bskJXw10IfvsA&e=2093616600&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/2c5000420be8aa08a969a21614e2d33e/index.m3u8?s=SloSEo5yh3WnZhA14H4nEg&e=2094222873&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "a0e83fe5c23fc219886f7d7f084a8cb4",
+      "title": "7 канал Красноярск",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/c6/08/c6089e30b02be9a5a66fd8a01f1f9810.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/a0e83fe5c23fc219886f7d7f084a8cb4/index.m3u8?s=5wK99iiuoJ6C9ZD_1UHERw&e=2094222874&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1556,8 +1380,19 @@
       "unavailable": true
     },
     {
-      "id": "e553770139adc990ee5f54972ff4121b",
-      "title": "RT News | Livestream 24/7",
+      "id": "fcafa0d358df671e4f7c61ca54c79bea",
+      "title": "РГВК \"Дагестан\"",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/73/5e/735e97d7e2de44d4d19c2d7e7ca7a66e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/fcafa0d358df671e4f7c61ca54c79bea/index.m3u8?s=ZGILpX2pJXp-n3GnRoloZg&e=2094222876&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "89e4d6310399df1d824f861e4b312b49",
+      "title": "AKC.tv",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -1567,34 +1402,45 @@
       "unavailable": true
     },
     {
-      "id": "15bb032337c7425983757d211713eb7d",
-      "title": "телеканала \"Магас\"",
+      "id": "015ef8ab4655a4dee755bb9cb33b56e2",
+      "title": "Наше новое кино",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/5f/25/5f2509310f1e61b3e0ed1ccfbb2b5408.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/15bb032337c7425983757d211713eb7d/index.m3u8?s=st3klaQfSl-i92bnNyfhKg&e=2093616602&scheme=https",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "3d7964a9e8e611c2e9378a079a1bf175",
+      "title": "КИНОМИКС",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "965a025e4ebbaf0957415f80c6de8534",
+      "title": "Музыка Мода ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-04-05/ed/9d/ed9d7d729fd7ab69e3d1c48a49c3eb54.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/965a025e4ebbaf0957415f80c6de8534/index.m3u8?s=uvJGSD-E9HeSe6iFPxrQrw&e=2094222879&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "57486bf8e1c01d16a5a939c463867fab",
-      "title": "Рифей-ТВ",
+      "id": "f79ff24ad16cf5f5eb52994647596d13",
+      "title": "Телеканал БАРС",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/4f/4e/4f4e78cdec3741a959889eea37a254ca.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/57486bf8e1c01d16a5a939c463867fab/index.m3u8?s=vzMZqu8r8YDF2Y1Ya8GyjA&e=2093616603&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "23afd7debed1cfc7a8efa0827c24d836",
-      "title": "Липецкое время",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/32/90/32908a77491bc2271818b863f9587c3b.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/23afd7debed1cfc7a8efa0827c24d836/index.m3u8?s=qa3BT2OPXKiLk3oERzrEzw&e=2093616603&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-29/d1/ce/d1ced5bc3e58a1f7d474758bbeba1bee.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f79ff24ad16cf5f5eb52994647596d13/index.m3u8?s=6bP4TfEaAqkFSExvH-SHkA&e=2094222880&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1611,6 +1457,17 @@
       "unavailable": true
     },
     {
+      "id": "1839496ed8242ed47f5c540e25d4ba3f",
+      "title": "МТВ Волгоград",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/1b/9e/1b9e00ecb55da6fdd05392a93ba30a3e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/1839496ed8242ed47f5c540e25d4ba3f/index.m3u8?s=Ls6v9iLmqh412G5dtiLBvQ&e=2094222881&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
       "id": "a7a17d6b994f02a80aebd69435266b58",
       "title": "SKY SPORTS GOLF",
       "description": "",
@@ -1622,12 +1479,78 @@
       "unavailable": true
     },
     {
-      "id": "601ca3d760de90391c18772e43d5190e",
-      "title": "Телеканал \"Юрган\"",
+      "id": "b7d879feefadde4e04e516dde89012cd",
+      "title": "телеканала \"ЯПервый\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-11-02/03/e1/03e1364195361374de0ece7fcb2df0a1.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/601ca3d760de90391c18772e43d5190e/index.m3u8?s=Weh7nUSq1s6al7k8jm4Mzw&e=2093616605&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/c4/b1/c4b15210e7d604c9a62b5f9dc16ac528.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/b7d879feefadde4e04e516dde89012cd/index.m3u8?s=d_xJ0KPUZ56mdIBPR2NxAw&e=2094222883&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "2d7fa51716500fba52586d594201777f",
+      "title": "Телеканал HHQ – Исследуем мир вместе",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/ef/1e/ef1e6d84b7c04f92ed0ff02bd6668328.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/2d7fa51716500fba52586d594201777f/index.m3u8?s=8WmHfSaSPjWvDgt1zlRKWw&e=2094222883&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "333f94ef9af118c0ac51006243053e07",
+      "title": "телеканала ННТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/21/4c/214c7027020023629a813bfad51df48e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/333f94ef9af118c0ac51006243053e07/index.m3u8?s=JlLEP_Gv_Nk7j1acKtC0Xg&e=2094222884&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "e553770139adc990ee5f54972ff4121b",
+      "title": "RT News | Livestream 24/7",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "6a94516dfac869b601251f3a6b8cafbc",
+      "title": "КИНОУЖАС",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "57486bf8e1c01d16a5a939c463867fab",
+      "title": "Рифей-ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/4f/4e/4f4e78cdec3741a959889eea37a254ca.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/57486bf8e1c01d16a5a939c463867fab/index.m3u8?s=9oN7SjwXf5BIHiCxBspuaA&e=2094222886&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "68b2533a29f7de163842baf1b9dfc17e",
+      "title": "ПРЯМОЙ ЭФИР ТБВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-02-18/65/3d/653de6127fec6bb8006e1fdc3c303aea.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/68b2533a29f7de163842baf1b9dfc17e/index.m3u8?s=KGM6dY3ZgkEi-R2oHG2aNQ&e=2094222887&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1644,89 +1567,23 @@
       "unavailable": true
     },
     {
-      "id": "89e4d6310399df1d824f861e4b312b49",
-      "title": "AKC.tv",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
       "id": "59e0373a9aa587e06aeaf9009f86ded1",
       "title": "ПервоуральскТВ. Прямой эфир",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/7b/63/7b633f718173ae4995f089750382a40d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/59e0373a9aa587e06aeaf9009f86ded1/index.m3u8?s=jrHb1uRQOtohGAMjJqSCQQ&e=2093616607&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/59e0373a9aa587e06aeaf9009f86ded1/index.m3u8?s=a-4l8zuqeEtYPxmxDB_ljg&e=2094222888&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "b7d879feefadde4e04e516dde89012cd",
-      "title": "телеканала \"ЯПервый\"",
+      "id": "15bb032337c7425983757d211713eb7d",
+      "title": "телеканала \"Магас\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-04-02/c4/b1/c4b15210e7d604c9a62b5f9dc16ac528.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b7d879feefadde4e04e516dde89012cd/index.m3u8?s=jJAQvUwJqWOUX6-AycPH4A&e=2093616607&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "2d7fa51716500fba52586d594201777f",
-      "title": "Телеканал HHQ – Исследуем мир вместе",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/ef/1e/ef1e6d84b7c04f92ed0ff02bd6668328.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2d7fa51716500fba52586d594201777f/index.m3u8?s=prS9WAAcOgvJfH5CPNyx5Q&e=2093616608&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "68b2533a29f7de163842baf1b9dfc17e",
-      "title": "ПРЯМОЙ ЭФИР ТБВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-02-18/65/3d/653de6127fec6bb8006e1fdc3c303aea.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/68b2533a29f7de163842baf1b9dfc17e/index.m3u8?s=1So0ybCMjNPwdbdkOyuwrg&e=2093616609&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f6a6d5c955180d0d0f80c66d0b6150d3",
-      "title": "ВМЕСТЕ-РФ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/8a/a3/8aa37c7091556944ca25429e5b3bb7f1.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f6a6d5c955180d0d0f80c66d0b6150d3/index.m3u8?s=45zie8ce4Lolh6_wP3Ja5w&e=2093616609&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "b4c501ea4129408a3c195f9ae4359c0e",
-      "title": "НТС Иркутск",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/8a/63/8a63f9316e1d8cc618e79963d7c93a2f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b4c501ea4129408a3c195f9ae4359c0e/index.m3u8?s=IxHWgKT3i7v3J3y_G_7Pow&e=2093616610&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f79ff24ad16cf5f5eb52994647596d13",
-      "title": "Телеканал БАРС",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-29/d1/ce/d1ced5bc3e58a1f7d474758bbeba1bee.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f79ff24ad16cf5f5eb52994647596d13/index.m3u8?s=hVBMCTVc4NZra06O0D3QFA&e=2093616611&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/5f/25/5f2509310f1e61b3e0ed1ccfbb2b5408.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/15bb032337c7425983757d211713eb7d/index.m3u8?s=3FA9_whzjLDoJ7H3_-CDcQ&e=2094222889&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1737,40 +1594,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ac/5f/ac5f56a00df9d1b298d310a79d316056.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/13b0320238d7938a2deffb4065068986/index.m3u8?s=AgLXfUKr2RuXG4_kCKWIfQ&e=2093616612&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/13b0320238d7938a2deffb4065068986/index.m3u8?s=FHDYQWwsF1zXydxOv4F18A&e=2094222890&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "c5a272dc23ad505667bc2b54f98a3241",
-      "title": "Таврия | Прямой эфир",
+      "id": "601ca3d760de90391c18772e43d5190e",
+      "title": "Телеканал \"Юрган\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-17/d8/cd/d8cdd6a02260b3f2fca299970ba2812c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c5a272dc23ad505667bc2b54f98a3241/index.m3u8?s=-XUv64M-Ds2ojS_-biJ5Jw&e=2093616612&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "69c54c756c1d5e789c489398a8725835",
-      "title": "Телеканал Восток ТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-01-08/08/70/087056ebba5ba7527ec97f4ba5ccf174.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/69c54c756c1d5e789c489398a8725835/index.m3u8?s=5tgnMfnBXl2OT3xwt1C9Qg&e=2093616613&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f372aa2aff09518d050ecdf70956012c",
-      "title": "Телеканал «КРИК-ТВ»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/f6/30/f630fe805701443570600a89a1170e2e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f372aa2aff09518d050ecdf70956012c/index.m3u8?s=Hz4w8Guy7Pv-428Te5eEug&e=2093616613&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-11-02/03/e1/03e1364195361374de0ece7fcb2df0a1.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/601ca3d760de90391c18772e43d5190e/index.m3u8?s=eDS5RNqqEdCAPiIHe-VPtA&e=2094222891&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1781,18 +1616,51 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-15/34/e1/34e1639bd740177b7c14943c1bc26a9d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cf7e6ad2c24ce743b5b60478c176037b/index.m3u8?s=n_lxN7W2GigznhocXrTo4Q&e=2093616614&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/cf7e6ad2c24ce743b5b60478c176037b/index.m3u8?s=E8t-xdsGCVvK83R7woZvIg&e=2094222891&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "2d65c260e4b73ef162aca5df132e5147",
-      "title": "Телеканал «Якутия 24»",
+      "id": "23afd7debed1cfc7a8efa0827c24d836",
+      "title": "Липецкое время",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/0a/ce/0ace41698aaf61620c6092a451750ea6.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/2d65c260e4b73ef162aca5df132e5147/index.m3u8?s=ll7OfmHLfh1MAdAJoaSWZQ&e=2093616615&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/32/90/32908a77491bc2271818b863f9587c3b.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/23afd7debed1cfc7a8efa0827c24d836/index.m3u8?s=XQ1mYP7VqSVXeErzQlANhA&e=2094222892&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "5a294ae1ed12c44c7053301fb5fa9ba0",
+      "title": "FON MUSIC",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-01-27/1f/14/1f14ec373b8c3eeebb7aad3e34d3bb74.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/5a294ae1ed12c44c7053301fb5fa9ba0/index.m3u8?s=yoI39iso7-GLs9-OBbG9Hg&e=2094222893&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "7d6d8c8fc5c6e02d9c0b78eb451f3bd0",
+      "title": "Канал 12",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/28/6d/286dfc93161e142c224a76076ba70e36.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/7d6d8c8fc5c6e02d9c0b78eb451f3bd0/index.m3u8?s=oDxGURO9pPy-HJXvMMmKHQ&e=2094222894&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "f6a6d5c955180d0d0f80c66d0b6150d3",
+      "title": "ВМЕСТЕ-РФ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/8a/a3/8aa37c7091556944ca25429e5b3bb7f1.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f6a6d5c955180d0d0f80c66d0b6150d3/index.m3u8?s=V5yWJisYHYEbzcPsVxPHyg&e=2094222895&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1803,7 +1671,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-10/42/41/4241231c7b493c7f5e30cc7e90c01f03.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/047d8b76295c88df33da226a057f2492/index.m3u8?s=cBZ6JnJ8kGc8xkW7fuV3ig&e=2093616615&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/047d8b76295c88df33da226a057f2492/index.m3u8?s=cGBXCR7fmTFxHTTndkzP3Q&e=2094222895&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "b4c501ea4129408a3c195f9ae4359c0e",
+      "title": "НТС Иркутск",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/8a/63/8a63f9316e1d8cc618e79963d7c93a2f.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/b4c501ea4129408a3c195f9ae4359c0e/index.m3u8?s=akG2f08HD-QXclrGIe-Sjg&e=2094222896&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1831,23 +1710,45 @@
       "unavailable": true
     },
     {
-      "id": "82c8c19b0af69c77dc81dbc7e3dd6285",
-      "title": "Матч! Футбол 2",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
       "id": "e07fffc5eb21f98a5ade09e825d7095a",
       "title": "Саратов 24",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-03-25/18/af/18af22d0274443fc48cf675e128bb2d7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e07fffc5eb21f98a5ade09e825d7095a/index.m3u8?s=VchX114mVJ5cX3bDWGbxdA&e=2093616618&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/e07fffc5eb21f98a5ade09e825d7095a/index.m3u8?s=IhwKCDnguoQLRBZMfSltYA&e=2094222898&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "5d9273a93631b87a3bbdc883bb3a58cb",
+      "title": "Телеканал «Ариг Ус 24»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-13/77/bf/77bf1f28278f478dcbce7ce0b826e4de.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/5d9273a93631b87a3bbdc883bb3a58cb/index.m3u8?s=9Fk41xpt43zWhe0GmmwM8Q&e=2094222899&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "360eabf2bf139f0a97b971c4b92d09b6",
+      "title": "телеканала «Югра»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/fa/2f/fa2f824cc1998515bcc9ef37c9c808cd.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/360eabf2bf139f0a97b971c4b92d09b6/index.m3u8?s=JXgx5EckuUVHcwH6VVapQQ&e=2094222900&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "f6160b4e48cb32b4d5438c66c83b69dc",
+      "title": "телеканала «ЮУрГУ-ТВ» (Челябинск)",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-10-23/5d/d9/5dd940a866c398a74f0c1a70c1eb4817.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f6160b4e48cb32b4d5438c66c83b69dc/index.m3u8?s=kgt9ERAkeqi_EB9SdfsGEA&e=2094222900&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1864,56 +1765,56 @@
       "unavailable": true
     },
     {
+      "id": "c5a272dc23ad505667bc2b54f98a3241",
+      "title": "Таврия | Прямой эфир",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-17/d8/cd/d8cdd6a02260b3f2fca299970ba2812c.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/c5a272dc23ad505667bc2b54f98a3241/index.m3u8?s=05ImHieg1Bn3D7KzEyoUqA&e=2094222902&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "3c86a67da5919dde328f95c7da0f6a31",
+      "title": "Нижний Новгород 24",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-03-04/44/95/44952f499efa53d15cc60f8b38fee018.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/3c86a67da5919dde328f95c7da0f6a31/index.m3u8?s=XCna_UOEAuPgFn51Rype_Q&e=2094222904&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "2d65c260e4b73ef162aca5df132e5147",
+      "title": "Телеканал «Якутия 24»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/0a/ce/0ace41698aaf61620c6092a451750ea6.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/2d65c260e4b73ef162aca5df132e5147/index.m3u8?s=r8eFACS9I0cJkfh5Hso2pw&e=2094222904&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "f372aa2aff09518d050ecdf70956012c",
+      "title": "Телеканал «КРИК-ТВ»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/f6/30/f630fe805701443570600a89a1170e2e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f372aa2aff09518d050ecdf70956012c/index.m3u8?s=EZ7hA17avJ5rPl3Pd4FOdg&e=2094222905&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
       "id": "b68e4526d60f0945b36853edee93aca8",
       "title": "Первый информационный",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-09-18/22/91/2291c03374f0d617f845b669d2db7b26.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b68e4526d60f0945b36853edee93aca8/index.m3u8?s=VNWRLyQvojywyUlHcHhSzA&e=2093616619&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "5d9273a93631b87a3bbdc883bb3a58cb",
-      "title": "Телеканал «Ариг Ус 24»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-13/77/bf/77bf1f28278f478dcbce7ce0b826e4de.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5d9273a93631b87a3bbdc883bb3a58cb/index.m3u8?s=bjwRfTqzVONmlTHYslxFfQ&e=2093616620&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f6160b4e48cb32b4d5438c66c83b69dc",
-      "title": "телеканала «ЮУрГУ-ТВ» (Челябинск)",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-10-23/5d/d9/5dd940a866c398a74f0c1a70c1eb4817.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f6160b4e48cb32b4d5438c66c83b69dc/index.m3u8?s=4b7kqTMnK3VbRElOh9_IgA&e=2093616621&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "7a0be0bcc9490601d187762b55d0c530",
-      "title": "Матч! Футбол 1",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "360eabf2bf139f0a97b971c4b92d09b6",
-      "title": "телеканала «Югра»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/fa/2f/fa2f824cc1998515bcc9ef37c9c808cd.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/360eabf2bf139f0a97b971c4b92d09b6/index.m3u8?s=akCh7Lv8-6Uchq0WayvDYQ&e=2093616622&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b68e4526d60f0945b36853edee93aca8/index.m3u8?s=9MuePolLhs982xMchQLcYA&e=2094222906&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1924,7 +1825,73 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/39/09/3909bf8eca27c48ed07beb7b97f7f4d3.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3053eeaecc60e0adef57b81d3498fdd0/index.m3u8?s=NiDuysmlH6gad9ib-n2zoQ&e=2093616623&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/3053eeaecc60e0adef57b81d3498fdd0/index.m3u8?s=N-3Ejy2HvSI4CfijsQdocg&e=2094222906&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "cf958b6c9ae4504be5fc2c1de358a017",
+      "title": "Nano",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/20/3e/203ef161e2de9cabf72fffc5d8621058.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/cf958b6c9ae4504be5fc2c1de358a017/index.m3u8?s=hth2EWqDnYicyOy9JCAXiA&e=2094222907&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "dce1080977de5e89dcbd1dd24d014b4e",
+      "title": "телеканала Сангат",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-02-03/d1/3a/d13a5ebc5a2d8e903625ba1aa4220bd5.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/dce1080977de5e89dcbd1dd24d014b4e/index.m3u8?s=VzGYwZetzrJQpF1n3AfWkg&e=2094222908&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "d6fa4a9643082b1dc04f0c4833a53b2a",
+      "title": "РОДНОЕ КИНО",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "52a1592710d8803b0570bfef9d2fbeff",
+      "title": "телеканала Губерния 33",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-10-30/bf/56/bf56554ad4dd37c16683d4490f437a1c.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/52a1592710d8803b0570bfef9d2fbeff/index.m3u8?s=0sq6sZzlQFXPPxRgUtfhWw&e=2094222910&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "69c54c756c1d5e789c489398a8725835",
+      "title": "Телеканал Восток ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-01-08/08/70/087056ebba5ba7527ec97f4ba5ccf174.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/69c54c756c1d5e789c489398a8725835/index.m3u8?s=DF8sh4KouyK6p4MqtNQIaw&e=2094222911&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "6cf7ef6babbb4bb2e9b97961f831034c",
+      "title": "Телеканал ПРО БИЗНЕС",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/02/fa/02fa06289f66b1fff39ab2c56769203d.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/6cf7ef6babbb4bb2e9b97961f831034c/index.m3u8?s=MPDHkh554nmylAxnnyAMaA&e=2094222912&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1941,15 +1908,15 @@
       "unavailable": true
     },
     {
-      "id": "d6fa4a9643082b1dc04f0c4833a53b2a",
-      "title": "РОДНОЕ КИНО",
+      "id": "fc2476d9dea912529d8b996f6d330202",
+      "title": "РЖД ТВ",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
+      "avatar": "https://pic.rtbcdn.ru/user/9a/6d/9a6d0d19ededc859c3b118815e5809ce.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/fc2476d9dea912529d8b996f6d330202/index.m3u8?s=6AMhGDmfcAFV001TrrBSNw&e=2094222913&scheme=https",
       "blocked": false,
       "blocked_reason": "",
-      "unavailable": true
+      "unavailable": false
     },
     {
       "id": "1932f750f00f3a742a1d90c62d0076ad",
@@ -1957,18 +1924,18 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/96/00/96002d88d3220e0d20f6f15e07d48cf9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/1932f750f00f3a742a1d90c62d0076ad/index.m3u8?s=E3VPdMfh7XbaOyP5HPGPzg&e=2093616625&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/1932f750f00f3a742a1d90c62d0076ad/index.m3u8?s=wJsyy7gOCIenKgQzazBowA&e=2094222916&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "dce1080977de5e89dcbd1dd24d014b4e",
-      "title": "телеканала Сангат",
+      "id": "80b308e455f2aceb498e5dccd58ca050",
+      "title": "Эфир православного телеканала \"Cоюз\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-02-03/d1/3a/d13a5ebc5a2d8e903625ba1aa4220bd5.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/dce1080977de5e89dcbd1dd24d014b4e/index.m3u8?s=arFAGVaSXPX4DGW38I1Mog&e=2093616626&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/80b308e455f2aceb498e5dccd58ca050/index.m3u8?s=x6CesXPxsXyQEPUSAQQf3A&e=2094222917&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -1985,100 +1952,12 @@
       "unavailable": true
     },
     {
-      "id": "fc2476d9dea912529d8b996f6d330202",
-      "title": "РЖД ТВ",
+      "id": "c93be53cba8a4ba6ac311b395a00f4d5",
+      "title": "ЖАР-ПТИЦА HD, прямой эфир Канала народов России",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/9a/6d/9a6d0d19ededc859c3b118815e5809ce.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/fc2476d9dea912529d8b996f6d330202/index.m3u8?s=X8J_x-jSK_96Jwsp-FLlSQ&e=2093616627&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "c6f66b644424c117f41e48062719ceed",
-      "title": "Четвертый канал",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2024-11-22/31/1f/311f6353f8d5d040cb81fd8ceb291114.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c6f66b644424c117f41e48062719ceed/index.m3u8?s=VbKQJH4CbUs5L8qGUMgmkg&e=2093616628&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "3c86a67da5919dde328f95c7da0f6a31",
-      "title": "Нижний Новгород 24",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-03-04/44/95/44952f499efa53d15cc60f8b38fee018.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3c86a67da5919dde328f95c7da0f6a31/index.m3u8?s=GyPC7YDrnwCxD_C9y26IQg&e=2093616629&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "6cf7ef6babbb4bb2e9b97961f831034c",
-      "title": "Телеканал ПРО БИЗНЕС",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/02/fa/02fa06289f66b1fff39ab2c56769203d.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/6cf7ef6babbb4bb2e9b97961f831034c/index.m3u8?s=X6JqXS2v9jGK1Uz5zHWjqg&e=2093616629&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "695f0fdefc96b6f7f2b4a311b71f596b",
-      "title": "САМОТЛОР",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/fa/31/fa311e7f66372a1e399d05259a82b24f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/695f0fdefc96b6f7f2b4a311b71f596b/index.m3u8?s=320DfPWctWQ9kauhmGxBrg&e=2093616630&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "cf958b6c9ae4504be5fc2c1de358a017",
-      "title": "Nano",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/20/3e/203ef161e2de9cabf72fffc5d8621058.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/cf958b6c9ae4504be5fc2c1de358a017/index.m3u8?s=YXZ_rftygCMC_BvXF15Lcg&e=2093616631&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "7748a2530116682fa185a156ce1d09a3",
-      "title": "Телеканал «Новый век» (Тамбовская область)",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/4f/c4/4fc482cae88d5573dfd798f6f278b27e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7748a2530116682fa185a156ce1d09a3/index.m3u8?s=y2BPRvt-RBHbAMfErIwP1A&e=2093616632&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "80b308e455f2aceb498e5dccd58ca050",
-      "title": "Эфир православного телеканала \"Cоюз\"",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/80b308e455f2aceb498e5dccd58ca050/index.m3u8?s=_9kk6n9ubS678zILnrYxqQ&e=2093616633&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "52a1592710d8803b0570bfef9d2fbeff",
-      "title": "телеканала Губерния 33",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-10-30/bf/56/bf56554ad4dd37c16683d4490f437a1c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/52a1592710d8803b0570bfef9d2fbeff/index.m3u8?s=bisg1OAxW7Niyj9ZJu23Nw&e=2093616633&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-11-07/98/68/9868f39e17507408d3ff8c330b5ce713.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/c93be53cba8a4ba6ac311b395a00f4d5/index.m3u8?s=6YsatNnwbLyVxSGtW-SHEg&e=2094222918&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2089,69 +1968,36 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/31/98/3198c45aa9aa9d4248774d6fd462e854.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/37d722b7752cd193a3f94d71cc9d60f5/index.m3u8?s=MDy1OEXy9Zmc6jNZGz8XJg&e=2093616634&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/37d722b7752cd193a3f94d71cc9d60f5/index.m3u8?s=qxbl56YVyo2inHlesNIGDQ&e=2094222919&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "b04fc212802bbf7ec94768c029e54aa9",
-      "title": "Круглосуточный интернет-канал в прямом эфире \"Липецк 24\"",
+      "id": "695f0fdefc96b6f7f2b4a311b71f596b",
+      "title": "САМОТЛОР",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/32/80/3280c7fd0d89a677a5ff200beadf7737.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b04fc212802bbf7ec94768c029e54aa9/index.m3u8?s=SOT7S7i5LD7vt5nLnQ_mkw&e=2093616634&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/fa/31/fa311e7f66372a1e399d05259a82b24f.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/695f0fdefc96b6f7f2b4a311b71f596b/index.m3u8?s=3KVVkMxlXayfWUvmLnCD2A&e=2094222920&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "067561b5754d0b7844762fa92939716b",
-      "title": "«Телеканал ЛТВ (Люберецкое телевидение)»",
+      "id": "c6f66b644424c117f41e48062719ceed",
+      "title": "Четвертый канал",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-11-21/87/99/8799e1636f2ec6e3c4ec13e08499bcb2.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/067561b5754d0b7844762fa92939716b/index.m3u8?s=EvrqGPvhOU0iGKtfFOntVg&e=2093616635&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2024-11-22/31/1f/311f6353f8d5d040cb81fd8ceb291114.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/c6f66b644424c117f41e48062719ceed/index.m3u8?s=8xewWCtCGpYj-usFkGa0rg&e=2094222921&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "31bd9a668e5dfe5feddb988c96c0998c",
-      "title": "«Мир Белогорья»: прямой эфир",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-01-30/36/24/3624a2fec27863de073cac2ed693181e.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/31bd9a668e5dfe5feddb988c96c0998c/index.m3u8?s=Y3gekKTUP12kVdmlCB7imA&e=2093616636&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "0115cdc35fb5234242a89de98137dca9",
-      "title": "Телеканал ТОЛК (Барнаул)",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/f1/9e/f19e2b95269809d07c7e415adb3912a8.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0115cdc35fb5234242a89de98137dca9/index.m3u8?s=FRye8-w4A04Zt5XrVt6GIg&e=2093616637&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "9b482361d6c845f7d70eafc98356d8bf",
-      "title": "Телеканал АРИС 24",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/c1/67/c16747e3dd0f24a315d3d8fbafeebfaf.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9b482361d6c845f7d70eafc98356d8bf/index.m3u8?s=X1FoxnzexTYeBdGBC_1xoQ&e=2093616638&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "cbad9322f845b5f4f0c052a698215d00",
-      "title": "Матч! Боец",
+      "id": "7a0be0bcc9490601d187762b55d0c530",
+      "title": "Матч! Футбол 1",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2161,133 +2007,12 @@
       "unavailable": true
     },
     {
-      "id": "bed2dcda74004e4e9a61966d2848c027",
-      "title": "телеканала «Волга»",
+      "id": "9b482361d6c845f7d70eafc98356d8bf",
+      "title": "Телеканал АРИС 24",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/c3/1a/c31ab1e1c27e0a8acad1217099e1c400.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/bed2dcda74004e4e9a61966d2848c027/index.m3u8?s=8tGyp3_nVJKLXmU1uA4SsA&e=2093616639&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "5a88a8d75565c5cdebeb11d87bfc61e9",
-      "title": "Телеканал «Вся Уфа». Прямой эфир",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-05-27/d6/45/d6454d97d90eba314a637c99ca37274b.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5a88a8d75565c5cdebeb11d87bfc61e9/index.m3u8?s=TJ7BLnh1ym5KGunYKohOrQ&e=2093616640&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "ff5c11c9a51750f5d33427762abc315c",
-      "title": "телеканала «Продвижение»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-03-03/5d/fd/5dfd72f695d3562d42363a682c50038a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ff5c11c9a51750f5d33427762abc315c/index.m3u8?s=X3dyWjq8EN-C_2SjEP3NBQ&e=2093616640&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "e30732c0045af997cb7312822534522f",
-      "title": "телеканала «Волга 24»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/be/79/be79053ca037a7ce8f55e9416749d305.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/e30732c0045af997cb7312822534522f/index.m3u8?s=HeAYhUAz7OgFXZvcc121aA&e=2093616641&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "671239d68ada3000a154a68efa0c7813",
-      "title": "Бийское Телевидение (БТВ)",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/96/5e/965e9455f53866b02c8bcaa9f52c185c.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/671239d68ada3000a154a68efa0c7813/index.m3u8?s=_CrLkiL3aCBPoE4fOJDVeg&e=2093616642&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "df0faa92ca3f1d7df057c202fd4b21c4",
-      "title": "АСТВ LIVE HD",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/ea/16/ea160ce3e56ca80dee78accc3d2545d9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/df0faa92ca3f1d7df057c202fd4b21c4/index.m3u8?s=TTdqRbyv3zV2m9XJzMPhHA&e=2093616643&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "eda2da42eea89951e4135141a30915f7",
-      "title": "ИЛЛИ ТВ. Прямой эфир",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2025-09-02/7a/0f/7a0f29caa17230362b67f520f81a44a8.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/eda2da42eea89951e4135141a30915f7/index.m3u8?s=_3qDlWCXE8K0dq7mrkIlZQ&e=2093616643&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "7c5ae60686a94e04691f6917e1dec066",
-      "title": "Абакан 24",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/a1/00/a100410b4001d3d8f6db1695943bb702.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/7c5ae60686a94e04691f6917e1dec066/index.m3u8?s=wuDuBUifaCGWda_69BSZ9Q&e=2093616644&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "9927a61345cbec5aac6558f6c5454d61",
-      "title": "Телеканал ОмскТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/6b/39/6b3999e6bb4659af19da9b38e5f28552.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9927a61345cbec5aac6558f6c5454d61/index.m3u8?s=7csXiP8paOF4t-594d_5WA&e=2093616645&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "813dc0c5a944559e7e52b840d09a84f6",
-      "title": "86 Сургут",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/1d/0d/1d0d587513e0f0104713eb64091db824.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/813dc0c5a944559e7e52b840d09a84f6/index.m3u8?s=nNDuwnmGpkwYjittcBmp0g&e=2093616645&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "673b559e08f8b99d65a4e8fbbceb911b",
-      "title": "Городской телеканал UTV",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/83/d2/83d2906ba4297127d3009cb8aa39c2d0.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/673b559e08f8b99d65a4e8fbbceb911b/index.m3u8?s=fJGuiDL7LIOxkmDOjS5FhA&e=2093616646&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "55fec7f2c11f4decc66568fca39f26b2",
-      "title": "Буряад ТВ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-06-02/f8/a1/f8a1141d58c0fa423eddd588cabc33e3.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/55fec7f2c11f4decc66568fca39f26b2/index.m3u8?s=SVcaRqzo6RmAhgCTK9hgSA&e=2093616647&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/c1/67/c16747e3dd0f24a315d3d8fbafeebfaf.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/9b482361d6c845f7d70eafc98356d8bf/index.m3u8?s=Ucoq30nZzrXTZYhI5_6FXQ&e=2094222922&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2298,51 +2023,161 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/55/49/55493056d27b3a749bcabff6db31c996.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/b8079a6e1e184643d9a17c42469a1f30/index.m3u8?s=P_nIGHbckgN9dEnZtbp34g&e=2093616647&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/b8079a6e1e184643d9a17c42469a1f30/index.m3u8?s=voLlOhhyF4SZtoj0yR_Zkw&e=2094222923&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "9cb1d5d561ecfa81ec7a98bc6999a6e0",
-      "title": "Метро Пионерская онлайн веб-камера проспект Испытателей и Коломяжский проспект",
+      "id": "b04fc212802bbf7ec94768c029e54aa9",
+      "title": "Круглосуточный интернет-канал в прямом эфире \"Липецк 24\"",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/9cb1d5d561ecfa81ec7a98bc6999a6e0/index.m3u8?s=_6-gSyopuYd5C376kG64cg&e=2093616648&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/32/80/3280c7fd0d89a677a5ff200beadf7737.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/b04fc212802bbf7ec94768c029e54aa9/index.m3u8?s=Pg0vftS4sr_TwwosBMGdaQ&e=2094222924&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "3fd26103b82508289ef7b7f60c77d9c8",
-      "title": "Телеканал ПРИМА",
+      "id": "067561b5754d0b7844762fa92939716b",
+      "title": "«Телеканал ЛТВ (Люберецкое телевидение)»",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/18/0c/180ca526474da79153642b5e72d2fd7f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/3fd26103b82508289ef7b7f60c77d9c8/index.m3u8?s=x4O-eC6o66WpbQFlC3yb9A&e=2093616649&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-11-21/87/99/8799e1636f2ec6e3c4ec13e08499bcb2.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/067561b5754d0b7844762fa92939716b/index.m3u8?s=04S-mGc4UbnpD7l0gYlJtg&e=2094222924&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "c0de1d61969a7fbdf6c68ca0b8a67769",
-      "title": "Ямал-Медиа",
+      "id": "0115cdc35fb5234242a89de98137dca9",
+      "title": "Телеканал ТОЛК (Барнаул)",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-21/f8/f4/f8f450a2282ff719e336a0d4766343a4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/c0de1d61969a7fbdf6c68ca0b8a67769/index.m3u8?s=Qa_rTTmJp-TyAw4m2edRDA&e=2093616650&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/f1/9e/f19e2b95269809d07c7e415adb3912a8.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/0115cdc35fb5234242a89de98137dca9/index.m3u8?s=3JwX3SjpZmOaBFA8VQFvNg&e=2094222925&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "503a8ac5ca6d738f05a147764f70215b",
-      "title": "Телеканал \"Истоки\" - ваш путеводитель в мир качественного контента",
+      "id": "7748a2530116682fa185a156ce1d09a3",
+      "title": "Телеканал «Новый век» (Тамбовская область)",
       "description": "",
       "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/04/9c/049cd61894c67f9168dfafb8e9a8e7a9.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/503a8ac5ca6d738f05a147764f70215b/index.m3u8?s=0jHjQqvIRzCbzQxAtR7SqQ&e=2093616650&scheme=https",
+      "avatar": "https://pic.rtbcdn.ru/user/4f/c4/4fc482cae88d5573dfd798f6f278b27e.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/7748a2530116682fa185a156ce1d09a3/index.m3u8?s=JNW8ZdxdIVd-VVo_B3dkkA&e=2094222926&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "813dc0c5a944559e7e52b840d09a84f6",
+      "title": "86 Сургут",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/1d/0d/1d0d587513e0f0104713eb64091db824.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/813dc0c5a944559e7e52b840d09a84f6/index.m3u8?s=vGiggi7VPdDv8zjPfopatQ&e=2094222927&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "5a88a8d75565c5cdebeb11d87bfc61e9",
+      "title": "Телеканал «Вся Уфа». Прямой эфир",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-05-27/d6/45/d6454d97d90eba314a637c99ca37274b.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/5a88a8d75565c5cdebeb11d87bfc61e9/index.m3u8?s=QSgLKPg5nkCYiYZWDF3QMw&e=2094222928&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "ff5c11c9a51750f5d33427762abc315c",
+      "title": "телеканала «Продвижение»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-03-03/5d/fd/5dfd72f695d3562d42363a682c50038a.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/ff5c11c9a51750f5d33427762abc315c/index.m3u8?s=zlNJactO05Cd0XpfqzZS_g&e=2094222928&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "673b559e08f8b99d65a4e8fbbceb911b",
+      "title": "Городской телеканал UTV",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/83/d2/83d2906ba4297127d3009cb8aa39c2d0.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/673b559e08f8b99d65a4e8fbbceb911b/index.m3u8?s=OkEadC9ktoGoBiM9tu4xEQ&e=2094222929&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "e30732c0045af997cb7312822534522f",
+      "title": "телеканала «Волга 24»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/be/79/be79053ca037a7ce8f55e9416749d305.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/e30732c0045af997cb7312822534522f/index.m3u8?s=6Q7TXWLuFYcCCdXdTA8XMg&e=2094222930&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "df0faa92ca3f1d7df057c202fd4b21c4",
+      "title": "АСТВ LIVE HD",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/ea/16/ea160ce3e56ca80dee78accc3d2545d9.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/df0faa92ca3f1d7df057c202fd4b21c4/index.m3u8?s=QGr2FDE74wcdf0TFRZJj_w&e=2094222931&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "bed2dcda74004e4e9a61966d2848c027",
+      "title": "телеканала «Волга»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-03-10/c3/1a/c31ab1e1c27e0a8acad1217099e1c400.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/bed2dcda74004e4e9a61966d2848c027/index.m3u8?s=gKwKurNFcYtS7Xi9zhqt7Q&e=2094222932&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "82c8c19b0af69c77dc81dbc7e3dd6285",
+      "title": "Матч! Футбол 2",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "9927a61345cbec5aac6558f6c5454d61",
+      "title": "Телеканал ОмскТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/6b/39/6b3999e6bb4659af19da9b38e5f28552.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/9927a61345cbec5aac6558f6c5454d61/index.m3u8?s=yReE1OnXY0rMt7D0sG5LTw&e=2094222933&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "55fec7f2c11f4decc66568fca39f26b2",
+      "title": "Буряад ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-06-02/f8/a1/f8a1141d58c0fa423eddd588cabc33e3.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/55fec7f2c11f4decc66568fca39f26b2/index.m3u8?s=hKjGUqYmU1iTjv7brS5D5A&e=2094222934&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2353,7 +2188,40 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/55/58/5558ca50dc1a89b6ee647f8d1fa7d0c4.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f520a781e91c3aa90fec5790cebd3fdb/index.m3u8?s=8niUGonA9fVUTMYfCVcsvQ&e=2093616651&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/f520a781e91c3aa90fec5790cebd3fdb/index.m3u8?s=yF5ZBFDHlMc3CZ9WfGfhWA&e=2094222935&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "7c5ae60686a94e04691f6917e1dec066",
+      "title": "Абакан 24",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/a1/00/a100410b4001d3d8f6db1695943bb702.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/7c5ae60686a94e04691f6917e1dec066/index.m3u8?s=FUKZZOFJeKgIqRuZgR6WvQ&e=2094222937&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "c0de1d61969a7fbdf6c68ca0b8a67769",
+      "title": "Ямал-Медиа",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-21/f8/f4/f8f450a2282ff719e336a0d4766343a4.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/c0de1d61969a7fbdf6c68ca0b8a67769/index.m3u8?s=pCuu-3y5ARfClSjhAGYHHw&e=2094222938&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "f0c302d2736a4066564b9b929b69507c",
+      "title": "Телеканала ТБН",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/0b/a2/0ba2449bee7bdf139981139420388744.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f0c302d2736a4066564b9b929b69507c/index.m3u8?s=vhhWv4sxUjimT1X1lVzfUw&e=2094222939&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2364,7 +2232,62 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/ca/d6/cad6a9227adfaf58fddf75ef36ef7e43.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ed40abd9d832e9f91ea0e0b0fde36e44/index.m3u8?s=XBMRAZBtxxq8r_hkGF4mow&e=2093616651&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/ed40abd9d832e9f91ea0e0b0fde36e44/index.m3u8?s=Yzo_LX_bWs1aPWPzprzRWQ&e=2094222939&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "671239d68ada3000a154a68efa0c7813",
+      "title": "Бийское Телевидение (БТВ)",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/96/5e/965e9455f53866b02c8bcaa9f52c185c.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/671239d68ada3000a154a68efa0c7813/index.m3u8?s=QabKCYZpm9VRgUvUE4-W5g&e=2094222941&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "3fd26103b82508289ef7b7f60c77d9c8",
+      "title": "Телеканал ПРИМА",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/18/0c/180ca526474da79153642b5e72d2fd7f.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/3fd26103b82508289ef7b7f60c77d9c8/index.m3u8?s=YDErb3EUt1QxTTvl3p3qAQ&e=2094222941&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "503a8ac5ca6d738f05a147764f70215b",
+      "title": "Телеканал \"Истоки\" - ваш путеводитель в мир качественного контента",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/04/9c/049cd61894c67f9168dfafb8e9a8e7a9.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/503a8ac5ca6d738f05a147764f70215b/index.m3u8?s=tD41DgiIX-hFGobR6fPK0g&e=2094222942&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "9cb1d5d561ecfa81ec7a98bc6999a6e0",
+      "title": "Метро Пионерская онлайн веб-камера проспект Испытателей и Коломяжский проспект",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2f/04/2f046b689fc30583fab453bab901183a.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/9cb1d5d561ecfa81ec7a98bc6999a6e0/index.m3u8?s=ZTokytlFiIBzovjwUEYmWg&e=2094222943&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "ee431650738a594119c3516ceda72775",
+      "title": "\"МЫ\"",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/7e/4d/7e4d80a15d802b6fd83601ddcdda7803.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/ee431650738a594119c3516ceda72775/index.m3u8?s=ysqmEYNpMppLrzwPS8AE5w&e=2094222944&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2379,28 +2302,6 @@
       "blocked": false,
       "blocked_reason": "",
       "unavailable": true
-    },
-    {
-      "id": "f0c302d2736a4066564b9b929b69507c",
-      "title": "Телеканала ТБН",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/0b/a2/0ba2449bee7bdf139981139420388744.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f0c302d2736a4066564b9b929b69507c/index.m3u8?s=4dJIWEJYcSRcQyK-LpV3ig&e=2093616653&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "ee431650738a594119c3516ceda72775",
-      "title": "\"МЫ\"",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-05-12/7e/4d/7e4d80a15d802b6fd83601ddcdda7803.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/ee431650738a594119c3516ceda72775/index.m3u8?s=yLSbiUI61Yl8LlUgxoy3mA&e=2093616653&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
     },
     {
       "id": "13053e6f977f78e8caf3ac0239f972e8",
@@ -2419,7 +2320,29 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/2026-01-19/5c/7a/5c7af6725cd62bb8cf13aa84b21fda1f.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/740503607d216b5d467694a1e8fb39a8/index.m3u8?s=ZYmvVCRJelNOIm28uNAPjg&e=2093616655&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/740503607d216b5d467694a1e8fb39a8/index.m3u8?s=gPmS2fKHkA7tCjQeDTAhiw&e=2094222947&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "cbad9322f845b5f4f0c052a698215d00",
+      "title": "Матч! Боец",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "342a3e4f3c9bb0d7830a52af0d956c44",
+      "title": "ИА «Импульс Севера»",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-07-21/78/c0/78c085c5a677fb251555aec33d0e15fc.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/342a3e4f3c9bb0d7830a52af0d956c44/index.m3u8?s=BzhcJp524AkcTZg-x3I_5w&e=2094222948&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2436,28 +2359,6 @@
       "unavailable": true
     },
     {
-      "id": "342a3e4f3c9bb0d7830a52af0d956c44",
-      "title": "ИА «Импульс Севера»",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-07-21/78/c0/78c085c5a677fb251555aec33d0e15fc.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/342a3e4f3c9bb0d7830a52af0d956c44/index.m3u8?s=jbtFEVPGlk4ENAbvF22I8Q&e=2093616656&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "d1dff14680d4c84e27908983375f7e89",
-      "title": "Эфир православного музыкального телеканала \"Музсоюз\"",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/d1dff14680d4c84e27908983375f7e89/index.m3u8?s=6p1gFuCz6-QBJKzYoy-r6Q&e=2093616657&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
       "id": "2847184bee8b79311d29263ae5708cf3",
       "title": "Телеканал «Ностальгия»",
       "description": "",
@@ -2469,8 +2370,30 @@
       "unavailable": true
     },
     {
+      "id": "d1dff14680d4c84e27908983375f7e89",
+      "title": "Эфир православного музыкального телеканала \"Музсоюз\"",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/16/92/16920b9a3ba36ed88436441ad9e90895.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/d1dff14680d4c84e27908983375f7e89/index.m3u8?s=C6MhuwcDcrhc8ukK-d8ueQ&e=2094222951&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
       "id": "d29eaedfed6350768958b10d855d2786",
       "title": "ИНДИЙСКОЕ КИНО",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "a6e96c58dc1f2b7eb328dc2833b68e54",
+      "title": "Авто Плюс",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2485,14 +2408,14 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/54/a8/54a86820effd8d892fed9c140afbda68.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/5e5c002f266cbb781058c145b0522b5c/index.m3u8?s=ha0wMDSdQvdbSjK2yVWvAg&e=2093616659&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/5e5c002f266cbb781058c145b0522b5c/index.m3u8?s=tMui0kydglXpmBJbeoRbxw&e=2094222954&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
     },
     {
-      "id": "a6e96c58dc1f2b7eb328dc2833b68e54",
-      "title": "Авто Плюс",
+      "id": "a2ec9032e05468b6e745ee69eff9a18c",
+      "title": "Матч! Арена",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2513,41 +2436,19 @@
       "unavailable": true
     },
     {
-      "id": "f9b779270116788b1425e16ba9552c61",
-      "title": "MMA-TV.COM",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "a2ec9032e05468b6e745ee69eff9a18c",
-      "title": "Матч! Арена",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "be21f2224204f6ff375826214b2c0376",
-      "title": "ИНДИЯ",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
       "id": "99111cfbeeec65853b120d9256d41abe",
       "title": "Кухня",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "f9b779270116788b1425e16ba9552c61",
+      "title": "MMA-TV.COM",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2568,30 +2469,8 @@
       "unavailable": true
     },
     {
-      "id": "0064bd09060c8b8469fef19f269e8a8a",
-      "title": "Мой мир",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/2026-01-28/9f/de/9fde175e89da058f63b3f1d48f74aca7.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/0064bd09060c8b8469fef19f269e8a8a/index.m3u8?s=w7zSP2a4JFWNCiOFaXlbWw&e=2093616665&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "6516ff0412548ee21be5f779e8db170c",
-      "title": "СуперГерои",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "",
-      "stream_url": null,
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": true
-    },
-    {
-      "id": "382c0cd388b0771b1a4b02184831552a",
-      "title": "SAGA TV",
+      "id": "be21f2224204f6ff375826214b2c0376",
+      "title": "ИНДИЯ",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2612,8 +2491,19 @@
       "unavailable": true
     },
     {
-      "id": "688008ee962cdc94c1cf0ac787641b2c",
-      "title": "Музыка Live",
+      "id": "0064bd09060c8b8469fef19f269e8a8a",
+      "title": "Мой мир",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2026-01-28/9f/de/9fde175e89da058f63b3f1d48f74aca7.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/0064bd09060c8b8469fef19f269e8a8a/index.m3u8?s=atowPj3LFLPtZozg1XAqkg&e=2094222959&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
+      "id": "6516ff0412548ee21be5f779e8db170c",
+      "title": "СуперГерои",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2625,6 +2515,28 @@
     {
       "id": "9940c33ce5dd7d500ebcfb77c2891c93",
       "title": "365 дней ТВ",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "688008ee962cdc94c1cf0ac787641b2c",
+      "title": "Музыка Live",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "",
+      "stream_url": null,
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": true
+    },
+    {
+      "id": "382c0cd388b0771b1a4b02184831552a",
+      "title": "SAGA TV",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "",
@@ -2656,12 +2568,23 @@
       "unavailable": true
     },
     {
+      "id": "eda2da42eea89951e4135141a30915f7",
+      "title": "ИЛЛИ ТВ. Прямой эфир",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/2025-09-02/7a/0f/7a0f29caa17230362b67f520f81a44a8.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/eda2da42eea89951e4135141a30915f7/index.m3u8?s=iUek2TyYP_c8QH8nnql47Q&e=2094222965&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
+    },
+    {
       "id": "75d440a39a0aa9b71f55a71341bebe1e",
       "title": "Shopping at Home",
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/13/b3/13b3394393a5b77ebe72aa18505498ca.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/75d440a39a0aa9b71f55a71341bebe1e/index.m3u8?s=VmLT74XY-KDd3VpXT0TkuQ&e=2093616671&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/75d440a39a0aa9b71f55a71341bebe1e/index.m3u8?s=1U_7lnTyuzM0qWSSp6CuEg&e=2094222965&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2672,18 +2595,7 @@
       "description": "",
       "category": "Прямые эфиры",
       "avatar": "https://pic.rtbcdn.ru/user/fd/96/fd9659d674f43b2fe8db7dd110d62975.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/75957f55ed1e9b4e0ec00f8dd9594fcc/index.m3u8?s=VWdxzXC5WQ6-TN6R-k16Qg&e=2093616672&scheme=https",
-      "blocked": false,
-      "blocked_reason": "",
-      "unavailable": false
-    },
-    {
-      "id": "f785d738a845cc80658e887843a18ed9",
-      "title": "телеканала CTV",
-      "description": "",
-      "category": "Прямые эфиры",
-      "avatar": "https://pic.rtbcdn.ru/user/25/88/258893ee8d31edced979f766f06b1c53.jpg",
-      "stream_url": "https://bl.rutube.ru/livestream/f785d738a845cc80658e887843a18ed9/index.m3u8?s=TvevTY4Mu5yyvT-KREtOgw&e=2093616673&scheme=https",
+      "stream_url": "https://bl.rutube.ru/livestream/75957f55ed1e9b4e0ec00f8dd9594fcc/index.m3u8?s=MVY-a88GjIfotVQlH4y1fA&e=2094222966&scheme=https",
       "blocked": false,
       "blocked_reason": "",
       "unavailable": false
@@ -2753,6 +2665,17 @@
       "blocked": false,
       "blocked_reason": "",
       "unavailable": true
+    },
+    {
+      "id": "f785d738a845cc80658e887843a18ed9",
+      "title": "телеканала CTV",
+      "description": "",
+      "category": "Прямые эфиры",
+      "avatar": "https://pic.rtbcdn.ru/user/25/88/258893ee8d31edced979f766f06b1c53.jpg",
+      "stream_url": "https://bl.rutube.ru/livestream/f785d738a845cc80658e887843a18ed9/index.m3u8?s=jxpF9DFu7W6n-yLD42q4FA&e=2094222971&scheme=https",
+      "blocked": false,
+      "blocked_reason": "",
+      "unavailable": false
     },
     {
       "id": "54de765aeea96a73d23a24b4e2cab07d",
